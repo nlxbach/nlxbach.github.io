@@ -10,8 +10,8 @@ author:
   url:        https://nlxbach.github.io 
 
 # Gems
-gems:
-  - jekyll-paginate
+#gems:
+ # - jekyll-paginate
 
 #Others
 markdown: kramdown
