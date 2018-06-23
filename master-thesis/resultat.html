@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Une description taxonomique du genre Cecropia (Urticaceae): Réalisation d’une clef d’identification multi-entrées</title>
+  <meta name="description" content="This is master’s thesis writting with bookdown package in R">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Une description taxonomique du genre Cecropia (Urticaceae): Réalisation d’une clef d’identification multi-entrées" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is master’s thesis writting with bookdown package in R" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Une description taxonomique du genre Cecropia (Urticaceae): Réalisation d’une clef d’identification multi-entrées" />
+  
+  <meta name="twitter:description" content="This is master’s thesis writting with bookdown package in R" />
+  
+
+<meta name="author" content="Nguyen Le Xuan bach">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="materiels-et-methodes.html">
+<link rel="next" href="discussion.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="section.html">Stage Master 2</a></li>
+
+<li class="divider"></li>
+<li><a href="section.html#section"></a></li>
+<li class="chapter" data-level="" data-path="resume-et-abstract.html"><a href="resume-et-abstract.html"><i class="fa fa-check"></i>Résumé et Abstract</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="materiels-et-methodes.html"><a href="materiels-et-methodes.html"><i class="fa fa-check"></i><b>2</b> Matériels et Méthodes</a><ul>
+<li class="chapter" data-level="2.1" data-path="materiels-et-methodes.html"><a href="materiels-et-methodes.html#construction-dune-base-de-donnee-photographique"><i class="fa fa-check"></i><b>2.1</b> Construction d’une base de donnée photographique</a></li>
+<li class="chapter" data-level="2.2" data-path="materiels-et-methodes.html"><a href="materiels-et-methodes.html#construction-dune-base-de-donnees-relatives-aux-echantillons-dherbiers-sous-le-logiciel-brahms-et-edition-des-cartes-de-repartition-des-especes."><i class="fa fa-check"></i><b>2.2</b> Construction d’une base de données relatives aux échantillons d’herbiers sous le logiciel BRAHMS et édition des cartes de répartition des espèces.</a></li>
+<li class="chapter" data-level="2.3" data-path="materiels-et-methodes.html"><a href="materiels-et-methodes.html#construction-dune-matrice-de-caractere-a-partir-de-louvrage-de-berg-et-rosselli-2005-et-integration-au-logiciel-xper2"><i class="fa fa-check"></i><b>2.3</b> Construction d’une matrice de caractère à partir de l’ouvrage de Berg et Rosselli (2005) et intégration au logiciel Xper2</a></li>
+<li class="chapter" data-level="2.4" data-path="materiels-et-methodes.html"><a href="materiels-et-methodes.html#construction-de-la-clef-interactive-multi-entree-sous-xper2-une-plate-forme-dediee-a-lidentification-assistee-par-ordinateur"><i class="fa fa-check"></i><b>2.4</b> Construction de la clef interactive multi-entrée sous XPER<sup>2</sup>, une plate-forme dédiée à l’identification assistée par ordinateur</a></li>
+<li class="chapter" data-level="2.5" data-path="materiels-et-methodes.html"><a href="materiels-et-methodes.html#analyse-de-la-matrice-de-caractere"><i class="fa fa-check"></i><b>2.5</b> Analyse de la matrice de caractère</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="materiels-et-methodes.html"><a href="materiels-et-methodes.html#analyse-du-pouvoir-discriminant-des-caracteres-morphometriques"><i class="fa fa-check"></i><b>2.5.1</b> Analyse du pouvoir discriminant des caractères morphométriques</a></li>
+<li class="chapter" data-level="2.5.2" data-path="materiels-et-methodes.html"><a href="materiels-et-methodes.html#classification-hierarchique-des-especes"><i class="fa fa-check"></i><b>2.5.2</b> Classification hiérarchique des espèces</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="materiels-et-methodes.html"><a href="materiels-et-methodes.html#etude-de-cas-en-guyane-francaise"><i class="fa fa-check"></i><b>2.6</b> Etude de cas en Guyane française</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="resultat.html"><a href="resultat.html"><i class="fa fa-check"></i><b>3</b> Résultat</a><ul>
+<li class="chapter" data-level="3.1" data-path="resultat.html"><a href="resultat.html#la-base-de-donnee-de-cecropia"><i class="fa fa-check"></i><b>3.1</b> La base de donnée de <em>Cecropia</em></a></li>
+<li class="chapter" data-level="3.2" data-path="resultat.html"><a href="resultat.html#notice-dutilisation-de-la-clef-multi-entree-lexemple-de-c.-distachya"><i class="fa fa-check"></i><b>3.2</b> Notice d’utilisation de la clef multi-entrée : l’exemple de <em>C. distachya</em></a></li>
+<li class="chapter" data-level="3.3" data-path="resultat.html"><a href="resultat.html#analyse-discriminante-des-caracteres-selon-differents-indices-de-dissimilarite"><i class="fa fa-check"></i><b>3.3</b> Analyse discriminante des caractères selon différents indices de dissimilarité</a></li>
+<li class="chapter" data-level="3.4" data-path="resultat.html"><a href="resultat.html#comparaison-des-especes-via-une-classification-ascendante-hierarchique"><i class="fa fa-check"></i><b>3.4</b> Comparaison des espèces via une classification ascendante hiérarchique</a></li>
+<li class="chapter" data-level="3.5" data-path="resultat.html"><a href="resultat.html#la-diversite-des-especes-guyanaise-etudes-de-cas."><i class="fa fa-check"></i><b>3.5</b> La diversité des espèces Guyanaise : études de cas.</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>4</b> Discussion</a></li>
+<li class="chapter" data-level="5" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>5</b> Conclusion</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Une description taxonomique du genre <em>Cecropia</em> (Urticaceae): Réalisation d’une clef d’identification multi-entrées</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="resultat" class="section level1">
+<h1><span class="header-section-number">3</span> Résultat</h1>
+<div id="la-base-de-donnee-de-cecropia" class="section level2">
+<h2><span class="header-section-number">3.1</span> La base de donnée de <em>Cecropia</em></h2>
+<p>A partir de l’ouvrage de B&amp;FR2005 j’ai retenu 59 caractères morphométriques que j’ai divisé 9 grandes classes selon la partie de la plante concernée : (i) le trichilium – 9 caractères, (ii), le limbe – 16 caractères, (iii) le pétiole – 3 caractères, (iv) la calyptre – 6 caractères, (v) l’inflorescence mâle – 7 caractères, (vi) l’inflorescence femelle – 7 caractères, (vii) la spathe – 6 caractères, (viii) le fruit – 3 caractères et (ix) la tige – 2 caractères. A cela j’ai rajouté un 60ème caractère (qui constitue la 10ème classe) concernant la localisation géographique et qui est le point d’entrée de la clef dichotomique de B&amp;FR2005. 39 caractères correspondent à des variables catégorielles pour un total de 191 états. Les 20 caractères restant correspondent à des variables numériques. 50 des caractères correspondent à ceux utilisés par B&amp;FR2005 dans leurs clefs de début d’ouvrage. J’ai rajouté à cela 10 caractères à partir des descriptions détaillées qu’ils ont fait pour chaque espèce et qu’ils n’ont apparemment pas jugé utile d’utiliser comme caractères discriminants (voir le détail en Annexe 2). L’ouvrage de B&amp;FR2005 ne m’a pas permis de renseigner l’ensemble de ces caractères pour les 61 espèces et la matrice est renseignée à 77.46 %.</p>
+</div>
+<div id="notice-dutilisation-de-la-clef-multi-entree-lexemple-de-c.-distachya" class="section level2">
+<h2><span class="header-section-number">3.2</span> Notice d’utilisation de la clef multi-entrée : l’exemple de <em>C. distachya</em></h2>
+<p>En mode <code>identification</code>, la clef que j’ai développée sous Xper2 se présente de la manière suivante (Fig. <a href="resultat.html#fig:fig5">3.1</a>): dans la sous-fenêtre (A) se trouve la liste des caractères morphométriques. Il est possible de les filtrer par groupes et de les classer selon les valeurs des indices Xper, Jaccard ou Sokal &amp; Michener. J’ai rajouté un groupe appelé ‘je propose’ avec les caractères que j’ai jugé comme les plus pertinents quelque soit la partie de la plante qu’ils concernent (le choix de ces caractères sera discuté par la suite). Dans la sous-fenêtre (B), se trouvent les différents états possibles du caractère sélectionné. J’ai illustré la plupart des caractères et leurs états possibles avec des dessins ou des photographies (D) et j’y ai associé une définition dans la majorité des cas (C) Dans la sous-fenêtre (E) figure la liste des 61 espèces qui sont conformes aux critères sélectionnés. Dans la sous-fenêtre (F), figurent les espèces qui ne sont pas conformes aux critères sélectionnés.</p>
+
+<div class="figure" style="text-align: center"><span id="fig:fig5"></span>
+<img src="figure/fig5.png" alt=": Interface d’indentification du logiciel XPER2_Cecropia (A. Liste des caractères pertinants pour l’identification; B. Liste des états correspondants au caractère sélectionné en A; C. Définitions des caractères; D. Illustrations des états de caractères; E. Liste des taxons correspondants aux états de caractères sélectionnés; F. Liste des taxons qui ne correspondent pas aux états de caractère choisis)" width="90%" />
+<p class="caption">
+Figure 3.1: : Interface d’indentification du logiciel XPER2_Cecropia (A. Liste des caractères pertinants pour l’identification; B. Liste des états correspondants au caractère sélectionné en A; C. Définitions des caractères; D. Illustrations des états de caractères; E. Liste des taxons correspondants aux états de caractères sélectionnés; F. Liste des taxons qui ne correspondent pas aux états de caractère choisis)
+</p>
+</div>
+<p>En double-cliquant sur une espèce on accède à une fiche détaillée avec (i) la description textuelle de B&amp;FR2005, (ii) un ensemble d’illustrations judicieusement choisies dans la photothèque que j’ai construite et (iii) la description formatée pour l’ensemble des caractères renseignés dans la matrice et rassemblés selon les groupes définis (Fig. <a href="resultat.html#fig:fig6">3.2</a>). Si l’espèce sur laquelle on clique se trouve parmi la liste de celles qui ne sont pas retenues dans la description courante (sous-fenêtre F) alors les caractères qui ne sont pas en accord avec les choix effectués apparaissent en rouge. En sélectionnant plusieurs espèces dans les fenêtres (E) ou (F) et en faisant clique-droit &gt; <code>Comparaison</code> on visualise la matrice de caractère avec les critères qui sont discriminants pour les espèces sélectionnées. Avec clique-droit &gt; <code>Particularité(s)</code> ont obtient une liste des états possédés uniquement par les espèces choisies.</p>
+
+<div class="figure" style="text-align: center"><span id="fig:fig6"></span>
+<img src="figure/fig6.png" alt=": Une fiche détaillée avec (i) la description textuelle de B&amp;FR2005, (ii) un ensemble d’illustrations et (iii) la description formatée pour l’ensemble des caractères renseignés dans la matrice et rassemblés selon les groupes définis." width="70%" />
+<p class="caption">
+Figure 3.2: : Une fiche détaillée avec (i) la description textuelle de B&amp;FR2005, (ii) un ensemble d’illustrations et (iii) la description formatée pour l’ensemble des caractères renseignés dans la matrice et rassemblés selon les groupes définis.
+</p>
+</div>
+<p>En l’état actuel, 470 images et illustrations sont associées aux différentes descriptions (caractères, états, espèces). A titre d’exemple d’utilisation, je prendrais la planche d’herbier présentée Fig. <a href="resultat.html#fig:fig7">3.3</a>. Sur cette photographie, <strong>13 caractères</strong> morphométriques sont observables:</p>
+<ol style="list-style-type: decimal">
+<li>L’inflorescence mâle comporte 10 épis ; En renseignant <strong>« 35. Staminate spikes: number» = 10</strong> alors 34 espèces sont exclues. 27 espèces restent en course et sont potentiellement celles que l’on cherche à identifier.</li>
+<li>Le nombre de lobes est de 8 ; En renseignant <strong>« 11. Number of segment (or main vein) » = 8</strong> alors 8 espèces supplémentaires sont exclues et 19 espèces restent en course.</li>
+<li>Le plus grand épi possède un diamètre de 3 mm ; En renseignant <strong>« 40. Staminate spikes: maximal diameter» = 3</strong> alors 6 espèces supplémentaires sont exclues et 13 espèces restent en course.</li>
+<li>Les nervures secondaires sont connectées ensembles sur la marge du limbe ; En renseignant <strong>« 21. Lateral veins: type of connection » &gt; ‘Marginally’</strong> alors 6 espèces supplémentaires sont exclues et 7 espèces restent en course.</li>
+<li>Les nervures secondaires portent des nervures tertiaires ; Ce caractère n’est pourtant visible que sur le lobe situé le long du pétiole ce qui pourrait être une sorte d’anomalie (en fait, dans le cas de cette espèce, c’est plutôt le fait que ce caractère soit si peu marqué qui en est une) ; En renseignant <strong>« 22. Lateral veins: ramification » &gt; ‘Branched’</strong> alors deux espèces supplémentaires sont exclues. Face à l’ambigüité du spécimen nous décidons de ne pas renseigner ce critère.</li>
+<li>Le pétiole mesure 22.4 cm ; En renseignant <strong>« 26. Petiole : length » = 22.4</strong> alors deux espèces supplémentaires sont exclues et 5 restent en course</li>
+<li>Le plus grand épi mesure environ 8.5 cm de longueur ; En renseignant <strong>« 39. Staminate spikes: maximal length» = 8.5</strong> alors une nouvelle espèce est écartée. 4 espèces restent en course.</li>
+<li>Les lobes sont entiers dans le sens ou ils ne sont pas redécoupé eux-mêmes en <code>feuille de chêne</code> ; En renseignant <strong>« 14. Free part of the mid-segment: form(a)” &gt; ‘Entire’</strong> alors une nouvelle espèce est écartée et 3 espèces restent en course.</li>
+<li>La partie libre du lobe principal est plutôt d’une forme obovale, c’est à dire que la largeur maximale se trouve au delà de la partie médiane ; En renseignant <strong>« 16. Free part of the mid-segment: form(b)” &gt; ‘Obovate’</strong> alors une nouvelle espèce est écartée et 2 espèces restent en course.</li>
+</ol>
+
+<div class="figure" style="text-align: center"><span id="fig:fig7"></span>
+<img src="figure/fig7.png" alt=": Photographie d’échantillon d’herbier C. distachya (KEW-K000512374). 13 caractères morphométriques sont observables." width="100%" />
+<p class="caption">
+Figure 3.3: : Photographie d’échantillon d’herbier <em>C. distachya</em> (KEW-K000512374). 13 caractères morphométriques sont observables.
+</p>
+</div>
+<p>A ce stade, les 4 derniers critères observables ne permettent pas d’affiner la recherche : 10. On compte environ 16 paires de nervures secondaires sur la partie libre du lobe principal : « 20. Number of pairs of lateral veins in the mid-segment » = 16 ; 11. Les lobes sont soudés à leur base et ne sont pas libre jusqu’à leur insertion sur le pétiole : <strong>« 12. Lamina: segment incision » &gt; ‘Not down to petiole’</strong>; 12. Le lobe principal mesure environ 22.2 cm. La partie soudée représente 7.4 cm tandis que la partie libre représente 14.8 cm. La partie libre représente ainsi 6.7/10 de la longueur totale du lobe : <strong>« 13. Free part of the mid-segment length/Total mid-segment length ratio» = 6.7</strong>; 13. Le pédoncule de l’inflorescence mesure environ 9.4 cm de long: <strong>« 38. Staminate inflorescence: peduncle length » = 9.4</strong>.</p>
+<p>Les deux espèces sont <em>C. distachya</em> et <em>C. obtusifolia</em> (Fig. <a href="resultat.html#fig:fig8">3.4</a>). Notons qu’à ce stade le critère <strong>« 22. Lateral veins: ramification? »</strong> n’est pas discriminant puisque ces deux espèces sont censées avoir des nervures tertiaires. En sélectionnant les deux espèces et en faisant clique-droit &gt; <code>comparaison</code> nous pouvons voir les critères qui permettent de les séparer. Seul le type de stigmate ne laisse aucune ambigüité mais il n’est malheureusement pas observable sur cet échantillon mâle. Avec cet unique échantillon, il est donc impossible de trancher entre ces deux espèces. Par contre, l’étiquette indique que ce spécimen a été collecté au Brésil sur le Rio Juruá un des principaux affluents de l’amazone dans l’état de l’Amazonas. En choisissant le critère de la position géographique : <strong>« 60. Location » &gt; ‘Amazonian Brazil’</strong> alors une espèce unique est sélectionnée : <em>C. distachya</em> ce qui est effectivement la détermination attribuée à cet échantillon (<em>C. riparia</em> étant un synonyme de <em>C. distachya</em>). A noter que dans le processus que nous avons décrit ci-dessus, si la position géographique avait été entrée en tant que premier critère, l’espèce aurait été identifié dès que le quatrième critère aurait été renseigné (<strong>« 21. Lateral veins: type of connection? »</strong>).</p>
+
+<div class="figure" style="text-align: center"><span id="fig:fig8"></span>
+<img src="figure/fig8.png" alt="XPER2 propose 2 espèces C. distachya et C. obtusifolia qui ont les caractères compatibles avec les 13 caractères observés sur l’échantillon d’herbier montré Fig. 3.3" width="100%" />
+<p class="caption">
+Figure 3.4: XPER2 propose 2 espèces <em>C. distachya</em> et <em>C. obtusifolia</em> qui ont les caractères compatibles avec les 13 caractères observés sur l’échantillon d’herbier montré Fig. <a href="resultat.html#fig:fig7">3.3</a>
+</p>
+</div>
+<p>Comparons cette démarche avec celle suivie dans B&amp;FR2005 au travers de la clef dichotomique (Fig. <a href="resultat.html#fig:fig9">3.5</a> ) : En dehors du critère géographique qui est le premier point d’entrée, on notera que : (i) Pour le critère n°2, les trichilias ne sont pas observables sur notre échantillon mais le fait que les lobes ne sont pas découpés jusqu’à leur insertion sur le pétiole nous permet de faire un choix ; (ii) Le dernier critère relatif au statut érigé ou pendant de l’inflorescence n’est pas observable. En suivant la clef de B&amp;FR2005 deux espèces potentielles seraient retenues : <em>C. palmata</em> et <em>C. distachya</em>. Dans notre identification par Xper2, <em>C. palmata</em> avait été écarté car chez cette espèce (i) le nombre d’épis mâles par inflorescence varie entre 4 et 6 et (ii) Le diamètre des épis mâle varie entre 8 et 18 cm. Pour cet exemple, nous arrivons donc à identifier l’espèce avec 5 critères (dont la position géographique) tandis que avec l’utilisation de cette clef dichotomique, le renseignement de 7 critères nous amène à un dilemme entre deux espèces.</p>
+
+<div class="figure" style="text-align: center"><span id="fig:fig9"></span>
+<img src="figure/fig9.png" alt=": XPER2 propose 2 espèces C. distachya et C. obtusifolia qui ont les caractères compatibles avec les 13 caractères observés sur l’échantillon d’herbier montré Fig. 3.3" width="100%" />
+<p class="caption">
+Figure 3.5: : XPER2 propose 2 espèces <em>C. distachya</em> et <em>C. obtusifolia</em> qui ont les caractères compatibles avec les 13 caractères observés sur l’échantillon d’herbier montré Fig. <a href="resultat.html#fig:fig7">3.3</a>
+</p>
+</div>
+</div>
+<div id="analyse-discriminante-des-caracteres-selon-differents-indices-de-dissimilarite" class="section level2">
+<h2><span class="header-section-number">3.3</span> Analyse discriminante des caractères selon différents indices de dissimilarité</h2>
+<p>Les différents indices de dissimilarité utilisés n’ont de sens que lorsqu’ils traitent des caractères de même type. Nous avons donc travaillé sur deux groupes de caractères selon qu’ils étaient numériques ou catégoriels</p>
+<p>En ce qui concerne les caractères numériques (Tab. <a href="resultat.html#tab:tab1">3.1</a>), les indices de Jaccard et de Sokal &amp; Michener ne montrent aucune différence. Si l’on prends comme seuil, la moitié de l’indice maximal, 9 variables sont sélectionnées avec l’indice Xper (au delà du seuil de 0.28 ; en bleu). Ces 9 variables sont également sélectionnées avec les indices de Jaccard / Sokal &amp; Michener (au delà du seuil de 0.50) ainsi que 6 variables supplémentaires (en vert). Parmi ces critères, « 26. Petiole: length » et « 46. Pistillate spikes: maximal diameter» sont des critères non utilisé par B&amp;FR2005 dans leurs clefs dichotomiques et pourtant pertinents.</p>
+<p>En ce qui concerne les caractères catégoriels (Tab. <a href="resultat.html#tab:tab2">3.2</a>), si l’on prends comme seuil, la moitié de l’indice maximal, 11 variables sont sélectionnées avec l’indice Xper (au delà du seuil de 0.26 ; en bleu). Ces 9 variables sont également sélectionnées avec les indices de Jaccard et de Sokal &amp; Michener (au delà du seuil de 0.40 et 0.25 respectivement). L’indice de Jaccard amène à considérer 9 variables supplémentaires (en vert). L’indice de Sokal &amp; Michener amène à considérer 11 variables supplémentaires, dont deux non retenues par l’indice de Jaccard (en orange). Parmi ces critères, « 57. Fruit: surface», « 56. Fruit: form» et « 17. Apex of the mid-segment: form » sont des critères non utilisés par B&amp;FR2005 dans leurs clefs dichotomiques et pourtant pertinents.</p>
+<p>La plupart des ces critères sont observables sur un minimum de photographie que l’on peut prendre aisément sur le terrain. Dans l’Annexe 3, je propose un ensemble de vues (compilées à partir de différentes espèces) que pourraient prendre n’importe quel néophyte et qui permettrait à priori d’identifier l’espèce. Les caractères importants et qui restent difficile à saisir sur une photographie sans un examen attentif du spécimen sont « 48. Stigma: type », « 57. Fruit: surface », « 10. Lamina: texture » (ex : coriace, chartacée), « 56. Fruit: form » et « 18. Lamina: upper surface « (ex : glabre, pubérulant). En plus de ce protocole photographique que je propose, je propose pour des contributeurs plus confirmés une feuille type comportant les caractères à observer et à renseigner ainsi qu’une illustration de ces caractères (Annexe 4). Les critères concernant les poils sont réduit à la simple observation d’un indumentum arachnoïde sur le pétiole ; en effet la terminologie concernant la pilosité adoptée par B&amp;FR2005 comporte de nombreux états dont nous n’avons pas toujours saisi les nuances.</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tab1">Table 3.1: </span>Liste des caractères numériques et leur indice de dissimilarité calculés dans XPER2. Les valeurs en gras indiquent les valeurs maximales par indice utilisé
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;">
+Liste.caracteres
+</th>
+<th style="text-align:left;font-weight: bold;">
+XPER
+</th>
+<th style="text-align:left;font-weight: bold;">
+Jaccard
+</th>
+<th style="text-align:left;font-weight: bold;">
+Sokal.Michener
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="35" style="list-style-type: decimal">
+<li>Staminate spikes: number
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">1016/1830 (0.56)</span>
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">1827/1830 (1.0)</span>
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">1827/1830 (1.0)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="20" style="list-style-type: decimal">
+<li>Number of pairs of lateral veins in the mid-segment
+</td>
+<td style="text-align:left;color: #0072ff;">
+999/1830 (0.55)
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">1826/1830 (1.0)</span>
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">1826/1830 (1.0)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="11" style="list-style-type: decimal">
+<li>Number of segment (or main vein)
+</td>
+<td style="text-align:left;color: #0072ff;">
+941/1830 (0.51)
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">1825/1830 (1.0)</span>
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">1825/1830 (1.0)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="13" style="list-style-type: decimal">
+<li>Free part of the mid-segment length/Total mid-segment length ratio
+</td>
+<td style="text-align:left;color: #0072ff;">
+640/1485 (0.43)
+</td>
+<td style="text-align:left;color: #0072ff;">
+1374/1485 (0.93)
+</td>
+<td style="text-align:left;color: #0072ff;">
+1374/1485 (0.93)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="40" style="list-style-type: decimal">
+<li>Staminate spikes: maximal diameter
+</td>
+<td style="text-align:left;color: #0072ff;">
+707/1830 (0.39)
+</td>
+<td style="text-align:left;color: #0072ff;">
+1272/1830 (0.7)
+</td>
+<td style="text-align:left;color: #0072ff;">
+1272/1830 (0.7)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="29" style="list-style-type: decimal">
+<li>Stipule: length
+</td>
+<td style="text-align:left;color: #0072ff;">
+684/1830 (0.37)
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">1825/1830 (1.0)</span>
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">1825/1830 (1.0)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="54" style="list-style-type: decimal">
+<li>Staminate spathe: length
+</td>
+<td style="text-align:left;color: #0072ff;">
+586/1830 (0.32)
+</td>
+<td style="text-align:left;color: #0072ff;">
+1481/1830 (0.81)
+</td>
+<td style="text-align:left;color: #0072ff;">
+1481/1830 (0.81)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="42" style="list-style-type: decimal">
+<li>Pistillate spikes: number
+</td>
+<td style="text-align:left;color: #0072ff;">
+543/1830 (0.3)
+</td>
+<td style="text-align:left;color: #0072ff;">
+987/1830 (0.54)
+</td>
+<td style="text-align:left;color: #0072ff;">
+987/1830 (0.54)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="39" style="list-style-type: decimal">
+<li>Staminate spikes: maximal length
+</td>
+<td style="text-align:left;color: #0072ff;">
+534/1830 (0.29)
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">1824/1830 (1.0)</span>
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">1824/1830 (1.0)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">44. Pistillate inflorescence: peduncle length</span>
+</td>
+<td style="text-align:left;">
+496/1830 (0.27)
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: #0a7502;">1824/1830 (1.0)</span>
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: #0a7502;">1824/1830 (1.0)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">53. Staminate spathe: length</span>
+</td>
+<td style="text-align:left;">
+448/1830 (0.24)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1480/1830 (0.81)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1480/1830 (0.81)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">38. Staminate inflorescence: peduncle length</span>
+</td>
+<td style="text-align:left;">
+359/1830 (0.2)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1705/1830 (0.93)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1705/1830 (0.93)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="41" style="list-style-type: decimal">
+<li>Staminate spikes: maximal stipe length
+</td>
+<td style="text-align:left;">
+290/1830 (0.16)
+</td>
+<td style="text-align:left;">
+858/1830 (0.47)
+</td>
+<td style="text-align:left;">
+858/1830 (0.47)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">46. Pistillate spikes: maximal diameter</span>
+</td>
+<td style="text-align:left;">
+282/1830 (0.15)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1763/1830 (0.96)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1763/1830 (0.96)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="55" style="list-style-type: decimal">
+<li>Fruit: length
+</td>
+<td style="text-align:left;">
+256/1830 (0.14)
+</td>
+<td style="text-align:left;">
+433/1830 (0.24)
+</td>
+<td style="text-align:left;">
+433/1830 (0.24)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">45. Pistillate spikes: maximal length</span>
+</td>
+<td style="text-align:left;">
+243/1830 (0.13)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1763/1830 (0.96)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1763/1830 (0.96)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">26. Petiole: length</span>
+</td>
+<td style="text-align:left;">
+172/1830 (0.09)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1822/1830 (1.0)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1822/1830 (1.0)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="59" style="list-style-type: decimal">
+<li>Tree: height
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+<td style="text-align:left;">
+465/1830 (0.25)
+</td>
+<td style="text-align:left;">
+465/1830 (0.25)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="47" style="list-style-type: decimal">
+<li>Pistillate spikes: maximal stipe length
+</td>
+<td style="text-align:left;">
+7/1830 (0.0)
+</td>
+<td style="text-align:left;">
+35/1830 (0.02)
+</td>
+<td style="text-align:left;">
+35/1830 (0.02)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="2" style="list-style-type: decimal">
+<li>Müllerian bodies: length
+</td>
+<td style="text-align:left;">
+0/1540 (0.0)
+</td>
+<td style="text-align:left;">
+0/1540 (0.0)
+</td>
+<td style="text-align:left;">
+0/1540 (0.0)
+</td>
+</tr>
+</tbody>
+</table></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tab2">Table 3.2: </span>Liste des caractères catégoriels et leur indice de dissimilarité calculés dans XPER2. Les valeurs en gras indiquent les valeurs maximales par indice utilisé.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;">
+Liste.caracteres
+</th>
+<th style="text-align:left;font-weight: bold;">
+XPER
+</th>
+<th style="text-align:left;font-weight: bold;">
+Jaccard
+</th>
+<th style="text-align:left;font-weight: bold;">
+Sokal.Michener
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="48" style="list-style-type: decimal">
+<li>Stigma: type
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">959/1830 (0.52)</span>
+</td>
+<td style="text-align:left;color: #0072ff;">
+1134/1830 (0.62)
+</td>
+<td style="text-align:left;color: #0072ff;">
+652/1830 (0.36)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="32" style="list-style-type: decimal">
+<li>Stipule: indumentum on the inner part
+</td>
+<td style="text-align:left;color: #0072ff;">
+931/1830 (0.51)
+</td>
+<td style="text-align:left;color: #0072ff;">
+1265/1830 (0.69)
+</td>
+<td style="text-align:left;color: #0072ff;">
+435/1830 (0.24)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="49" style="list-style-type: decimal">
+<li>Spathe: color
+</td>
+<td style="text-align:left;color: #0072ff;">
+751/1830 (0.41)
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">1467/1830 (0.8)</span>
+</td>
+<td style="text-align:left;color: #0072ff;">
+785/1830 (0.43)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="16" style="list-style-type: decimal">
+<li>Free part of the mid-segment: form
+</td>
+<td style="text-align:left;color: #0072ff;">
+716/1830 (0.39)
+</td>
+<td style="text-align:left;color: #0072ff;">
+1366/1830 (0.75)
+</td>
+<td style="text-align:left;color: #0072ff;">
+675/1830 (0.37)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="22" style="list-style-type: decimal">
+<li>Lateral veins: ramification
+</td>
+<td style="text-align:left;color: #0072ff;">
+624/1830 (0.34)
+</td>
+<td style="text-align:left;color: #0072ff;">
+899/1830 (0.49)
+</td>
+<td style="text-align:left;color: #0072ff;">
+<span style=" font-weight: bold;    ">899/1830 (0.49)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="57" style="list-style-type: decimal">
+<li>Fruit: surface
+</td>
+<td style="text-align:left;color: #0072ff;">
+604/1830 (0.33)
+</td>
+<td style="text-align:left;color: #0072ff;">
+1054/1830 (0.58)
+</td>
+<td style="text-align:left;color: #0072ff;">
+875/1830 (0.48)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="37" style="list-style-type: decimal">
+<li>Staminate inflorescence: spike positions
+</td>
+<td style="text-align:left;color: #0072ff;">
+580/1830 (0.32)
+</td>
+<td style="text-align:left;color: #0072ff;">
+874/1830 (0.48)
+</td>
+<td style="text-align:left;color: #0072ff;">
+874/1830 (0.48)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="31" style="list-style-type: decimal">
+<li>Stipule: indumentum on the outer part
+</td>
+<td style="text-align:left;color: #0072ff;">
+547/1830 (0.3)
+</td>
+<td style="text-align:left;color: #0072ff;">
+1395/1830 (0.76)
+</td>
+<td style="text-align:left;color: #0072ff;">
+447/1830 (0.24)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="50" style="list-style-type: decimal">
+<li>Spathe: indumentum on the outer part
+</td>
+<td style="text-align:left;color: #0072ff;">
+548/1830 (0.3)
+</td>
+<td style="text-align:left;color: #0072ff;">
+1365/1830 (0.75)
+</td>
+<td style="text-align:left;color: #0072ff;">
+468/1830 (0.26)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="10" style="list-style-type: decimal">
+<li>Lamina: texture
+</td>
+<td style="text-align:left;color: #0072ff;">
+488/1830 (0.27)
+</td>
+<td style="text-align:left;color: #0072ff;">
+995/1830 (0.54)
+</td>
+<td style="text-align:left;color: #0072ff;">
+865/1830 (0.47)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; color: #0072ff;">
+<ol start="21" style="list-style-type: decimal">
+<li>Lateral veins: type of connection
+</td>
+<td style="text-align:left;color: #0072ff;">
+468/1830 (0.26)
+</td>
+<td style="text-align:left;color: #0072ff;">
+723/1830 (0.4)
+</td>
+<td style="text-align:left;color: #0072ff;">
+723/1830 (0.4)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">56. Fruit: form</span>
+</td>
+<td style="text-align:left;">
+458/1830 (0.25)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">947/1830 (0.52)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">768/1830 (0.42)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">08. Trichilia: hair length</span>
+</td>
+<td style="text-align:left;">
+377/1540 (0.24)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">638/1540 (0.41)</span>
+</td>
+<td style="text-align:left;">
+370/1540 (0.24)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: red;">36. Staminate inflorescence: peduncle position</span>
+</td>
+<td style="text-align:left;">
+378/1830 (0.21)
+</td>
+<td style="text-align:left;">
+633/1830 (0.35)
+</td>
+<td style="text-align:left;">
+<span style="     color: red;">633/1830 (0.35)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">18. Lamina: upper surface</span>
+</td>
+<td style="text-align:left;">
+359/1830 (0.2)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1265/1830 (0.69)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">639/1830 (0.35)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">30. Stipule: color</span>
+</td>
+<td style="text-align:left;">
+331/1830 (0.18)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1266/1830 (0.69)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">613/1830 (0.34)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">17. Apex of the mid-segment: form</span>
+</td>
+<td style="text-align:left;">
+338/1830 (0.18)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">967/1830 (0.53)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">637/1830 (0.35)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">28. Petiole: indumentum</span>
+</td>
+<td style="text-align:left;">
+309/1830 (0.17)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1242/1830 (0.68)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">460/1830 (0.25)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="12" style="list-style-type: decimal">
+<li>Lamina: segment incision
+</td>
+<td style="text-align:left;">
+316/1830 (0.17)
+</td>
+<td style="text-align:left;">
+507/1830 (0.28)
+</td>
+<td style="text-align:left;">
+375/1830 (0.21)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: #0a7502;">43. Pistillate inflorescence: position</span>
+</td>
+<td style="text-align:left;">
+260/1830 (0.14)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">722/1830 (0.39)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">722/1830 (0.39)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol style="list-style-type: decimal">
+<li>Presence of trichilia
+</td>
+<td style="text-align:left;">
+255/1830 (0.14)
+</td>
+<td style="text-align:left;">
+395/1830 (0.22)
+</td>
+<td style="text-align:left;">
+395/1830 (0.22)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="4" style="list-style-type: decimal">
+<li>Trichilia: type
+</td>
+<td style="text-align:left;">
+135/1540 (0.09)
+</td>
+<td style="text-align:left;">
+327/1540 (0.21)
+</td>
+<td style="text-align:left;">
+327/1540 (0.21)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<span style="     color: red;">06. Trichilia: form</span>
+</td>
+<td style="text-align:left;">
+115/1540 (0.07)
+</td>
+<td style="text-align:left;">
+507/1540 (0.33)
+</td>
+<td style="text-align:left;">
+<span style="     color: red;">507/1540 (0.33)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+09.Trichilia: hair color
+</td>
+<td style="text-align:left;">
+88/1485 (0.06)
+</td>
+<td style="text-align:left;">
+426/1485 (0.29)
+</td>
+<td style="text-align:left;">
+318/1485 (0.21)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="19" style="list-style-type: decimal">
+<li>Lamina: lower surface
+</td>
+<td style="text-align:left;">
+88/1830 (0.05)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">1066/1830 (0.58)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">524/1830 (0.29)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="33" style="list-style-type: decimal">
+<li>Stipule:persistance and texture
+</td>
+<td style="text-align:left;">
+29/1830 (0.02)
+</td>
+<td style="text-align:left;">
+568/1830 (0.31)
+</td>
+<td style="text-align:left;">
+<span style="     color: red;">539/1830 (0.29)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="51" style="list-style-type: decimal">
+<li>Spathe: indumentum on the inner part
+</td>
+<td style="text-align:left;">
+40/1830 (0.02)
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">794/1830 (0.43)</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: #0a7502;">462/1830 (0.25)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="27" style="list-style-type: decimal">
+<li>Petiole: color
+</td>
+<td style="text-align:left;">
+18/1830 (0.01)
+</td>
+<td style="text-align:left;">
+319/1830 (0.17)
+</td>
+<td style="text-align:left;">
+309/1830 (0.17)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="3" style="list-style-type: decimal">
+<li>Müllerian bodies: color
+</td>
+<td style="text-align:left;">
+12/1540 (0.01)
+</td>
+<td style="text-align:left;">
+204/1540 (0.13)
+</td>
+<td style="text-align:left;">
+204/1540 (0.13)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="14" style="list-style-type: decimal">
+<li>Free part of the segment: entire or lobate
+</td>
+<td style="text-align:left;">
+5/1830 (0.0)
+</td>
+<td style="text-align:left;">
+170/1830 (0.09)
+</td>
+<td style="text-align:left;">
+170/1830 (0.09)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="23" style="list-style-type: decimal">
+<li>Lamina: adaxial surface
+</td>
+<td style="text-align:left;">
+4/1830 (0.0)
+</td>
+<td style="text-align:left;">
+118/1830 (0.06)
+</td>
+<td style="text-align:left;">
+118/1830 (0.06)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="52" style="list-style-type: decimal">
+<li>Spathe: texture
+</td>
+<td style="text-align:left;">
+2/1830 (0.0)
+</td>
+<td style="text-align:left;">
+89/1830 (0.05)
+</td>
+<td style="text-align:left;">
+89/1830 (0.05)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="5" style="list-style-type: decimal">
+<li>Trichilia: aspect
+</td>
+<td style="text-align:left;">
+2/1540 (0.0)
+</td>
+<td style="text-align:left;">
+81/1540 (0.05)
+</td>
+<td style="text-align:left;">
+81/1540 (0.05)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="7" style="list-style-type: decimal">
+<li>Trichilia: position
+</td>
+<td style="text-align:left;">
+1/1540 (0.0)
+</td>
+<td style="text-align:left;">
+55/1540 (0.04)
+</td>
+<td style="text-align:left;">
+55/1540 (0.04)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="24" style="list-style-type: decimal">
+<li>Lamina: beneath: arachnoid indumentum in two distinct players?
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="25" style="list-style-type: decimal">
+<li>Lamina: plicate or plane?
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="34" style="list-style-type: decimal">
+<li>Stipule scares: aspect
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="58" style="list-style-type: decimal">
+<li>Pith: aspect
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+<td style="text-align:left;">
+0/1830 (0.0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 25em; ">
+<ol start="15" style="list-style-type: decimal">
+<li>Presence of petiolule
+</td>
+<td style="text-align:left;">
+0/15 (0.0)
+</td>
+<td style="text-align:left;">
+0/15 (0.0)
+</td>
+<td style="text-align:left;">
+0/15 (0.0)
+</td>
+</tr>
+</tbody>
+</table></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+</div>
+<div id="comparaison-des-especes-via-une-classification-ascendante-hierarchique" class="section level2">
+<h2><span class="header-section-number">3.4</span> Comparaison des espèces via une classification ascendante hiérarchique</h2>
+<p>La première classification est mixte et intègre aussi bien les caractère qualitatifs qui sont ici binarisé (les états sont devenu les caractères) que les caractères quantitatifs exprimés au travers d’une valeur minimal et maximale (Fig. <a href="resultat.html#fig:fig10a">3.6</a>). Les deux autres classifications concernent soit les variables binaires (Fig. <a href="resultat.html#fig:fig10b">3.7</a>), soit les variables continues (Fig. <a href="resultat.html#fig:fig10c">3.8</a>). Les coefficients de corrélation pour ces 3 classifications sont respectivement de 0.699, 0.6953, 0.8911. Les tests de Bootstrap montrent cependant une robustesse toute relative des classifications.</p>
+<p>On remarque entre autre la grande proximité entre <em>C. concolor</em> et <em>C. engleriana</em>. Pour ces deux espèces nous n’avons effectivement aucun critère qui permet de les discriminer complètement. <em>C. engleriana</em> possède un nombre de paire de veines sur la partie libre du segment principal plus élevée que <em>C. concolor</em> (respectivement 24-32 vs. 16-24) et des épis mâles et femelles un peu plus longs.</p>
+
+<div class="figure" style="text-align: center"><span id="fig:fig10a"></span>
+<img src="figure/fig10a.png" alt=": Classification Ascendante Hiérarchique (CAH) selon la méthode UPGMA (Unweighted Pair Group Method with Arithmetic Mean) incluant les caractères quantitatifs et qualitatifs." width="100%" />
+<p class="caption">
+Figure 3.6: : Classification Ascendante Hiérarchique (CAH) selon la méthode UPGMA (<strong>U</strong>nweighted <strong>P</strong>air <strong>G</strong>roup <strong>M</strong>ethod with <strong>A</strong>rithmetic Mean) incluant les caractères quantitatifs et qualitatifs.
+</p>
+</div>
+
+<div class="figure" style="text-align: center"><span id="fig:fig10b"></span>
+<img src="figure/fig10b.png" alt=": Classification Ascendante Hiérarchique (CAH) selon la méthode UPGMA (Unweighted Pair Group Method with Arithmetic Mean) pour les caractères qualitatifs." width="100%" />
+<p class="caption">
+Figure 3.7: : Classification Ascendante Hiérarchique (CAH) selon la méthode UPGMA (<strong>U</strong>nweighted <strong>P</strong>air <strong>G</strong>roup <strong>M</strong>ethod with <strong>A</strong>rithmetic Mean) pour les caractères qualitatifs.
+</p>
+</div>
+
+<div class="figure" style="text-align: center"><span id="fig:fig10c"></span>
+<img src="figure/fig10c.png" alt=": Classification Ascendante Hiérarchique (CAH) selon la méthode UPGMA (Unweighted Pair Group Method with Arithmetic Mean) pour les caractères quantitatifs." width="100%" />
+<p class="caption">
+Figure 3.8: : Classification Ascendante Hiérarchique (CAH) selon la méthode UPGMA (<strong>U</strong>nweighted <strong>P</strong>air <strong>G</strong>roup <strong>M</strong>ethod with <strong>A</strong>rithmetic Mean) pour les caractères quantitatifs.
+</p>
+</div>
+</div>
+<div id="la-diversite-des-especes-guyanaise-etudes-de-cas." class="section level2">
+<h2><span class="header-section-number">3.5</span> La diversité des espèces Guyanaise : études de cas.</h2>
+<p>Dans la plupart des cas, je n’ai eu aucun mal à identifier les différentes espèces de Guyane avec ma clef multi-entrée. L’espèce la plus stable du point de vue des traits morphométriques est sans aucun doute <em>C. sciadophylla</em>. Cependant, plusieurs problèmes ont été rencontrés et certains morphotypes restent non identifiés.</p>
+<p><strong>Cas n°1</strong> – La Figure <a href="resultat.html#fig:fig11">3.9</a> montre un spécimen photographié par D. Sabatier en novembre 2011 sur la piste forestière de la Mataroni (N 04°06’13,9&quot; W 52°04’40,1“, Herbier Sabatier D., Smock J.-L. &amp; Tarcy M. 5805, CAY). 11 caractères morphométriques sont observables/mesurables. Alors que l’ensemble de ces critères nous amène à identifier <em>C. distachya</em> sans avoir besoin de renseigner la localisation géographique, la présence de 6 épis par inflorescence contredit ce diagnostic. Pour B&amp;FR2005, le nombre d’épis femelles varie de 2 à 4. Cette fourchette a été établie à partir de l’observation de 45 échantillons dont deux seulement provenait de la Guyane française. Face au faible nombre d’échantillon observé par B&amp;FR2005 et au fait que tous les critères semblent désigner <em>C. distachya</em> en dehors du nombre d’épis femelles, nous concluons que l’identification est exacte mais que la variabilité de ce critère est sous-estimé dans l’ouvrage de B&amp;FR2005. Nous avons été confronté au même genre de cas (1 ou 2 caractères non conformes aux fourchettes établies par B&amp;FR2005) pour un échantillon mâle de <em>C. distachya</em> (avec un nombre d’épis trop peu élevé et des pétioles trop longs), un échantillon stérile de <em>C. silvae</em> (avec des lobes légèrement soudés à leur base) et un échantillon de <em>C. obtusa</em> (avec des nervures tertiaires).</p>
+<p><strong>Cas n°2</strong> – La Figure <a href="resultat.html#fig:fig12">3.10</a> montre un spécimen stérile photographié par P. Heuret en mars 2011 sur la piste forestière de Counami (N5°21’33’‘W53°12’49’’, Herbier Heuret n° 123, CAY). 10 caractères morphométriques sont observables/mesurables. Cette description n’amène à aucune espèce parmi les 61 décrites. Plusieurs critères entrent à chaque fois en conflit. L’espèce les plus proche de cette description est <em>C. angustifolia</em>. Cependant, celle-ci possède un indumentum arachnoïde sur le pétiole alors que dans ce cas le pétiole est glabre. Mais surtout l’échantillon collecté le plus proche de la Guyane se trouve au Vénezuela à 1700 km. Si l’on regarde les espèces attendues en Guyane Française, les plus proche sont <em>C. sciadophylla</em> et <em>C. silvae</em>. Mais <em>C. sciadophylla</em> (i) ne présente cependant pas de trichilium, (ii) les lobes sont découpés jusqu’à leur base et s’insèrent directement sur le pétiole et (iii) il n’y a pas de nervures tertiaires ; ces critères sont ici pourtant clairement exprimés. Quand à <em>C. silvae</em>, les différences avec cet échantillon sont nombreuses : (i) il possède un indumentum pubérulent ou hirsute sur le pétiole, (ii) Le nombre de lobes est plus élevé et va de 15 à 20 alors que nous en observons 11, (iii) Le nombre de nervures latérales est également plus élevé et va de 40 à 58 alors que nous en observons 32 paires et (iv) il n’y a pas de nervures tertiaires. Cet échantillon n’est donc conforme à aucune espèce déjà décrite. Après prospection à l’endroit où il a été récolté, nous n’avons pas été capable de retrouver un morphotype similaire.</p>
+<p><strong>Cas n°3</strong> – Le spécimen que j’ai photographié en avril 2012 sur la route entre Saint-Laurent du Maroni et Apatou; N5°14’54.3’’ W54°15’48.3’’ Herbier Heuret&amp;Nguyen n° 127, CAY (Fig. <a href="resultat.html#fig:fig13">3.11</a>). A partir de la clef de B&amp;FR2005 j’arrive à un choix entre <em>C. obtusa</em> et <em>C. peltata</em>. Après avoir renseigné 17 caractères avec ma clef multi-entrées, ces deux espèces sont écartées car elles sont incompatibles avec 5 et 3 caractères respectivement. Par contre, j’arrive à une proposition qui est <em>C. obtusifolia</em>. Nous sommes par contre bien loin de son aire de répartition puisqu’elle se trouve sur la cordillère des Andes en Equateur et Colombie ainsi Amérique centrale. Je précise cependant que je n’ai pas observé la forme du stigmate qui est un caractère important.</p>
+
+<div class="figure" style="text-align: center"><span id="fig:fig11"></span>
+<img src="figure/fig11.png" alt=": Le spécimen photographié par D. Sabatier en novembre 2011 sur la piste forestière de la Mataroni (N 04°06’13,9&quot; W 52°04’40,1“, Herbier Sabatier D., Smock J.-L. &amp; Tarcy M. 5805, CAY)" width="80%" />
+<p class="caption">
+Figure 3.9: : Le spécimen photographié par D. Sabatier en novembre 2011 sur la piste forestière de la Mataroni (N 04°06’13,9&quot; W 52°04’40,1“, Herbier Sabatier D., Smock J.-L. &amp; Tarcy M. 5805, CAY)
+</p>
+</div>
+
+<div class="figure" style="text-align: center"><span id="fig:fig12"></span>
+<img src="figure/fig12.png" alt=": Le spécimen stérile photographié par P. Heuret en mars 2011 sur la piste forestière de Counami (N5°21’33’‘W53°12’49’’, Herbier Heuret n° 123, CAY)" width="80%" />
+<p class="caption">
+Figure 3.10: : Le spécimen stérile photographié par P. Heuret en mars 2011 sur la piste forestière de Counami (N5°21’33’‘W53°12’49’’, Herbier Heuret n° 123, CAY)
+</p>
+</div>
+
+<div class="figure" style="text-align: center"><span id="fig:fig13"></span>
+<img src="figure/fig13.png" alt=": Le spécimen que j’ai photographié en avril 2012 sur la route entre Saint-Laurent du Maroni et Apatou; N5°14’54.3’’ W54°15’48.3’’; Herbier Heuret&amp;Nguyen n° 127, CAY." width="80%" />
+<p class="caption">
+Figure 3.11: : Le spécimen que j’ai photographié en avril 2012 sur la route entre Saint-Laurent du Maroni et Apatou; N5°14’54.3’’ W54°15’48.3’’; Herbier Heuret&amp;Nguyen n° 127, CAY.
+</p>
+</div>
+
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="materiels-et-methodes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="discussion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-result.Rmd",
+"text": "Edit"
+},
+"download": ["master2.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
