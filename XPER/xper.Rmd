@@ -41,18 +41,18 @@ source("https://raw.githubusercontent.com/nlxbach/nlxbach.github.io/master/XPER/
 
 ## Charger la clef XPER2 en format de SDD (XML)
 
-### Exporter format sdd de Xper2
+Exporter en format sdd depuis Xper2
 ```{r, echo=FALSE, fig.align='center', out.width = "60%"}
 knitr::include_graphics("img/xpersdd.png")
 ```
 
-Par exemple la clef est nommé "test.sdd.xml". On utilise commandes `read_sdd_xper()` pour lire et sauvegarder à objet `xml_data`.
+Par exemple la clef est nommé "test.sdd.xml". On utilise commandes `read_sdd_xper()` pour lire ce fichier et sauvegarder à objet `xml_data`. Ce fichier peut être téléchargé [ici](https://raw.githubusercontent.com/nlxbach/nlxbach.github.io/master/XPER/test.sdd.xml).
 
 ```{r}
 xml_data <- read_sdd_xper(sddfile = "test.sdd.xml")
 ```
 
-# Afficher les informations générales
+# Exporter les informations générales
 ## La liste des taxons dans la clef
 
 Utiliser la fonction `get_df_Taxon()` pour exporter la liste des taxons dans la clef à partir d'objet `xml_data`. Le résultat est une table avec une colonne d'id et une colonne d'étiquette du taxon.
@@ -100,7 +100,7 @@ get_df_Descriptions(xml_data) %>% kbl() %>%
 
 
 #  L'Analyse de MERGEMOD 
-## Resultat de Mergemod
+## Exécuter Mergemod
 
 Utiliser la fonction `mergemod()` pour exporter le résultat de l’algorithme de Mergemod pour tous les caractères catégories. Ils sont présentés dans la colonne "state_merge".
 
@@ -113,7 +113,7 @@ df_Mergemod %>% kbl() %>%
   kable_paper("hover", full_width = F)
 ```
 
-## Trouver une "clique" 
+## Trouver les "clique" des modalités 
 
 Charger les packages pour faire un graphique réseau. Ce qui permet d'identifier facilement les "cliques"
 
@@ -123,9 +123,7 @@ library(visNetwork)
 ```
 
 
-Prendre le résultat de mergemod d’un caractère. 
-
-Par ex: pour Caractère 'ch06'
+Par ex: Prendre le résultat de mergemod pour caractère 'ch06' dans la tableau.
 
 ```{r}
 (res_merge <- df_Mergemod$state_merge[6] %>% 
@@ -192,42 +190,41 @@ Nous pouvons utiliser la fonction `largest_cliques()` pour trouver la clique plu
 
 Donc, dans cet exemple on a 2 cliques qui sont plus grandes avec 11 modalités peuvent être fusionnés.
 
-Et on peut aussi faire une graphique en mode interactif. Cliquez et déplacez un modalités.
+Et on peut aussi faire une graphique en mode interactif. On peut cliquez et déplacez les modalités dans la graphique.
 
 ```{r}
 #'This is function to plot network graphic with largest clique 
 b.visNetwork <- function(gr, largest, number){
   g2 <- toVisNetworkData(gr)
   g2$nodes$group <-"Other"
-  g2$nodes$group[largest[[number]]] <- "Clique_largest"
+  g2$nodes$group[largest[[number]]] <- "Largest_clique"
   
   #Plot
   visNetwork(g2$nodes, g2$edges) %>%
     visIgraphLayout() %>%
     visNodes(size = 25, shape = "circle") %>%
-    visOptions(selectedBy="group",
+    visOptions(selectedBy = "group",
               highlightNearest = T,
               nodesIdSelection = F) %>%
-    visGroups(groupname = "Clique_largest", color = "orange") %>%
+    visGroups(groupname = "Largest_clique", color = "orange") %>%
     visInteraction(keyboard = TRUE) %>%
     visLegend()
 }
 ```
 
-Paramètres `number` pour spécifier 1 cliques lorsque nous avons plusieurs cliques plus grandes définies. Dans cet exemple, nous avons 2 cliques, nous pouvons donc choisir `nombre = 1` ou `nombre = 2`
+Paramètres `number` pour spécifier 1 cliques lorsque nous avons plusieurs cliques plus grandes définies. Dans cet exemple, nous avons 2 cliques plus grandes, nous pouvons choisir `nombre = 1` ou `nombre = 2`.
 
 
 ```{r}
-# plot first group in largest
+# plot the first largest clique
 b.visNetwork(gr, largest, number = 1)
 ```
 
 
 ```{r}
-# plot first group in largest
+# plot the second largest clique
 b.visNetwork(gr, largest, number = 2)
 ```
-
 
 
 # Les perspectives
