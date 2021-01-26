@@ -3,7 +3,7 @@
 # And return class xpersdd
 
 read_sdd_xper <- function(sddfile){
-  xml_data <- XML::xmlParse(file = sddfile) %>% XML::xmlToList()
+  xml_data <- xmlParse(file = sddfile) %>% xmlToList()
   class(xml_data) <- c(class(xml_data), "xpersdd")
   return(xml_data)
 }

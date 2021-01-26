@@ -36,7 +36,7 @@ library(tidyr)
 C'est le fichier qui contient les fonctions pour lire et analyser la clef XPER2 en format SDD.
 
 ```{r}
-source("RtoolforXPER.R")
+source("https://raw.githubusercontent.com/nlxbach/nlxbach.github.io/master/XPER/RtoolforXPER.R")
 ```
 
 ## Charger la clef XPER2 en format de SDD (XML)
@@ -49,7 +49,7 @@ knitr::include_graphics("img/xpersdd.png")
 Par exemple la clef est nommé "test.sdd.xml". On utilise commandes `read_sdd_xper()` pour lire et sauvegarder à objet `xml_data`.
 
 ```{r}
-xml_data <- read_sdd_xper(sddfile = "test.sdd.xml")
+xml_data <- read_sdd_xper(sddfile = "https://raw.githubusercontent.com/nlxbach/nlxbach.github.io/master/XPER/test.sdd.xml")
 ```
 
 # Afficher les informations générales
