@@ -18,7 +18,8 @@ get_df_Taxon <- function(xml_data){
   TaxonNames_label = sapply(TaxonNames, FUN = function(x) x$Representation$Label)
   
   df_TaxonNames <- data.frame(taxon_id = TaxonNames_id, 
-                                taxon_label = TaxonNames_label)
+                              taxon_label = TaxonNames_label,
+                              stringsAsFactors = FALSE)
     
   return(df_TaxonNames)
 
@@ -54,7 +55,8 @@ get_df_Characters <- function(xml_data){
   df_Characters <- data.frame(ch_id = Characters_id,
                               ch_label = Characters_Label,
                               ch_type = Characters_type,
-                              ch_state = Characters_states)
+                              ch_state = Characters_states,
+                              stringsAsFactors = FALSE)
   
   return(df_Characters)
 }
@@ -67,7 +69,8 @@ get_df_state <- function(Character){
     state_id <- sapply(list_states, FUN = function(x) x$.attrs)
     state_label <- sapply(list_states, FUN = function(x) x$Representation$Label)
     ch_id <- rep(Character$.attrs, length(state_id))
-    res <- data.frame(state_id, state_label, ch_id )
+    res <- data.frame(state_id, state_label, ch_id ,
+                      stringsAsFactors = FALSE)
   } else {
     res <- NULL
   }
@@ -121,7 +124,8 @@ get_descr_taxon <- function(Descr_taxon){
   descr = sapply(SummaryData, get_descr_character)
   taxon_id = rep(Descr_taxon$Scope$TaxonName, length(ch_id))
   
-  df_descr <- data.frame(taxon_id, ch_id, descr)
+  df_descr <- data.frame(taxon_id, ch_id, descr,
+                         stringsAsFactors = FALSE)
   return(df_descr)
 }
 
@@ -160,7 +164,8 @@ get_rule_char <- function(CharNode){
   if(any(names(CharNode) == "DependencyRules")){
     state_inapp <- sapply(CharNode$DependencyRules$InapplicableIf, FUN = function(x) x)
     ch_id_child <- rep(CharNode$Character, length(state_inapp))
-    res <- data.frame(ch_id_child, state_inapp)
+    res <- data.frame(ch_id_child, state_inapp,
+                      stringsAsFactors = FALSE)
   }else{
     res <- NULL
   }
@@ -240,7 +245,7 @@ mergemod_one_trait <- function(trait, list_state, sep = "&"){
 mergemod <- function(xml_data){
   if (!"xpersdd" %in% class(xml_data)) stop("xml_data must be created by function read_sdd_xper()")
   
-  df_Descriptions <- get_df_Descriptions(xml_data) %>% as.data.frame()
+  df_Descriptions <- get_df_Descriptions(xml_data) %>% as.data.frame(stringsAsFactors = FALSE)
   df_Characters <- get_df_Characters(xml_data)
   df_States <- get_df_States(xml_data)
   
