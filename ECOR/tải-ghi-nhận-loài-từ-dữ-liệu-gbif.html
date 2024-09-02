@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Phần 6 Tải ghi nhận loài từ dữ liệu GBIF | Phân tích dữ liệu sinh thái học cơ bản với R</title>
+  <meta name="description" content="Tài liệu này giới thiệu một số phân tích dữ liệu sinh thái học cơ bản với phần mềm R." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Phần 6 Tải ghi nhận loài từ dữ liệu GBIF | Phân tích dữ liệu sinh thái học cơ bản với R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Tài liệu này giới thiệu một số phân tích dữ liệu sinh thái học cơ bản với phần mềm R." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Phần 6 Tải ghi nhận loài từ dữ liệu GBIF | Phân tích dữ liệu sinh thái học cơ bản với R" />
+  
+  <meta name="twitter:description" content="Tài liệu này giới thiệu một số phân tích dữ liệu sinh thái học cơ bản với phần mềm R." />
+  
+
+<meta name="author" content="Nguyễn Lê Xuân Bách" />
+
+
+<meta name="date" content="2024-09-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html"/>
+<link rel="next" href="dự-đoán-vùng-phân-bố-loài.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Giới thiệu</a></li>
+<li class="chapter" data-level="1" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><i class="fa fa-check"></i><b>1</b> Một số thao tác cơ bản đối với dữ liệu đa dạng sinh học</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#sontra"><i class="fa fa-check"></i><b>1.1</b> Dữ liệu</a></li>
+<li class="chapter" data-level="1.2" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#đọc-dữ-liệu"><i class="fa fa-check"></i><b>1.2</b> Đọc dữ liệu</a></li>
+<li class="chapter" data-level="1.3" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#thao-tác-cơ-bản-trên-dữ-liệu"><i class="fa fa-check"></i><b>1.3</b> Thao tác cơ bản trên dữ liệu</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#xem-số-lượng-dòng-và-cột"><i class="fa fa-check"></i><b>1.3.1</b> Xem số lượng dòng và cột</a></li>
+<li class="chapter" data-level="1.3.2" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#lọc-dữ-liệu-theo-cột"><i class="fa fa-check"></i><b>1.3.2</b> Lọc dữ liệu theo cột</a></li>
+<li class="chapter" data-level="1.3.3" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#trích-lọc-theo-dòng-trong-bảng."><i class="fa fa-check"></i><b>1.3.3</b> Trích lọc theo dòng trong bảng.</a></li>
+<li class="chapter" data-level="1.3.4" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#sắp-xếp-dữ-liệu"><i class="fa fa-check"></i><b>1.3.4</b> Sắp xếp dữ liệu</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#thống-kê-số-lượng"><i class="fa fa-check"></i><b>1.4</b> Thống kê số lượng</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#cách-1-với-các-lệnh-từ-gói-tidyverse"><i class="fa fa-check"></i><b>1.4.1</b> Cách 1 với các lệnh từ gói <code>Tidyverse</code></a></li>
+<li class="chapter" data-level="1.4.2" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#cách-2-sử-dụng-gói-lệnh-bdvis"><i class="fa fa-check"></i><b>1.4.2</b> Cách 2 sử dụng gói lệnh bdvis</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#biểu-đồ"><i class="fa fa-check"></i><b>1.5</b> Biểu đồ</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#vẽ-nhanh-một-số-biểu-đồ-với-gói-bdvis"><i class="fa fa-check"></i><b>1.5.1</b> Vẽ nhanh một số biểu đồ với gói <code>bdvis</code></a></li>
+<li class="chapter" data-level="1.5.2" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#số-lượng-ghi-nhận-với-gói-lệnh-ggplot2"><i class="fa fa-check"></i><b>1.5.2</b> Số lượng ghi nhận với gói lệnh <code>GGPLOT2</code></a></li>
+<li class="chapter" data-level="1.5.3" data-path="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html"><a href="một-số-thao-tác-cơ-bản-đối-với-dữ-liệu-đa-dạng-sinh-học.html#biểu-đồ-treemap-thể-hiện-số-lượng-ghi-nhận-theo-họ."><i class="fa fa-check"></i><b>1.5.3</b> Biểu đồ treemap thể hiện số lượng ghi nhận theo họ.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html"><a href="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html"><i class="fa fa-check"></i><b>2</b> Tra cứu cấp độ quý hiếm của loài theo IUCN</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html"><a href="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html#xin-cấp-và-khai-báo-mã-cá-nhân-từ-iucn"><i class="fa fa-check"></i><b>2.1</b> Xin cấp và khai báo mã cá nhân từ IUCN</a></li>
+<li class="chapter" data-level="2.2" data-path="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html"><a href="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html#sử-dụng-gói-rredlist"><i class="fa fa-check"></i><b>2.2</b> Sử dụng gói <code>rredlist</code></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html"><a href="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html#tra-cứu-cho-1-loài"><i class="fa fa-check"></i><b>2.2.1</b> Tra cứu cho 1 loài</a></li>
+<li class="chapter" data-level="2.2.2" data-path="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html"><a href="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html#tra-cứu-cho-nhiều-loài"><i class="fa fa-check"></i><b>2.2.2</b> Tra cứu cho nhiều loài</a></li>
+<li class="chapter" data-level="2.2.3" data-path="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html"><a href="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html#xem-quốc-gia-có-sự-phân-bố-của-loài"><i class="fa fa-check"></i><b>2.2.3</b> Xem quốc gia có sự phân bố của loài:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html"><a href="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html#sử-dụng-gói-taxize"><i class="fa fa-check"></i><b>2.3</b> Sử dụng gói <code>taxize</code></a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html"><a href="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html#tra-cứu-cho-1-loài-1"><i class="fa fa-check"></i><b>2.3.1</b> Tra cứu cho 1 loài</a></li>
+<li class="chapter" data-level="2.3.2" data-path="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html"><a href="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html#tra-cứu-cho-nhiều-loài-1"><i class="fa fa-check"></i><b>2.3.2</b> 2.2.2 Tra cứu cho nhiều loài</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html"><a href="tra-cứu-cấp-độ-quý-hiếm-của-loài-theo-iucn.html#tính-chỉ-số-red-list-index"><i class="fa fa-check"></i><b>2.4</b> Tính chỉ số Red List Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="xử-lý-danh-pháp.html"><a href="xử-lý-danh-pháp.html"><i class="fa fa-check"></i><b>3</b> Xử lý danh pháp</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="xử-lý-danh-pháp.html"><a href="xử-lý-danh-pháp.html#tách-phần-tên-khoa-học-và-tên-tác-giả"><i class="fa fa-check"></i><b>3.1</b> Tách phần tên khoa học và tên tác giả</a></li>
+<li class="chapter" data-level="3.2" data-path="xử-lý-danh-pháp.html"><a href="xử-lý-danh-pháp.html#kiểm-tra-lỗi-chính-tả-tình-trạng-danh-pháp"><i class="fa fa-check"></i><b>3.2</b> Kiểm tra lỗi chính tả, tình trạng danh pháp</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="xử-lý-danh-pháp.html"><a href="xử-lý-danh-pháp.html#nhóm-thực-vật"><i class="fa fa-check"></i><b>3.2.1</b> Nhóm Thực vật</a></li>
+<li class="chapter" data-level="3.2.2" data-path="xử-lý-danh-pháp.html"><a href="xử-lý-danh-pháp.html#ví-dụ-với-gói-lệnh-rwcvp"><i class="fa fa-check"></i><b>3.2.2</b> Ví dụ với gói lệnh <code>rWCVP</code></a></li>
+<li class="chapter" data-level="3.2.3" data-path="xử-lý-danh-pháp.html"><a href="xử-lý-danh-pháp.html#danh-pháp-động-vật"><i class="fa fa-check"></i><b>3.2.3</b> Danh pháp động vật</a></li>
+<li class="chapter" data-level="3.2.4" data-path="xử-lý-danh-pháp.html"><a href="xử-lý-danh-pháp.html#xem-thông-tin-về-loài"><i class="fa fa-check"></i><b>3.2.4</b> Xem thông tin về loài</a></li>
+<li class="chapter" data-level="3.2.5" data-path="xử-lý-danh-pháp.html"><a href="xử-lý-danh-pháp.html#tìm-các-cấp-phân-loại-từ-tên-loài"><i class="fa fa-check"></i><b>3.2.5</b> Tìm các cấp phân loại từ tên loài</a></li>
+<li class="chapter" data-level="3.2.6" data-path="xử-lý-danh-pháp.html"><a href="xử-lý-danh-pháp.html#xem-danh-sách-các-tên-đồng-danh-của-một-loài-với-bộ-dữ-liệu-eol"><i class="fa fa-check"></i><b>3.2.6</b> Xem danh sách các tên đồng danh của một loài với bộ dữ liệu EOL</a></li>
+<li class="chapter" data-level="3.2.7" data-path="xử-lý-danh-pháp.html"><a href="xử-lý-danh-pháp.html#xem-danh-sách-tất-cả-các-taxa-con-của-một-taxon"><i class="fa fa-check"></i><b>3.2.7</b> Xem danh sách tất cả các taxa con của một taxon</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="bandocoban.html"><a href="bandocoban.html"><i class="fa fa-check"></i><b>4</b> Thao tác cơ bản với tập tin bản đồ</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="bandocoban.html"><a href="bandocoban.html#tập-tin-vector"><i class="fa fa-check"></i><b>4.1</b> Tập tin vector</a></li>
+<li class="chapter" data-level="4.2" data-path="bandocoban.html"><a href="bandocoban.html#tập-tin-dạng-raster"><i class="fa fa-check"></i><b>4.2</b> Tập tin dạng raster</a></li>
+<li class="chapter" data-level="4.3" data-path="bandocoban.html"><a href="bandocoban.html#biên-tập-bản-đồ-với-gói-lệnh-ggplot-và-ggspatial"><i class="fa fa-check"></i><b>4.3</b> Biên tập bản đồ với gói lệnh <code>ggplot</code> và <code>ggspatial</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html"><a href="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html"><i class="fa fa-check"></i><b>5</b> Tạo sơ đồ độ giàu loài ở khu vực khảo sát</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html"><a href="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html#tạo-sơ-đồ-vị-trí-ghi-nhận-từ-dữ-liệu-sơn-trà"><i class="fa fa-check"></i><b>5.1</b> Tạo sơ đồ vị trí ghi nhận từ dữ liệu Sơn Trà</a></li>
+<li class="chapter" data-level="5.2" data-path="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html"><a href="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html#tạo-sơ-đồ-độ-giàu-loài"><i class="fa fa-check"></i><b>5.2</b> Tạo sơ đồ độ giàu loài</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html"><a href="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html#tạo-lưới-có-kích-thước-1km-với-lệnh-st_make_grid."><i class="fa fa-check"></i><b>5.2.1</b> Tạo lưới có kích thước 1km với lệnh <code>st_make_grid</code>.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html"><a href="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html#đếm-số-lượng-loài-ghi-nhận-trong-từng-ô-lưới."><i class="fa fa-check"></i><b>5.2.2</b> Đếm số lượng loài ghi nhận trong từng ô lưới.</a></li>
+<li class="chapter" data-level="5.2.3" data-path="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html"><a href="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html#trình-bày-sơ-đồ-hoàn-chỉnh"><i class="fa fa-check"></i><b>5.2.3</b> Trình bày sơ đồ hoàn chỉnh</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html"><i class="fa fa-check"></i><b>6</b> Tải ghi nhận loài từ dữ liệu GBIF</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#tải-ghi-nhận"><i class="fa fa-check"></i><b>6.1</b> Tải ghi nhận</a></li>
+<li class="chapter" data-level="6.2" data-path="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#tạo-sơ-đồ-vị-trí-ghi-nhận"><i class="fa fa-check"></i><b>6.2</b> Tạo sơ đồ vị trí ghi nhận</a></li>
+<li class="chapter" data-level="6.3" data-path="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#xuất-dữ-liệu-sang-excel"><i class="fa fa-check"></i><b>6.3</b> Xuất dữ liệu sang Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="dự-đoán-vùng-phân-bố-loài.html"><a href="dự-đoán-vùng-phân-bố-loài.html"><i class="fa fa-check"></i><b>7</b> Dự đoán vùng phân bố loài</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="dự-đoán-vùng-phân-bố-loài.html"><a href="dự-đoán-vùng-phân-bố-loài.html#lấy-dữ-liệu-ghi-nhận-loài-gõ-đỏ-afzelia-xylocarpa-từ-gbif"><i class="fa fa-check"></i><b>7.1</b> Lấy dữ liệu ghi nhận loài Gõ đỏ (<em>Afzelia xylocarpa</em>) từ GBIF</a></li>
+<li class="chapter" data-level="7.2" data-path="dự-đoán-vùng-phân-bố-loài.html"><a href="dự-đoán-vùng-phân-bố-loài.html#xem-sơ-đồ-phân-bố-các-ghi-nhận"><i class="fa fa-check"></i><b>7.2</b> Xem sơ đồ phân bố các ghi nhận</a></li>
+<li class="chapter" data-level="7.3" data-path="dự-đoán-vùng-phân-bố-loài.html"><a href="dự-đoán-vùng-phân-bố-loài.html#chạy-mô-phỏng-maxent"><i class="fa fa-check"></i><b>7.3</b> Chạy mô phỏng Maxent</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tính-chỉ-số-đa-dạng-sinh-học-và-loài-quan-trọng-trong-ô-định-vị.html"><a href="tính-chỉ-số-đa-dạng-sinh-học-và-loài-quan-trọng-trong-ô-định-vị.html"><i class="fa fa-check"></i><b>8</b> Tính chỉ số đa dạng sinh học và loài quan trọng trong ô định vị</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="tính-chỉ-số-đa-dạng-sinh-học-và-loài-quan-trọng-trong-ô-định-vị.html"><a href="tính-chỉ-số-đa-dạng-sinh-học-và-loài-quan-trọng-trong-ô-định-vị.html#tạo-dữ-liệu-giả-lập"><i class="fa fa-check"></i><b>8.1</b> Tạo dữ liệu giả lập</a></li>
+<li class="chapter" data-level="8.2" data-path="tính-chỉ-số-đa-dạng-sinh-học-và-loài-quan-trọng-trong-ô-định-vị.html"><a href="tính-chỉ-số-đa-dạng-sinh-học-và-loài-quan-trọng-trong-ô-định-vị.html#phân-tích"><i class="fa fa-check"></i><b>8.2</b> Phân tích</a></li>
+<li class="chapter" data-level="8.3" data-path="tính-chỉ-số-đa-dạng-sinh-học-và-loài-quan-trọng-trong-ô-định-vị.html"><a href="tính-chỉ-số-đa-dạng-sinh-học-và-loài-quan-trọng-trong-ô-định-vị.html#chỉ-số-đa-dạng-sinh-học"><i class="fa fa-check"></i><b>8.3</b> Chỉ số đa dạng sinh học</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="tính-chỉ-số-đa-dạng-sinh-học-và-loài-quan-trọng-trong-ô-định-vị.html"><a href="tính-chỉ-số-đa-dạng-sinh-học-và-loài-quan-trọng-trong-ô-định-vị.html#tính-chỉ-số-ivi"><i class="fa fa-check"></i><b>8.3.1</b> Tính chỉ số IVI</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Phân tích dữ liệu sinh thái học cơ bản với R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tải-ghi-nhận-loài-từ-dữ-liệu-gbif" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Phần 6</span> Tải ghi nhận loài từ dữ liệu GBIF<a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#tải-ghi-nhận-loài-từ-dữ-liệu-gbif" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="tải-ghi-nhận" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Tải ghi nhận<a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#tải-ghi-nhận" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sử dụng lệnh <code>occ_data</code> từ gói lệnh <code>rgbif</code>. Thêm tham số <code>hasCoordinate = TRUE</code> để lấy về các ghi nhận có thông tin về toạ độ phân bố.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb146-1" tabindex="-1"></a><span class="fu">library</span>(rgbif)</span></code></pre></div>
+<p>Ví dụ tải các ghi nhận về cây Gõ đỏ (<em>Afzelia xylocarpa</em>)</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb147-1" tabindex="-1"></a>mysp <span class="ot">&lt;-</span> <span class="st">&#39;Afzelia xylocarpa&#39;</span></span>
+<span id="cb147-2"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb147-2" tabindex="-1"></a>gbif_godo <span class="ot">&lt;-</span> <span class="fu">occ_data</span>(<span class="at">scientificName =</span> mysp, <span class="at">hasCoordinate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Dữ liệu trả về là dạng list, trong đó bảng <code>data</code> chứa rất nhiều trường thông tin, chúng ta có thể lọc ra một số thông tin cơ bản như sau:</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb148-1" tabindex="-1"></a>gbif_godo2 <span class="ot">&lt;-</span> gbif_godo<span class="sc">$</span>data <span class="sc">|&gt;</span> </span>
+<span id="cb148-2"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb148-2" tabindex="-1"></a>  <span class="fu">select</span>(recordedBy, recordNumber, country,decimalLatitude, decimalLongitude)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-1a2553839e37181004f0" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1a2553839e37181004f0">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169"],["Gunn Go Green","Phuwarin Suchartbunmak","Luis Silva","Светлана Царахова","Utain Pummarin","warin529","Thiamhathai Choopan","Nithit Chaiwerawattana","noina","mathias_dezetter","Федор Кондрачук","kanapol99","ployloynumb","Erik Delaquis","Didier Levasseur",null,null,null,"rolandwirth","Van Dinh","H. Balslev","H. Balslev","QuestaGame","Adam Roberts","Jacky CUDON",null,"H. Balslev","Wangworn","794562383","Leonard Worthington",null,"Leonard Worthington","A.S.L. Donkpegan","S. Ninkaew","Visser M; Chamchumroon V; Saengrit S; Suphuntee N","Visser M; Chamchumroon V; Saengrit S; Suphuntee N","Tagane, S.; Yahara, T.; Nagamasu, H.; Fuse, K.; Toyama, H.; Tran, H.; Son, V.",null,null,"Bult M van de",null,null,null,null,null,null,null,null,null,null,null,null,"L. V. Averyanov|P.K. Lôc|N.T. Vinh|N.S. Khang",null,"Chongko S","Long, C.|Cheng, K.C.|Leti, M.","M. Kato","P.K. Lôc|L. V. Averyanov|N.T. Vinh|V.T. Pham","P.K. Lôc|L. V. Averyanov|N.T. Vinh|V.T. Pham","P.K. Lôc|L. V. Averyanov|N.T. Vinh|V.T. Pham","Pooma R; Phattarahirankanok K; Sirimongkol S; Phuphat M","V.T. Pham","殷建涛","T. So","Soejarto DD; et al.","Soejarto DD; et al.","Panatkool M","Maxwell JF","Maxwell JF","Newman, Mark Fleming","Bult M van de","Maxwell JF","W. Nanakorn",null,"Palee P","Maxwell JF","Fukuoka N","J. Lambinon","Soejarto DD; Taylor K; Nantasan N","236-6队","236-6队","Maxwell JF","J.F. Maxwell","J.F. Maxwell","广东木材调查组","广东木材调查组","广东木材调查组","应廉耕","R. Geesink","G. Murata","梁畴芬","K. Larsen","Larsen K; Larsen SS; Nielsen IC; Santisuk T","J.F. Maxwell","C.F.v. Beusekom","Beusekom CF van; Santisuk T","K. Larsen","李延辉","陈少卿","陈少卿","张宏达","&lt;td&gt;&lt;td&gt;张宏达","B. Sangkhachand","Ploernchit","湛江区植物调查队","湛江区植物调查队","周远瑞","周远瑞","杜亲亲","蒋英","王颢智","Put N","Put N","蒋英","蒋英","蒋英","蒋英","蒋英","蒋英","蒋英","蒋英","蒋英","蒋英","蒋英","蒋英","蒋英","&lt;td&gt;&lt;td&gt;Y. Tsiang","M. Poilane","蒋英","&lt;td&gt;&lt;td&gt;Y. Tsiang","M. Poilane","M. Poilane","Poilane E","M. Poilane","Poilane E","M. Poilane","Poilane E","江一勲","Chevalier AJB","F. Fleury","Chevalier AJB","K.K.TSOONGG",null,null,null,null,"A. Premradsamee","I.C. Nielsen","J.F. Maxwell","K. Chanthavongsa",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Milagros Barcelo","Leho Tedersoo","Leho Tedersoo"],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Visser, M; Chamchumroon, V; Saengrit, S; Suphuntee, N MV-PL 444","Visser, M; Chamchumroon, V; Saengrit, S; Suphuntee, N MV-PL 472","VNMhb393",null,null,"Bult, M van de 1027","1682","1683",null,null,"1688","1689","1690","1691","1692","1693","1695","1696","HAL11545",null,"Chongko, S 489",null,null,"HLF3195","HLF3195","HLF3195","Pooma, R; Phattarahirankanok, K; Sirimongkol, S; Phuphat, M 3836","HLF4715",null,null,"Soejarto, DD; et al. 11975","Soejarto, DD; et al. 11975","Panatkool, M 486","Maxwell, JF 00- 117","Maxwell, JF 00- 117","881","Bult, M van de 363","Maxwell, JF 97- 308",null,null,"Palee, P 275","Maxwell, JF 89- 954","Fukuoka, N T- 62051",null,"Soejarto, DD; Taylor, K; Nantasan, N 5866",null,null,"Maxwell, JF 75- 141",null,null,null,null,null,null,null,null,null,null,"Larsen, K; Larsen, SS; Nielsen, IC; Santisuk, T 31359",null,null,"Beusekom, CF van; Santisuk, T 2829",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Put, N 2491","Put, N 2491",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Poilane, E 10064",null,"Poilane, E 5540",null,"Poilane, E 8477",null,"Chevalier, AJB 31315",null,"Chevalier, AJB 32031",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],["Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Lao People’s Democratic Republic","Thailand","China","China","China","Lao People’s Democratic Republic","Viet Nam","Thailand","Thailand","Lao People’s Democratic Republic","Cambodia","Thailand","Thailand","Thailand","Thailand","Viet Nam","Thailand","Cambodia","Thailand","Thailand","Thailand","Thailand","Thailand","Viet Nam","Cambodia","Viet Nam","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Viet Nam","Cambodia","Thailand","Cambodia","Lao People’s Democratic Republic","Viet Nam","Viet Nam","Viet Nam","Thailand","Viet Nam","Lao People’s Democratic Republic","Thailand","Lao People’s Democratic Republic","Lao People’s Democratic Republic","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Lao People’s Democratic Republic","Thailand","Thailand","Thailand","Thailand","Thailand","China","China","Thailand","Thailand","Thailand","China","China","China","China","Thailand","Thailand","China","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","China","China","China","China","China","Thailand","Thailand","China","China","China","China","China","China","China","Thailand","Thailand","China","China","China","China","China","China","China","China","China","China","China","China","China","China","Cambodia","China","China","Slovenia","Slovenia","Viet Nam","Slovenia","Viet Nam","Slovenia","Viet Nam","China","Viet Nam","Cambodia","Viet Nam","China","China","China","China","China","Thailand","Thailand","Thailand","Thailand","Viet Nam","Lao People’s Democratic Republic","Lao People’s Democratic Republic","Cambodia","Viet Nam","Lao People’s Democratic Republic","Viet Nam","Thailand","Thailand","Thailand","Thailand","Thailand","Viet Nam","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand"],[13.658887,12.834274,15.00772,12.167214,14.73664,14.994645,14.951814,15.472717,17.540897,18.302193,14.58314,14.627569,12.066272,17.512635,17.498221,22,22.01,22,19.919337,12.399558,14.866,18.343,17.928216,12.571308,18.806878,17.401389,15.307,16.580034,11.474642,15.926399,12.205,16.18235,16.4625,17.095,17.9795,17.9795,12.119959,13.26523,12.111389,18.79572,18.159722,14.389444,14.741111,16.166667,14.233333,18.25,19.075,18.8,17.287778,17,14.75,14.866667,17.180278,13.50495,13.78333,13.42944,18.334167,11.727222,11.727222,11.727222,14.79083,11.727222,19.3,13.565,18.1,18.1,18.73333,18.78333,18.78333,16.033333,16.1,19.0667,0,14.818056,18.91667,18.91667,18.51667,0,14.5,18.74,18.74,13.25358,0,0,20.33,20.33,20.33,21.92,0,0,21.660629,16.416,16.41667,0,15.416,15.41667,0,21.48,19.25,19.25,21.92,21.92,0,0,21.62,21.62,21.653918,21.653918,21.653918,22.008084,21.653918,12.17883,12.17883,22.008084,22.008084,22.008084,22.008084,22.008084,22.008084,21.92,21.92,21.92,21.92,21.92,21.92,21.92,21.92,0,22.008084,21.92,0,0,11.56667,0,11.59703,0,11.59703,21.653918,10.78774,0,10.75,21.92,21.92,21.92,21.92,21.92,0,16.5,0,0,11.371783,18.323818,17.437927,13.43,11.47,18.1,11.73,16.42,16.03,14.47,16.5,15.42,17.18,14.755443,15.207516,14.407628,14.5,14.5,14.5],[101.356654,101.460036,101.194287,99.68276400000001,100.814519,102.076311,102.199954,100.902429,104.634128,99.54455299999999,101.399045,100.548427,99.62170500000001,104.804584,102.835336,100.8,100.79,100.8,102.129379,107.195487,101.584,103.671,102.687077,107.025561,99.155248,102.799444,99.456,102.970757,107.362518,102.020294,107.0225,101.926559,102.82,103.96,104.13914,104.13914,108.947666,105.36214,108.998611,99.96317000000001,99.47277800000001,102.586667,101.002778,99.2,99.61666700000001,100.020556,100.319444,99.428611,102.053056,104.133889,101.716667,102.6425,106.489444,105.48676,100.3,103.76361,102.515,109.190278,109.190278,109.190278,100.84056,109.190278,103.33,102.172222,102.66667,102.66667,99.56667,98.98333,98.98333,99.233333,99.38333,99.75,0,106.008611,99.28333000000001,99.28333000000001,98.59999999999999,0,101,109.17,109.17,101.06275,0,0,110.17,110.17,110.17,110.85,0,0,109.207449,102.083,102.08333,0,99.083,99.08333,0,101.57,110.47,110.47,110.85,110.85,0,0,110.27,110.27,110.857716,110.857716,110.857716,111.000731,110.857716,99.92471999999999,99.92471999999999,111.000731,111.000731,111.000731,111.000731,111.000731,111.000731,110.85,110.85,110.85,110.85,110.85,110.85,110.85,110.85,0,111.000731,110.85,0,0,109,0,108.9824,0,108.9824,110.857716,106.70641,0,106.66667,110.85,110.85,110.85,110.85,110.85,0,104.716,0,0,106.175011,103.99967,104.913134,103.76,107.36,102.67,109.19,102.08,99.23,100.5,104.72,99.08,106.49,98.671707,99.322762,101.06057,101.25,101.25,101.25]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>recordedBy<\/th>\n      <th>recordNumber<\/th>\n      <th>country<\/th>\n      <th>decimalLatitude<\/th>\n      <th>decimalLongitude<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[4,5]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"recordedBy","targets":1},{"name":"recordNumber","targets":2},{"name":"country","targets":3},{"name":"decimalLatitude","targets":4},{"name":"decimalLongitude","targets":5}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<p>Xem số lượng ghi nhận theo quốc gia</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb149-1" tabindex="-1"></a>soluong <span class="ot">&lt;-</span> gbif_godo<span class="sc">$</span>data <span class="sc">|&gt;</span> <span class="fu">count</span>(country)</span>
+<span id="cb149-2"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb149-2" tabindex="-1"></a>soluong</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   country                              n
+##   &lt;chr&gt;                            &lt;int&gt;
+## 1 Cambodia                             8
+## 2 China                               44
+## 3 Lao People’s Democratic Republic    11
+## 4 Slovenia                             4
+## 5 Thailand                            84
+## 6 Viet Nam                            18</code></pre>
+<p>Vẽ nhanh biểu đồ</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb151-1" tabindex="-1"></a><span class="fu">ggplot</span>(soluong, <span class="fu">aes</span>(<span class="at">x=</span> <span class="fu">reorder</span>(country,n), <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb151-2"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb151-2" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb151-3"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb151-3" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n), <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust=</span><span class="fl">0.5</span>), <span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb151-4"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb151-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb151-5"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb151-5" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb151-6"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb151-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Số lượng ghi nhận theo quốc gia&quot;</span>,</span>
+<span id="cb151-7"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb151-7" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data: GBIF&quot;</span>,</span>
+<span id="cb151-8"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb151-8" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;&quot;</span> , <span class="at">y =</span> <span class="st">&quot;Số lượng ghi nhận&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-114-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="tạo-sơ-đồ-vị-trí-ghi-nhận" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Tạo sơ đồ vị trí ghi nhận<a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#tạo-sơ-đồ-vị-trí-ghi-nhận" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Xem nhanh sơ đồ các điểm ghi nhận.</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb152-1" tabindex="-1"></a><span class="fu">plot</span>(gbif_godo2<span class="sc">$</span>decimalLongitude, gbif_godo2<span class="sc">$</span>decimalLatitude)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-115-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Trong dữ liệu tải về, một số điểm có toạ dộ (0,0). Nên chúng ta cần bỏ các điểm này ra trước khi vẽ lại sơ đồ.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb153-1" tabindex="-1"></a>gbif_godo3 <span class="ot">&lt;-</span> gbif_godo2 <span class="sc">|&gt;</span> </span>
+<span id="cb153-2"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb153-2" tabindex="-1"></a>  <span class="fu">filter</span>(decimalLongitude <span class="sc">&gt;</span> <span class="dv">0</span>, decimalLatitude <span class="sc">&gt;</span><span class="dv">0</span>)</span>
+<span id="cb153-3"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb153-3" tabindex="-1"></a><span class="fu">plot</span>(gbif_godo3<span class="sc">$</span>decimalLongitude, gbif_godo3<span class="sc">$</span>decimalLatitude)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-116-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Xem nhanh sơ đồ có ranh giới các quốc gia với gói lệnh <code>maps</code>.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb154-1" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
+<span id="cb154-2"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb154-2" tabindex="-1"></a><span class="fu">map</span>(<span class="st">&quot;world&quot;</span>)</span>
+<span id="cb154-3"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb154-3" tabindex="-1"></a><span class="fu">points</span>(gbif_godo3[ , <span class="fu">c</span>(<span class="st">&quot;decimalLongitude&quot;</span>, <span class="st">&quot;decimalLatitude&quot;</span>)], </span>
+<span id="cb154-4"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb154-4" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-117-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Phóng lớn sơ đồ đến khu vực phân bố loài</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb155-1" tabindex="-1"></a><span class="fu">map</span>(<span class="st">&quot;world&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">95</span>,<span class="dv">115</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">25</span>), <span class="at">resolution =</span> <span class="dv">0</span>)</span>
+<span id="cb155-2"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb155-2" tabindex="-1"></a><span class="fu">points</span>(gbif_godo3[ , <span class="fu">c</span>(<span class="st">&quot;decimalLongitude&quot;</span>, <span class="st">&quot;decimalLatitude&quot;</span>)], </span>
+<span id="cb155-3"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb155-3" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-118-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Tạo sơ đồ hoàn chỉnh</p>
+<p>Các bạn có thể xem lại các thao tác cơ bản với tập tin bản đồ tại phần <a href="bandocoban.html#bandocoban">4</a>.</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb156-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb156-2"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb156-2" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
+<span id="cb156-3"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb156-3" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb156-4"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb156-4" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb156-5"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb156-5" tabindex="-1"></a></span>
+<span id="cb156-6"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb156-6" tabindex="-1"></a>world <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">&quot;medium&quot;</span>, <span class="at">returnclass =</span> <span class="st">&quot;sf&quot;</span>)</span>
+<span id="cb156-7"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb156-7" tabindex="-1"></a>vietnam <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;DATA/Vietnamdiaphantinh.geojson&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `Vietnamdiaphantinh&#39; from data source 
+##   `/Users/bachnguyen/Library/CloudStorage/OneDrive-Personal/WORKING/ECOR/DATA/Vietnamdiaphantinh.geojson&#39; 
+##   using driver `GeoJSON&#39;
+## Simple feature collection with 63 features and 3 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 102.1421 ymin: 6.953306 xmax: 116.9473 ymax: 23.3939
+## Geodetic CRS:  WGS 84</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-1" tabindex="-1"></a>gbif_godo_sf <span class="ot">&lt;-</span> gbif_godo3 <span class="sc">|&gt;</span> </span>
+<span id="cb158-2"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-2" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;decimalLongitude&quot;</span>, <span class="st">&quot;decimalLatitude&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb158-3"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-3" tabindex="-1"></a></span>
+<span id="cb158-4"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-4" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb158-5"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-5" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> world, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb158-6"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-6" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> vietnam, <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
+<span id="cb158-7"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-7" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> gbif_godo_sf, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb158-8"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-8" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="at">data =</span> world, <span class="fu">aes</span>(<span class="at">label =</span> name)) <span class="sc">+</span></span>
+<span id="cb158-9"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-9" tabindex="-1"></a>  <span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">&quot;tr&quot;</span>, <span class="at">height=</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;cm&quot;</span>), <span class="at">width=</span><span class="fu">unit</span>(<span class="fl">0.75</span>, <span class="st">&quot;cm&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb158-10"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-10" tabindex="-1"></a>  <span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">&quot;br&quot;</span>, <span class="at">width_hint =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb158-11"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-11" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">linetype =</span> <span class="st">&#39;solid&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb158-12"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb158-13"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Sơ đồ vị trí ghi nhận loài *Afzelia xylocarpa*&quot;</span>,</span>
+<span id="cb158-14"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-14" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data: GBIF&quot;</span>,</span>
+<span id="cb158-15"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-15" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Longitude&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Latitude&quot;</span>) <span class="sc">+</span></span>
+<span id="cb158-16"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-16" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">title =</span> <span class="fu">element_markdown</span>()) <span class="sc">+</span></span>
+<span id="cb158-17"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb158-17" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">95</span>,<span class="dv">118</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">24</span>)) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-119-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="xuất-dữ-liệu-sang-excel" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Xuất dữ liệu sang Excel<a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#xuất-dữ-liệu-sang-excel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Chúng ta dùng lệnh <code>write.xlsx()</code> trong gói <code>openxlsx</code> để lưu dữ liệu sang tập tin *.xlsx của phần mềm Excel.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb159-1" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb159-2"><a href="tải-ghi-nhận-loài-từ-dữ-liệu-gbif.html#cb159-2" tabindex="-1"></a><span class="fu">write.xlsx</span>(gbif_godo<span class="sc">$</span>data, <span class="st">&quot;gbif_godo.xlsx&quot;</span>)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tạo-sơ-đồ-độ-giàu-loài-ở-khu-vực-khảo-sát.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dự-đoán-vùng-phân-bố-loài.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
