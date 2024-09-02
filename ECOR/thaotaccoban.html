@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Phần 1 Một số thao tác cơ bản đối với dữ liệu đa dạng sinh học | Phân tích dữ liệu sinh thái học cơ bản với R</title>
+  <meta name="description" content="Tài liệu này giới thiệu một số phân tích dữ liệu sinh thái học cơ bản với phần mềm R." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Phần 1 Một số thao tác cơ bản đối với dữ liệu đa dạng sinh học | Phân tích dữ liệu sinh thái học cơ bản với R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Tài liệu này giới thiệu một số phân tích dữ liệu sinh thái học cơ bản với phần mềm R." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Phần 1 Một số thao tác cơ bản đối với dữ liệu đa dạng sinh học | Phân tích dữ liệu sinh thái học cơ bản với R" />
+  
+  <meta name="twitter:description" content="Tài liệu này giới thiệu một số phân tích dữ liệu sinh thái học cơ bản với phần mềm R." />
+  
+
+<meta name="author" content="Nguyễn Lê Xuân Bách" />
+
+
+<meta name="date" content="2024-09-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="iucn.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Giới thiệu</a></li>
+<li class="chapter" data-level="1" data-path="thaotaccoban.html"><a href="thaotaccoban.html"><i class="fa fa-check"></i><b>1</b> Một số thao tác cơ bản đối với dữ liệu đa dạng sinh học</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="thaotaccoban.html"><a href="thaotaccoban.html#sontra"><i class="fa fa-check"></i><b>1.1</b> Dữ liệu</a></li>
+<li class="chapter" data-level="1.2" data-path="thaotaccoban.html"><a href="thaotaccoban.html#đọc-dữ-liệu"><i class="fa fa-check"></i><b>1.2</b> Đọc dữ liệu</a></li>
+<li class="chapter" data-level="1.3" data-path="thaotaccoban.html"><a href="thaotaccoban.html#thao-tác-cơ-bản-trên-dữ-liệu"><i class="fa fa-check"></i><b>1.3</b> Thao tác cơ bản trên dữ liệu</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="thaotaccoban.html"><a href="thaotaccoban.html#xem-số-lượng-dòng-và-cột"><i class="fa fa-check"></i><b>1.3.1</b> Xem số lượng dòng và cột</a></li>
+<li class="chapter" data-level="1.3.2" data-path="thaotaccoban.html"><a href="thaotaccoban.html#lọc-dữ-liệu-theo-cột"><i class="fa fa-check"></i><b>1.3.2</b> Lọc dữ liệu theo cột</a></li>
+<li class="chapter" data-level="1.3.3" data-path="thaotaccoban.html"><a href="thaotaccoban.html#trích-lọc-theo-dòng-trong-bảng."><i class="fa fa-check"></i><b>1.3.3</b> Trích lọc theo dòng trong bảng.</a></li>
+<li class="chapter" data-level="1.3.4" data-path="thaotaccoban.html"><a href="thaotaccoban.html#sắp-xếp-dữ-liệu"><i class="fa fa-check"></i><b>1.3.4</b> Sắp xếp dữ liệu</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="thaotaccoban.html"><a href="thaotaccoban.html#thống-kê-số-lượng"><i class="fa fa-check"></i><b>1.4</b> Thống kê số lượng</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="thaotaccoban.html"><a href="thaotaccoban.html#cách-1-với-các-lệnh-từ-gói-tidyverse"><i class="fa fa-check"></i><b>1.4.1</b> Cách 1 với các lệnh từ gói <code>Tidyverse</code></a></li>
+<li class="chapter" data-level="1.4.2" data-path="thaotaccoban.html"><a href="thaotaccoban.html#cách-2-sử-dụng-gói-lệnh-bdvis"><i class="fa fa-check"></i><b>1.4.2</b> Cách 2 sử dụng gói lệnh bdvis</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="thaotaccoban.html"><a href="thaotaccoban.html#biểu-đồ"><i class="fa fa-check"></i><b>1.5</b> Biểu đồ</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="thaotaccoban.html"><a href="thaotaccoban.html#vẽ-nhanh-một-số-biểu-đồ-với-gói-bdvis"><i class="fa fa-check"></i><b>1.5.1</b> Vẽ nhanh một số biểu đồ với gói <code>bdvis</code></a></li>
+<li class="chapter" data-level="1.5.2" data-path="thaotaccoban.html"><a href="thaotaccoban.html#số-lượng-ghi-nhận-với-gói-lệnh-ggplot2"><i class="fa fa-check"></i><b>1.5.2</b> Số lượng ghi nhận với gói lệnh <code>GGPLOT2</code></a></li>
+<li class="chapter" data-level="1.5.3" data-path="thaotaccoban.html"><a href="thaotaccoban.html#biểu-đồ-treemap-thể-hiện-số-lượng-ghi-nhận-theo-họ."><i class="fa fa-check"></i><b>1.5.3</b> Biểu đồ treemap thể hiện số lượng ghi nhận theo họ.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="iucn.html"><a href="iucn.html"><i class="fa fa-check"></i><b>2</b> Tra cứu cấp độ quý hiếm của loài theo IUCN</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="iucn.html"><a href="iucn.html#xin-cấp-và-khai-báo-mã-cá-nhân-từ-iucn"><i class="fa fa-check"></i><b>2.1</b> Xin cấp và khai báo mã cá nhân từ IUCN</a></li>
+<li class="chapter" data-level="2.2" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-rredlist"><i class="fa fa-check"></i><b>2.2</b> Sử dụng gói <code>rredlist</code></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài"><i class="fa fa-check"></i><b>2.2.1</b> Tra cứu cho 1 loài</a></li>
+<li class="chapter" data-level="2.2.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài"><i class="fa fa-check"></i><b>2.2.2</b> Tra cứu cho nhiều loài</a></li>
+<li class="chapter" data-level="2.2.3" data-path="iucn.html"><a href="iucn.html#xem-quốc-gia-có-sự-phân-bố-của-loài"><i class="fa fa-check"></i><b>2.2.3</b> Xem quốc gia có sự phân bố của loài:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-taxize"><i class="fa fa-check"></i><b>2.3</b> Sử dụng gói <code>taxize</code></a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài-1"><i class="fa fa-check"></i><b>2.3.1</b> Tra cứu cho 1 loài</a></li>
+<li class="chapter" data-level="2.3.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài-1"><i class="fa fa-check"></i><b>2.3.2</b> 2.2.2 Tra cứu cho nhiều loài</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="iucn.html"><a href="iucn.html#tính-chỉ-số-red-list-index"><i class="fa fa-check"></i><b>2.4</b> Tính chỉ số Red List Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="danhphap.html"><a href="danhphap.html"><i class="fa fa-check"></i><b>3</b> Xử lý danh pháp</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="danhphap.html"><a href="danhphap.html#tách-phần-tên-khoa-học-và-tên-tác-giả"><i class="fa fa-check"></i><b>3.1</b> Tách phần tên khoa học và tên tác giả</a></li>
+<li class="chapter" data-level="3.2" data-path="danhphap.html"><a href="danhphap.html#kiểm-tra-lỗi-chính-tả-tình-trạng-danh-pháp"><i class="fa fa-check"></i><b>3.2</b> Kiểm tra lỗi chính tả, tình trạng danh pháp</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="danhphap.html"><a href="danhphap.html#nhóm-thực-vật"><i class="fa fa-check"></i><b>3.2.1</b> Nhóm Thực vật</a></li>
+<li class="chapter" data-level="3.2.2" data-path="danhphap.html"><a href="danhphap.html#ví-dụ-với-gói-lệnh-rwcvp"><i class="fa fa-check"></i><b>3.2.2</b> Ví dụ với gói lệnh <code>rWCVP</code></a></li>
+<li class="chapter" data-level="3.2.3" data-path="danhphap.html"><a href="danhphap.html#danh-pháp-động-vật"><i class="fa fa-check"></i><b>3.2.3</b> Danh pháp động vật</a></li>
+<li class="chapter" data-level="3.2.4" data-path="danhphap.html"><a href="danhphap.html#xem-thông-tin-về-loài"><i class="fa fa-check"></i><b>3.2.4</b> Xem thông tin về loài</a></li>
+<li class="chapter" data-level="3.2.5" data-path="danhphap.html"><a href="danhphap.html#tìm-các-cấp-phân-loại-từ-tên-loài"><i class="fa fa-check"></i><b>3.2.5</b> Tìm các cấp phân loại từ tên loài</a></li>
+<li class="chapter" data-level="3.2.6" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-các-tên-đồng-danh-của-một-loài-với-bộ-dữ-liệu-eol"><i class="fa fa-check"></i><b>3.2.6</b> Xem danh sách các tên đồng danh của một loài với bộ dữ liệu EOL</a></li>
+<li class="chapter" data-level="3.2.7" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-tất-cả-các-taxa-con-của-một-taxon"><i class="fa fa-check"></i><b>3.2.7</b> Xem danh sách tất cả các taxa con của một taxon</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="bandocoban.html"><a href="bandocoban.html"><i class="fa fa-check"></i><b>4</b> Thao tác cơ bản với tập tin bản đồ</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="bandocoban.html"><a href="bandocoban.html#tập-tin-vector"><i class="fa fa-check"></i><b>4.1</b> Tập tin vector</a></li>
+<li class="chapter" data-level="4.2" data-path="bandocoban.html"><a href="bandocoban.html#tập-tin-dạng-raster"><i class="fa fa-check"></i><b>4.2</b> Tập tin dạng raster</a></li>
+<li class="chapter" data-level="4.3" data-path="bandocoban.html"><a href="bandocoban.html#biên-tập-bản-đồ-với-gói-lệnh-ggplot-và-ggspatial"><i class="fa fa-check"></i><b>4.3</b> Biên tập bản đồ với gói lệnh <code>ggplot</code> và <code>ggspatial</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dogiauloai.html"><a href="dogiauloai.html"><i class="fa fa-check"></i><b>5</b> Tạo sơ đồ độ giàu loài ở khu vực khảo sát</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dogiauloai.html"><a href="dogiauloai.html#tạo-sơ-đồ-vị-trí-ghi-nhận-từ-dữ-liệu-sơn-trà"><i class="fa fa-check"></i><b>5.1</b> Tạo sơ đồ vị trí ghi nhận từ dữ liệu Sơn Trà</a></li>
+<li class="chapter" data-level="5.2" data-path="dogiauloai.html"><a href="dogiauloai.html#tạo-sơ-đồ-độ-giàu-loài"><i class="fa fa-check"></i><b>5.2</b> Tạo sơ đồ độ giàu loài</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="dogiauloai.html"><a href="dogiauloai.html#tạo-lưới-có-kích-thước-1km-với-lệnh-st_make_grid."><i class="fa fa-check"></i><b>5.2.1</b> Tạo lưới có kích thước 1km với lệnh <code>st_make_grid</code>.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="dogiauloai.html"><a href="dogiauloai.html#đếm-số-lượng-loài-ghi-nhận-trong-từng-ô-lưới."><i class="fa fa-check"></i><b>5.2.2</b> Đếm số lượng loài ghi nhận trong từng ô lưới.</a></li>
+<li class="chapter" data-level="5.2.3" data-path="dogiauloai.html"><a href="dogiauloai.html#trình-bày-sơ-đồ-hoàn-chỉnh"><i class="fa fa-check"></i><b>5.2.3</b> Trình bày sơ đồ hoàn chỉnh</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gbif.html"><a href="gbif.html"><i class="fa fa-check"></i><b>6</b> Tải ghi nhận loài từ dữ liệu GBIF</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="gbif.html"><a href="gbif.html#tải-ghi-nhận"><i class="fa fa-check"></i><b>6.1</b> Tải ghi nhận</a></li>
+<li class="chapter" data-level="6.2" data-path="gbif.html"><a href="gbif.html#tạo-sơ-đồ-vị-trí-ghi-nhận"><i class="fa fa-check"></i><b>6.2</b> Tạo sơ đồ vị trí ghi nhận</a></li>
+<li class="chapter" data-level="6.3" data-path="gbif.html"><a href="gbif.html#xuất-dữ-liệu-sang-excel"><i class="fa fa-check"></i><b>6.3</b> Xuất dữ liệu sang Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="maxent.html"><a href="maxent.html"><i class="fa fa-check"></i><b>7</b> Dự đoán vùng phân bố loài</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="maxent.html"><a href="maxent.html#lấy-dữ-liệu-ghi-nhận-loài-gõ-đỏ-afzelia-xylocarpa-từ-gbif"><i class="fa fa-check"></i><b>7.1</b> Lấy dữ liệu ghi nhận loài Gõ đỏ (<em>Afzelia xylocarpa</em>) từ GBIF</a></li>
+<li class="chapter" data-level="7.2" data-path="maxent.html"><a href="maxent.html#xem-sơ-đồ-phân-bố-các-ghi-nhận"><i class="fa fa-check"></i><b>7.2</b> Xem sơ đồ phân bố các ghi nhận</a></li>
+<li class="chapter" data-level="7.3" data-path="maxent.html"><a href="maxent.html#chạy-mô-phỏng-maxent"><i class="fa fa-check"></i><b>7.3</b> Chạy mô phỏng Maxent</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bioindex.html"><a href="bioindex.html"><i class="fa fa-check"></i><b>8</b> Tính chỉ số đa dạng sinh học và loài quan trọng trong ô định vị</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="bioindex.html"><a href="bioindex.html#tạo-dữ-liệu-giả-lập"><i class="fa fa-check"></i><b>8.1</b> Tạo dữ liệu giả lập</a></li>
+<li class="chapter" data-level="8.2" data-path="bioindex.html"><a href="bioindex.html#phân-tích"><i class="fa fa-check"></i><b>8.2</b> Phân tích</a></li>
+<li class="chapter" data-level="8.3" data-path="bioindex.html"><a href="bioindex.html#chỉ-số-đa-dạng-sinh-học"><i class="fa fa-check"></i><b>8.3</b> Chỉ số đa dạng sinh học</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="bioindex.html"><a href="bioindex.html#tính-chỉ-số-ivi"><i class="fa fa-check"></i><b>8.3.1</b> Tính chỉ số IVI</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Phân tích dữ liệu sinh thái học cơ bản với R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="thaotaccoban" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Phần 1</span> Một số thao tác cơ bản đối với dữ liệu đa dạng sinh học<a href="thaotaccoban.html#thaotaccoban" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Ở nội dung này, chúng ta sẽ sử dụng thêm gói <code>tidyverse</code> bên cạnh các lệnh sẵn có trong R. Tidyverse là một bộ công cụ gồm nhiều gói lệnh khác nhau nhằm mục đích xử lý dữ liệu một cách dễ dàng và nhất quán. Các bạn có thể tìm hiểu thêm bộ công cụ này tại <a href="https://www.tidyverse.org/" class="uri">https://www.tidyverse.org/</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="thaotaccoban.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div id="sontra" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Dữ liệu<a href="thaotaccoban.html#sontra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Thực hành với bộ dữ liệu về thông tin Đa dạng Sinh học tại Bán đảo Sơn Trà được Trần Văn Bằng &amp; nnk. công bố năm 2019. Thông tin chi tiết về dữ liệu được trình bày tại tài liệu:</p>
+<p>Tran BV, Le D, Hoang HQ, Hoang DM (2019) Occurrence data of terrestrial vertebrates of Son Tra Peninsula, Da Nang City, Vietnam. Biodiversity Data Journal 7: e39233. <a href="https://doi.org/10.3897/BDJ.7.e39233" class="uri">https://doi.org/10.3897/BDJ.7.e39233</a></p>
+</div>
+<div id="đọc-dữ-liệu" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Đọc dữ liệu<a href="thaotaccoban.html#đọc-dữ-liệu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sử dụng lệnh read.csv() để mở tập tin “*.csv” đã tải từ nguồn tài liệu và lưu với tên “sontra”</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="thaotaccoban.html#cb2-1" tabindex="-1"></a>sontra <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DATA/occurrence_SonTra_Peninsula.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="thao-tác-cơ-bản-trên-dữ-liệu" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Thao tác cơ bản trên dữ liệu<a href="thaotaccoban.html#thao-tác-cơ-bản-trên-dữ-liệu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="xem-số-lượng-dòng-và-cột" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Xem số lượng dòng và cột<a href="thaotaccoban.html#xem-số-lượng-dòng-và-cột" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Đếm số lượng dòng và cột của bộ dữ liệu với lệnh <code>dim()</code>. Kết quả cho biết dữ liệu hiện có 900 hàng và 34 cột. Có thể sử dụng <code>nrow()</code> cho việc đếm riêng số lượng dòng, và <code>ncol()</code> để đếm riêng số lượng cột.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="thaotaccoban.html#cb3-1" tabindex="-1"></a><span class="fu">dim</span>(sontra)</span></code></pre></div>
+<pre><code>## [1] 900  34</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="thaotaccoban.html#cb5-1" tabindex="-1"></a><span class="fu">nrow</span>(sontra)</span></code></pre></div>
+<pre><code>## [1] 900</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="thaotaccoban.html#cb7-1" tabindex="-1"></a><span class="fu">ncol</span>(sontra)</span></code></pre></div>
+<pre><code>## [1] 34</code></pre>
+<p>Xem danh sách tên trường thông tin của bảng với lệnh <code>colnames()</code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="thaotaccoban.html#cb9-1" tabindex="-1"></a><span class="fu">colnames</span>(sontra)</span></code></pre></div>
+<pre><code>##  [1] &quot;occurrenceID&quot;             &quot;basisOfRecord&quot;           
+##  [3] &quot;eventDate&quot;                &quot;year&quot;                    
+##  [5] &quot;month&quot;                    &quot;day&quot;                     
+##  [7] &quot;verbatimEventDate&quot;        &quot;scientificName&quot;          
+##  [9] &quot;kingdom&quot;                  &quot;phylum&quot;                  
+## [11] &quot;class&quot;                    &quot;order&quot;                   
+## [13] &quot;family&quot;                   &quot;genus&quot;                   
+## [15] &quot;specificEpithet&quot;          &quot;taxonRank&quot;               
+## [17] &quot;scientificNameAuthorship&quot; &quot;identifiedBy&quot;            
+## [19] &quot;dateIdentified&quot;           &quot;decimalLatitude&quot;         
+## [21] &quot;decimalLongitude&quot;         &quot;geodeticDatum&quot;           
+## [23] &quot;verbatimCoordinateSystem&quot; &quot;continent&quot;               
+## [25] &quot;country&quot;                  &quot;countryCode&quot;             
+## [27] &quot;stateProvince&quot;            &quot;county&quot;                  
+## [29] &quot;locality&quot;                 &quot;language&quot;                
+## [31] &quot;institutionCode&quot;          &quot;collectionCode&quot;          
+## [33] &quot;individualCount&quot;          &quot;preparations&quot;</code></pre>
+</div>
+<div id="lọc-dữ-liệu-theo-cột" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Lọc dữ liệu theo cột<a href="thaotaccoban.html#lọc-dữ-liệu-theo-cột" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bảng dữ liệu này chứa nhiều trường thông tin mà chúng ta chưa cần sử dụng. Chúng ta có thể tạo một bảng mới chỉ chứa một số cột quan tâm với lệnh <code>select()</code> và lưu với tên “sontra2” như sau:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="thaotaccoban.html#cb11-1" tabindex="-1"></a>sontra2 <span class="ot">&lt;-</span> sontra <span class="sc">|&gt;</span>  </span>
+<span id="cb11-2"><a href="thaotaccoban.html#cb11-2" tabindex="-1"></a>  <span class="fu">select</span>(class, family, genus, specificEpithet,eventDate,year)</span>
+<span id="cb11-3"><a href="thaotaccoban.html#cb11-3" tabindex="-1"></a><span class="co"># xem 5 dòng đầu tiên trong bảng</span></span>
+<span id="cb11-4"><a href="thaotaccoban.html#cb11-4" tabindex="-1"></a>sontra2 <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-724bd27d7e6e5da2308f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-724bd27d7e6e5da2308f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["Mammal","Mammal","Mammal","Mammal","Mammal"],["Herpestidae","Herpestidae","Herpestidae","Herpestidae","Herpestidae"],["Herpestes","Herpestes","Herpestes","Herpestes","Herpestes"],["javanicus","javanicus","javanicus","javanicus","javanicus"],["5/31/2016","10/20/2016","10/24/2017","10/21/2017","10/7/2017"],[2016,2016,2017,2017,2017]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>class<\/th>\n      <th>family<\/th>\n      <th>genus<\/th>\n      <th>specificEpithet<\/th>\n      <th>eventDate<\/th>\n      <th>year<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"class","targets":1},{"name":"family","targets":2},{"name":"genus","targets":3},{"name":"specificEpithet","targets":4},{"name":"eventDate","targets":5},{"name":"year","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>Bên cạnh việc chọn theo tên trường cụ thể, chúng ta có thể chọn theo một số cách sau:</p>
+<p><em>Chọn từ cột “class” đến cột “genus”</em></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="thaotaccoban.html#cb12-1" tabindex="-1"></a>sontra <span class="sc">|&gt;</span> <span class="fu">select</span>(class<span class="sc">:</span>genus) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-400cae4ba7416593523e" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-400cae4ba7416593523e">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["Mammal","Mammal","Mammal","Mammal","Mammal"],["Carnivora","Carnivora","Carnivora","Carnivora","Carnivora"],["Herpestidae","Herpestidae","Herpestidae","Herpestidae","Herpestidae"],["Herpestes","Herpestes","Herpestes","Herpestes","Herpestes"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>class<\/th>\n      <th>order<\/th>\n      <th>family<\/th>\n      <th>genus<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"class","targets":1},{"name":"order","targets":2},{"name":"family","targets":3},{"name":"genus","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><em>Chọn từ cột thứ 11 đến cột thứ 14</em></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="thaotaccoban.html#cb13-1" tabindex="-1"></a>sontra <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="dv">11</span><span class="sc">:</span><span class="dv">14</span>) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-9900dfd51691b917fb66" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9900dfd51691b917fb66">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["Mammal","Mammal","Mammal","Mammal","Mammal"],["Carnivora","Carnivora","Carnivora","Carnivora","Carnivora"],["Herpestidae","Herpestidae","Herpestidae","Herpestidae","Herpestidae"],["Herpestes","Herpestes","Herpestes","Herpestes","Herpestes"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>class<\/th>\n      <th>order<\/th>\n      <th>family<\/th>\n      <th>genus<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"class","targets":1},{"name":"order","targets":2},{"name":"family","targets":3},{"name":"genus","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><em>Chọn 6 cột đầu tiên nhưng trừ cột “eventDate”</em></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="thaotaccoban.html#cb14-1" tabindex="-1"></a>sontra <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="thaotaccoban.html#cb14-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="thaotaccoban.html#cb14-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>eventDate) <span class="sc">|&gt;</span></span>
+<span id="cb14-4"><a href="thaotaccoban.html#cb14-4" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-618c8b7c15878aaa09ae" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-618c8b7c15878aaa09ae">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["B8945C0B-CB16-DC6E-B1E5-8C19749A44CC","A9EB56E6-AA5C-C711-8CBE-A9EC25469327","A98E0AEC-3412-60E7-AC12-E4626E91D1D7","346612CE-7D29-BBC3-A5FA-84389D264AA9","B6537E98-E244-BCBC-9337-5C892F77B495"],["HumanObservation","HumanObservation","HumanObservation","HumanObservation","HumanObservation"],[2016,2016,2017,2017,2017],[5,10,10,10,10],[31,20,24,21,7]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>occurrenceID<\/th>\n      <th>basisOfRecord<\/th>\n      <th>year<\/th>\n      <th>month<\/th>\n      <th>day<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"occurrenceID","targets":1},{"name":"basisOfRecord","targets":2},{"name":"year","targets":3},{"name":"month","targets":4},{"name":"day","targets":5}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><em>Chọn tất cả các cột bắt đầu bởi ký tự nào đó</em></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="thaotaccoban.html#cb15-1" tabindex="-1"></a>sontra <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;c&quot;</span>)) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-9b0d5d0eade839fe524f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9b0d5d0eade839fe524f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["Mammal","Mammal","Mammal","Mammal","Mammal"],["Asia","Asia","Asia","Asia","Asia"],["Vietnam","Vietnam","Vietnam","Vietnam","Vietnam"],["VN","VN","VN","VN","VN"],["Son Tra","Son Tra","Son Tra","Son Tra","Son Tra"],["SIEZC","SIEZC","SIEZC","SIEZC","SIEZC"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>class<\/th>\n      <th>continent<\/th>\n      <th>country<\/th>\n      <th>countryCode<\/th>\n      <th>county<\/th>\n      <th>collectionCode<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"class","targets":1},{"name":"continent","targets":2},{"name":"country","targets":3},{"name":"countryCode","targets":4},{"name":"county","targets":5},{"name":"collectionCode","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><em>Chọn tất cả các cột có chứa ký tự nào đó</em></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="thaotaccoban.html#cb16-1" tabindex="-1"></a>sontra <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;Code&quot;</span>)) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d169919cc6b902cabc87" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d169919cc6b902cabc87">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["VN","VN","VN","VN","VN"],["SIE","SIE","SIE","SIE","SIE"],["SIEZC","SIEZC","SIEZC","SIEZC","SIEZC"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>countryCode<\/th>\n      <th>institutionCode<\/th>\n      <th>collectionCode<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"countryCode","targets":1},{"name":"institutionCode","targets":2},{"name":"collectionCode","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="trích-lọc-theo-dòng-trong-bảng." class="section level3 hasAnchor" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Trích lọc theo dòng trong bảng.<a href="thaotaccoban.html#trích-lọc-theo-dòng-trong-bảng." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Để trích lọc thông tin theo dòng trong bảng ta sử dụng lệnh <code>filter()</code> kết hợp với các ký hiệu điều kiện như sau:</p>
+<ul>
+<li><p>x &lt; y: nhỏ hơn</p></li>
+<li><p>x &gt; y: lớn hơn</p></li>
+<li><p>x == y: bằng hoặc giống</p></li>
+<li><p>x &lt;= y: nhỏ hơn hoặc bằng</p></li>
+<li><p>y &gt;= y: lớn hơn hoặc bằng</p></li>
+<li><p>x != y: khác</p></li>
+<li><p>x %in% y: là một phần tử trong</p></li>
+<li><p>is.na(x): là NA</p></li>
+<li><p>!is.na(x): không là NA</p></li>
+</ul>
+<p><em>Ví dụ:</em> Ta cần lọc ra các dòng ghi nhận của các loài thuộc Họ Tắc kè (Gekkonidae) dựa trên cột “family” của bảng.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="thaotaccoban.html#cb17-1" tabindex="-1"></a>sontra2 <span class="sc">|&gt;</span> <span class="fu">filter</span>(family <span class="sc">==</span> <span class="st">&quot;Gekkonidae&quot;</span>) </span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-4129f4895053ea251f00" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-4129f4895053ea251f00">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36"],["Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia"],["Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae","Gekkonidae"],["Hemidactylus","Hemidactylus","Hemidactylus","Hemidactylus","Hemidactylus","Hemidactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Cyrtodactylus","Gekko","Gekko"],["frenatus","frenatus","frenatus","platyurus","platyurus","platyurus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","pseudoquadrivirgatus","gecko","gecko"],["3/18/2016","5/23/2016","4/29/2017","3/16/2016","5/16/2016","5/16/2016","6/12/2017","6/12/2017","6/13/2017","6/13/2017","6/13/2017","6/13/2017","6/14/2017","6/14/2017","6/14/2017","6/14/2017","6/15/2017","6/15/2017","6/15/2017","6/29/2017","7/17/2017","7/19/2017","7/19/2017","7/19/2017","7/19/2017","7/19/2017","7/19/2017","7/19/2017","7/19/2017","7/19/2017","7/19/2017","7/19/2017","7/19/2017","8/5/2017","2/18/2016","7/20/2017"],[2016,2016,2017,2016,2016,2016,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2016,2017]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>class<\/th>\n      <th>family<\/th>\n      <th>genus<\/th>\n      <th>specificEpithet<\/th>\n      <th>eventDate<\/th>\n      <th>year<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"class","targets":1},{"name":"family","targets":2},{"name":"genus","targets":3},{"name":"specificEpithet","targets":4},{"name":"eventDate","targets":5},{"name":"year","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><em>Ví dụ:</em> Lọc ra các ghi nhận của cả hai họ “Colubridae” và “Elapidae”. Ta kết hợp thêm lệnh <code>%in%</code> trong hàm <code>filter()</code> như sau:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="thaotaccoban.html#cb18-1" tabindex="-1"></a>sontra2 <span class="sc">|&gt;</span> <span class="fu">filter</span>(family <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Colubridae&quot;</span>, <span class="st">&quot;Elapidae&quot;</span>))</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-492f8ec44341cc532756" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-492f8ec44341cc532756">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia","Reptilia"],["Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Colubridae","Elapidae","Elapidae","Elapidae"],["Coelognathus","Lycodon","Ptyas","Rhabdophis","Rhabdophis","Ahaetulla","Ahaetulla","Ahaetulla","Ahaetulla","Ahaetulla","Ahaetulla","Ahaetulla","Ahaetulla","Ahaetulla","Boiga","Boiga","Chrysopelea","Bungarus","Naja","Ophiophagus"],["radiatus","capucinus","korros","subminiatus","subminiatus","prasina","prasina","prasina","prasina","prasina","prasina","prasina","prasina","prasina","guangxiensis","guangxiensis","ornata","candidus","atra","hannah"],["7/20/2017","6/14/2017","6/30/2017","2/17/2016","6/30/2017","5/19/2017","6/15/2017","6/15/2017","6/15/2017","6/29/2017","6/29/2017","9/27/2017","9/27/2017","9/28/2017","6/14/2017","6/17/2017","5/17/2016","6/15/2017","8/31/2017","8/31/2017"],[2017,2017,2017,2016,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2016,2017,2017,2017]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>class<\/th>\n      <th>family<\/th>\n      <th>genus<\/th>\n      <th>specificEpithet<\/th>\n      <th>eventDate<\/th>\n      <th>year<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"class","targets":1},{"name":"family","targets":2},{"name":"genus","targets":3},{"name":"specificEpithet","targets":4},{"name":"eventDate","targets":5},{"name":"year","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>Kết quả ta có 20 dòng chứa thông tin về hai họ “Colubridae” và “Elapidae” trong bộ dữ liệu.</p>
+<p>Ta cũng có thể sử dụng ký hiệu <code>&amp;</code> (và), <code>|</code> (hoặc) để đưa thêm vào các điều kiện lọc khác. Ví dụ lọc ra các dòng của hai họ “Colubridae” và “Elapidae” được ghi nhận trong năm 2016:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="thaotaccoban.html#cb19-1" tabindex="-1"></a>sontra2 <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="thaotaccoban.html#cb19-2" tabindex="-1"></a>  <span class="fu">filter</span>(family <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Colubridae&quot;</span>, <span class="st">&quot;Elapidae&quot;</span>) <span class="sc">&amp;</span> year <span class="sc">==</span> <span class="dv">2016</span>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-5ec7870fd179b0c22f12" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-5ec7870fd179b0c22f12">{"x":{"filter":"none","vertical":false,"data":[["1","2"],["Reptilia","Reptilia"],["Colubridae","Colubridae"],["Rhabdophis","Chrysopelea"],["subminiatus","ornata"],["2/17/2016","5/17/2016"],[2016,2016]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>class<\/th>\n      <th>family<\/th>\n      <th>genus<\/th>\n      <th>specificEpithet<\/th>\n      <th>eventDate<\/th>\n      <th>year<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"class","targets":1},{"name":"family","targets":2},{"name":"genus","targets":3},{"name":"specificEpithet","targets":4},{"name":"eventDate","targets":5},{"name":"year","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="sắp-xếp-dữ-liệu" class="section level3 hasAnchor" number="1.3.4">
+<h3><span class="header-section-number">1.3.4</span> Sắp xếp dữ liệu<a href="thaotaccoban.html#sắp-xếp-dữ-liệu" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sử dụng lệnh <code>arrange()</code> để sắp xếp dữ liệu dựa trên các cột quan tâm. Khi đó các dòng sẽ được sắp theo trật tự bảng chữ cái đối với chữ và từ nhỏ đến lớn đối với số.</p>
+<p><em>Ví dụ:</em> Sắp bảng theo trật tự bảng chữ cái các Chi ở cột “genus”:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="thaotaccoban.html#cb20-1" tabindex="-1"></a>sontra2 <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="thaotaccoban.html#cb20-2" tabindex="-1"></a>  <span class="fu">filter</span>(family <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Colubridae&quot;</span>, <span class="st">&quot;Elapidae&quot;</span>) <span class="sc">&amp;</span> year <span class="sc">==</span> <span class="dv">2016</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb20-3"><a href="thaotaccoban.html#cb20-3" tabindex="-1"></a>  <span class="fu">arrange</span>(genus)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-cb42b2584133fe946147" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-cb42b2584133fe946147">{"x":{"filter":"none","vertical":false,"data":[["1","2"],["Reptilia","Reptilia"],["Colubridae","Colubridae"],["Chrysopelea","Rhabdophis"],["ornata","subminiatus"],["5/17/2016","2/17/2016"],[2016,2016]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>class<\/th>\n      <th>family<\/th>\n      <th>genus<\/th>\n      <th>specificEpithet<\/th>\n      <th>eventDate<\/th>\n      <th>year<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"class","targets":1},{"name":"family","targets":2},{"name":"genus","targets":3},{"name":"specificEpithet","targets":4},{"name":"eventDate","targets":5},{"name":"year","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>Nếu muốn đảo chiều, kết hợp thêm lệnh <code>desc()</code> trong lệnh <code>arrange()</code> như sau:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="thaotaccoban.html#cb21-1" tabindex="-1"></a>sontra2 <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="thaotaccoban.html#cb21-2" tabindex="-1"></a>  <span class="fu">filter</span>(family <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Colubridae&quot;</span>, <span class="st">&quot;Elapidae&quot;</span>) <span class="sc">&amp;</span> year <span class="sc">==</span> <span class="dv">2016</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="thaotaccoban.html#cb21-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(genus))</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-ff60584e112e68b73ef6" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ff60584e112e68b73ef6">{"x":{"filter":"none","vertical":false,"data":[["1","2"],["Reptilia","Reptilia"],["Colubridae","Colubridae"],["Rhabdophis","Chrysopelea"],["subminiatus","ornata"],["2/17/2016","5/17/2016"],[2016,2016]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>class<\/th>\n      <th>family<\/th>\n      <th>genus<\/th>\n      <th>specificEpithet<\/th>\n      <th>eventDate<\/th>\n      <th>year<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"class","targets":1},{"name":"family","targets":2},{"name":"genus","targets":3},{"name":"specificEpithet","targets":4},{"name":"eventDate","targets":5},{"name":"year","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="thống-kê-số-lượng" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Thống kê số lượng<a href="thaotaccoban.html#thống-kê-số-lượng" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cách-1-với-các-lệnh-từ-gói-tidyverse" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Cách 1 với các lệnh từ gói <code>Tidyverse</code><a href="thaotaccoban.html#cách-1-với-các-lệnh-từ-gói-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Để đếm số lượng ghi nhận, số lượng họ, chi và loài trong bộ dữ liệu ta có thể sử dụng lệnh <code>summarise()</code> với cú pháp như sau: lệnh <code>n()</code> để đếm tổng số dòng, còn <code>n_distinct()</code> để đếm số dòng có giá trị khác nhau trong một cột nào đó.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="thaotaccoban.html#cb22-1" tabindex="-1"></a>sontra <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="thaotaccoban.html#cb22-2" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb22-3"><a href="thaotaccoban.html#cb22-3" tabindex="-1"></a>    <span class="at">tong_so_ho =</span> <span class="fu">n_distinct</span>(family), </span>
+<span id="cb22-4"><a href="thaotaccoban.html#cb22-4" tabindex="-1"></a>    <span class="at">tong_so_chi =</span> <span class="fu">n_distinct</span>(genus),</span>
+<span id="cb22-5"><a href="thaotaccoban.html#cb22-5" tabindex="-1"></a>    <span class="at">tong_so_loai =</span> <span class="fu">n_distinct</span>(scientificName),</span>
+<span id="cb22-6"><a href="thaotaccoban.html#cb22-6" tabindex="-1"></a>    <span class="at">tong_so_ghi_nhan =</span> <span class="fu">n</span>()</span>
+<span id="cb22-7"><a href="thaotaccoban.html#cb22-7" tabindex="-1"></a>    )</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 4
+##   tong_so_ho tong_so_chi tong_so_loai tong_so_ghi_nhan
+##        &lt;int&gt;       &lt;int&gt;        &lt;int&gt;            &lt;int&gt;
+## 1         63         121          144              900</code></pre>
+<p>Kết quả cho thấy trong bộ dữ liệu có tổng cộng 900 ghi nhận của 144 loài, 121 chi và 63 họ.</p>
+<p>Để thống kê số lượng tương tự nhưng riêng cho từng nhóm Thú, Lưỡng cư, Bò sát và Chim thì kết hợp thêm lệnh <code>group_by()</code> như sau:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="thaotaccoban.html#cb24-1" tabindex="-1"></a>sontra <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="thaotaccoban.html#cb24-2" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href="thaotaccoban.html#cb24-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">tong_so_ho =</span> <span class="fu">n_distinct</span>(family), </span>
+<span id="cb24-4"><a href="thaotaccoban.html#cb24-4" tabindex="-1"></a>            <span class="at">tong_so_chi =</span> <span class="fu">n_distinct</span>(genus),</span>
+<span id="cb24-5"><a href="thaotaccoban.html#cb24-5" tabindex="-1"></a>            <span class="at">tong_so_loai =</span> <span class="fu">n_distinct</span>(scientificName),</span>
+<span id="cb24-6"><a href="thaotaccoban.html#cb24-6" tabindex="-1"></a>            <span class="at">tong_so_ghi_nhan =</span> <span class="fu">n</span>())</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 5
+##   class    tong_so_ho tong_so_chi tong_so_loai tong_so_ghi_nhan
+##   &lt;chr&gt;         &lt;int&gt;       &lt;int&gt;        &lt;int&gt;            &lt;int&gt;
+## 1 Amphibia          6          13           16              182
+## 2 Aves             35          67           82              445
+## 3 Mammal           13          18           19              128
+## 4 Reptilia          9          23           27              145</code></pre>
+<p>Số lượng ghi nhận, loài chi họ đã được đếm theo từng nhóm sinh vật.</p>
+<p>Bên cạnh đó, có thể sử dụng lệnh <code>count()</code> để đếm số ghi nhận theo nhóm động vật như sau:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="thaotaccoban.html#cb26-1" tabindex="-1"></a>sontra <span class="sc">|&gt;</span> <span class="fu">count</span>(class)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 2
+##   class        n
+##   &lt;chr&gt;    &lt;int&gt;
+## 1 Amphibia   182
+## 2 Aves       445
+## 3 Mammal     128
+## 4 Reptilia   145</code></pre>
+<p>Hoặc kết hợp hàm <code>arrange()</code> và <code>top_n()</code> để tìm 5 loài có số ghi nhận nhiều nhất</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="thaotaccoban.html#cb28-1" tabindex="-1"></a>sontra <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="thaotaccoban.html#cb28-2" tabindex="-1"></a>  <span class="fu">count</span>(scientificName) <span class="sc">|&gt;</span> </span>
+<span id="cb28-3"><a href="thaotaccoban.html#cb28-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span> </span>
+<span id="cb28-4"><a href="thaotaccoban.html#cb28-4" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 2
+##   scientificName                                                               n
+##   &lt;chr&gt;                                                                    &lt;int&gt;
+## 1 Fejervarya limnocharis (Gravenhorst, 1829)                                  75
+## 2 Pygathrix nemaeus (Linnaeus, 1771)                                          35
+## 3 Limnonectes poilani (Bourret, 1942)                                         29
+## 4 Cyrtodactylus pseudoquadrivirgatus Rösler, Nguyen, Vu, Ngo &amp; Ziegler, 2…    28
+## 5 Physignathus cocincinus Cuvier, 1829                                        22</code></pre>
+<p>Kết quả loài <em>Fejervarya limnocharis</em> (Gravenhorst, 1829) được ghi nhận nhiều nhất, lên đến 75 lần.</p>
+</div>
+<div id="cách-2-sử-dụng-gói-lệnh-bdvis" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Cách 2 sử dụng gói lệnh bdvis<a href="thaotaccoban.html#cách-2-sử-dụng-gói-lệnh-bdvis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="thaotaccoban.html#cb30-1" tabindex="-1"></a><span class="fu">library</span>(bdvis)</span></code></pre></div>
+<p>Để sử dụng các lệnh từ gói <code>bdvis</code>, ta cần phải đổi tên một số cột quan trọng của bảng <code>sontra</code> liên quan đến tên khoa học, thời gian và tọa độ ghi nhận đồng thời chuyển định dạng sang định dạng bảng của gói này với lệnh <code>format_bdvis()</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="thaotaccoban.html#cb31-1" tabindex="-1"></a>sontra_bdvis <span class="ot">&lt;-</span> sontra <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="thaotaccoban.html#cb31-2" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb31-3"><a href="thaotaccoban.html#cb31-3" tabindex="-1"></a>    <span class="st">&quot;Latitude&quot;</span> <span class="ot">=</span> <span class="st">&quot;decimalLatitude&quot;</span>,</span>
+<span id="cb31-4"><a href="thaotaccoban.html#cb31-4" tabindex="-1"></a>    <span class="st">&quot;Longitude&quot;</span> <span class="ot">=</span> <span class="st">&quot;decimalLongitude&quot;</span>,</span>
+<span id="cb31-5"><a href="thaotaccoban.html#cb31-5" tabindex="-1"></a>    <span class="st">&quot;Scientific_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;scientificName&quot;</span>,</span>
+<span id="cb31-6"><a href="thaotaccoban.html#cb31-6" tabindex="-1"></a>    <span class="st">&quot;Family&quot;</span> <span class="ot">=</span> <span class="st">&quot;family&quot;</span>,</span>
+<span id="cb31-7"><a href="thaotaccoban.html#cb31-7" tabindex="-1"></a>    <span class="st">&quot;Genus&quot;</span> <span class="ot">=</span> <span class="st">&quot;genus&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-8"><a href="thaotaccoban.html#cb31-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Date_collected=</span><span class="fu">paste</span>(year,month,day,<span class="at">sep =</span> <span class="st">&quot;-&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb31-9"><a href="thaotaccoban.html#cb31-9" tabindex="-1"></a>  <span class="fu">format_bdvis</span>()</span></code></pre></div>
+<p>Khi đó sử dụng lệnh <code>bdsummary()</code>để thống kê số lượng. Kết quả sẽ trả về số ghi nhận, số lượng Họ, Chi, Loài, thời gian ghi nhận trong bộ dữ liệu.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="thaotaccoban.html#cb32-1" tabindex="-1"></a><span class="fu">bdsummary</span>(sontra_bdvis) </span></code></pre></div>
+<pre><code>## 
+##  Total no of records = 900 
+## 
+##  Temporal coverage... 
+##  Date range of the records from  2016-01-10  to  2017-10-24 
+## 
+##  Taxonomic coverage... 
+##  No of Families :  63 
+##  No of Genus :  121 
+##  No of Species :  144 
+## 
+##  Spatial coverage ... 
+##  Bounding box of records  16.098 , 108.2236  -  16.1535 , 108.3361 
+##  Degree celles covered :  1 
+##  % degree cells covered :  Inf</code></pre>
+<p>Ta cũng có thể xem thông tin cho các ghi nhận về nhóm Thú như sau:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="thaotaccoban.html#cb34-1" tabindex="-1"></a>sontra_bdvis <span class="sc">|&gt;</span> </span>
+<span id="cb34-2"><a href="thaotaccoban.html#cb34-2" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">==</span> <span class="st">&quot;Mammal&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb34-3"><a href="thaotaccoban.html#cb34-3" tabindex="-1"></a>  <span class="fu">bdsummary</span>()</span></code></pre></div>
+<pre><code>## 
+##  Total no of records = 128 
+## 
+##  Temporal coverage... 
+##  Date range of the records from  2016-05-28  to  2017-10-24 
+## 
+##  Taxonomic coverage... 
+##  No of Families :  13 
+##  No of Genus :  18 
+##  No of Species :  19 
+## 
+##  Spatial coverage ... 
+##  Bounding box of records  16.099 , 108.2236  -  16.152 , 108.3361 
+##  Degree celles covered :  1 
+##  % degree cells covered :  Inf</code></pre>
+</div>
+</div>
+<div id="biểu-đồ" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Biểu đồ<a href="thaotaccoban.html#biểu-đồ" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="vẽ-nhanh-một-số-biểu-đồ-với-gói-bdvis" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Vẽ nhanh một số biểu đồ với gói <code>bdvis</code><a href="thaotaccoban.html#vẽ-nhanh-một-số-biểu-đồ-với-gói-bdvis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="số-lượng-ghi-nhận-theo-ngày-tuần-tháng-trong-năm" class="section level4 hasAnchor" number="1.5.1.1">
+<h4><span class="header-section-number">1.5.1.1</span> Số lượng ghi nhận theo ngày, tuần, tháng trong năm<a href="thaotaccoban.html#số-lượng-ghi-nhận-theo-ngày-tuần-tháng-trong-năm" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="thaotaccoban.html#cb36-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb36-2"><a href="thaotaccoban.html#cb36-2" tabindex="-1"></a><span class="fu">tempolar</span>(sontra_bdvis, </span>
+<span id="cb36-3"><a href="thaotaccoban.html#cb36-3" tabindex="-1"></a>         <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">title=</span><span class="st">&quot;Ghi nhận theo ngày&quot;</span>, </span>
+<span id="cb36-4"><a href="thaotaccoban.html#cb36-4" tabindex="-1"></a>         <span class="at">plottype=</span><span class="st">&quot;r&quot;</span>, <span class="at">timescale=</span><span class="st">&quot;d&quot;</span>) </span>
+<span id="cb36-5"><a href="thaotaccoban.html#cb36-5" tabindex="-1"></a><span class="fu">tempolar</span>(sontra_bdvis, </span>
+<span id="cb36-6"><a href="thaotaccoban.html#cb36-6" tabindex="-1"></a>         <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">title=</span><span class="st">&quot;Ghi nhận theo tuần&quot;</span>, </span>
+<span id="cb36-7"><a href="thaotaccoban.html#cb36-7" tabindex="-1"></a>         <span class="at">plottype=</span><span class="st">&quot;r&quot;</span>, <span class="at">timescale=</span><span class="st">&quot;w&quot;</span>) </span>
+<span id="cb36-8"><a href="thaotaccoban.html#cb36-8" tabindex="-1"></a><span class="fu">tempolar</span>(sontra_bdvis, </span>
+<span id="cb36-9"><a href="thaotaccoban.html#cb36-9" tabindex="-1"></a>         <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">title=</span><span class="st">&quot;Ghi nhận theo tháng&quot;</span>, </span>
+<span id="cb36-10"><a href="thaotaccoban.html#cb36-10" tabindex="-1"></a>         <span class="at">plottype=</span><span class="st">&quot;r&quot;</span>, <span class="at">timescale=</span><span class="st">&quot;m&quot;</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="calendarheat---số-lượng-ghi-nhận-theo-ngày" class="section level4 hasAnchor" number="1.5.1.2">
+<h4><span class="header-section-number">1.5.1.2</span> Calendarheat - Số lượng ghi nhận theo ngày<a href="thaotaccoban.html#calendarheat---số-lượng-ghi-nhận-theo-ngày" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Biểu đồ thể hiện số lượng ghi nhận theo ngày. Trong đó mỗi ô vuông là một ngày, màu sắc của ô thể hiện số lượng ghi nhận từ ít đến nhiều theo gam màu từ đỏ đến xanh lá.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="thaotaccoban.html#cb37-1" tabindex="-1"></a><span class="fu">bdcalendarheat</span>(sontra_bdvis)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="chronohorogram---số-lượng-ghi-nhận-theo-tháng-và-năm" class="section level4 hasAnchor" number="1.5.1.3">
+<h4><span class="header-section-number">1.5.1.3</span> Chronohorogram - Số lượng ghi nhận theo tháng và năm<a href="thaotaccoban.html#chronohorogram---số-lượng-ghi-nhận-theo-tháng-và-năm" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Biểu đồ này thể hiện số lượng ghi nhận theo tháng và năm. Ta có thể quy định năm bắt đầu và năm kết thúc sự theo dõi. Khi đó tâm đồ thị thể hiện cho năm bắt đầu, sau đó mỗi năm tiếp theo được thể hiện bởi 1 vòng tròn. Một điểm thể hiện cho một ngày ghi nhận dữ liệu. Màu sắc mặc định được thể hiện số ghi nhận trong ngày từ ít đến nhiều bằng gam màu từ xanh dương đến đỏ.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="thaotaccoban.html#cb38-1" tabindex="-1"></a><span class="fu">chronohorogram</span>(sontra_bdvis, </span>
+<span id="cb38-2"><a href="thaotaccoban.html#cb38-2" tabindex="-1"></a>               <span class="at">startyear =</span> <span class="dv">2015</span>, </span>
+<span id="cb38-3"><a href="thaotaccoban.html#cb38-3" tabindex="-1"></a>               <span class="at">endyear =</span> <span class="dv">2020</span>, </span>
+<span id="cb38-4"><a href="thaotaccoban.html#cb38-4" tabindex="-1"></a>               <span class="at">ptsize =</span> <span class="fl">1.5</span>,</span>
+<span id="cb38-5"><a href="thaotaccoban.html#cb38-5" tabindex="-1"></a>               <span class="at">title =</span> <span class="st">&quot;2015-2020&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="số-lượng-ghi-nhận-theo-họ-với-treemap" class="section level4 hasAnchor" number="1.5.1.4">
+<h4><span class="header-section-number">1.5.1.4</span> Số lượng ghi nhận theo họ với treemap<a href="thaotaccoban.html#số-lượng-ghi-nhận-theo-họ-với-treemap" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Kích thước của từng ô tương ứng với số lượng ghi nhận. Màu sắc của ô thể hiện số lượng Chi của Họ.</p>
+<p><em>Ví dụ</em> vẽ nhanh số lượng ghi nhận theo các Họ cho nhóm Chim</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="thaotaccoban.html#cb39-1" tabindex="-1"></a>sontra_bdvis <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a href="thaotaccoban.html#cb39-2" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">==</span> <span class="st">&quot;Aves&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb39-3"><a href="thaotaccoban.html#cb39-3" tabindex="-1"></a>  <span class="fu">taxotree</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="số-lượng-ghi-nhận-với-gói-lệnh-ggplot2" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Số lượng ghi nhận với gói lệnh <code>GGPLOT2</code><a href="thaotaccoban.html#số-lượng-ghi-nhận-với-gói-lệnh-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Đếm số lượng theo từng nhóm</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="thaotaccoban.html#cb40-1" tabindex="-1"></a>df_soluong <span class="ot">&lt;-</span> sontra <span class="sc">|&gt;</span> </span>
+<span id="cb40-2"><a href="thaotaccoban.html#cb40-2" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">|&gt;</span> </span>
+<span id="cb40-3"><a href="thaotaccoban.html#cb40-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Ho =</span> <span class="fu">n_distinct</span>(family), </span>
+<span id="cb40-4"><a href="thaotaccoban.html#cb40-4" tabindex="-1"></a>            <span class="at">Chi =</span> <span class="fu">n_distinct</span>(genus),</span>
+<span id="cb40-5"><a href="thaotaccoban.html#cb40-5" tabindex="-1"></a>            <span class="at">Loai =</span> <span class="fu">n_distinct</span>(scientificName),</span>
+<span id="cb40-6"><a href="thaotaccoban.html#cb40-6" tabindex="-1"></a>            <span class="at">Ghi_nhan =</span> <span class="fu">n</span>())</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-132657bdb697befb3170" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-132657bdb697befb3170">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["Amphibia","Aves","Mammal","Reptilia"],[6,35,13,9],[13,67,18,23],[16,82,19,27],[182,445,128,145]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>class<\/th>\n      <th>Ho<\/th>\n      <th>Chi<\/th>\n      <th>Loai<\/th>\n      <th>Ghi_nhan<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"class","targets":1},{"name":"Ho","targets":2},{"name":"Chi","targets":3},{"name":"Loai","targets":4},{"name":"Ghi_nhan","targets":5}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<p>Chuyển đổi bảng sang định dạng <code>tidy</code>, đây là cấu trúc dữ liệu được xem là cấu trúc gọn gàng dễ thao tác, thực hiện các phân tích mô hình hóa và trực quan hóa. Kiểu dữ liệu này có cấu trúc: mỗi biến là một cột, mỗi quan sát là một hàng và mỗi loại đơn vị quan sát là một bảng. Xem thêm thông tin về định dạng <code>tidy</code> tại đây: <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html" class="uri">https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html</a></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="thaotaccoban.html#cb41-1" tabindex="-1"></a>df_soluong <span class="ot">&lt;-</span> df_soluong <span class="sc">|&gt;</span> </span>
+<span id="cb41-2"><a href="thaotaccoban.html#cb41-2" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="sc">-</span>class, <span class="at">names_to =</span> <span class="st">&quot;rank&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;n&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb41-3"><a href="thaotaccoban.html#cb41-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">factor</span>(rank, </span>
+<span id="cb41-4"><a href="thaotaccoban.html#cb41-4" tabindex="-1"></a>                       <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Ho&quot;</span>,<span class="st">&quot;Chi&quot;</span>,<span class="st">&quot;Loai&quot;</span>,<span class="st">&quot;Ghi_nhan&quot;</span>),</span>
+<span id="cb41-5"><a href="thaotaccoban.html#cb41-5" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Họ&quot;</span>,<span class="st">&quot;Chi&quot;</span>,<span class="st">&quot;Loài&quot;</span>,<span class="st">&quot;Ghi nhận&quot;</span>)))</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-46e3adbee81e5c6ae8f1" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-46e3adbee81e5c6ae8f1">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"],["Amphibia","Amphibia","Amphibia","Amphibia","Aves","Aves","Aves","Aves","Mammal","Mammal","Mammal","Mammal","Reptilia","Reptilia","Reptilia","Reptilia"],["Họ","Chi","Loài","Ghi nhận","Họ","Chi","Loài","Ghi nhận","Họ","Chi","Loài","Ghi nhận","Họ","Chi","Loài","Ghi nhận"],[6,13,16,182,35,67,82,445,13,18,19,128,9,23,27,145]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>class<\/th>\n      <th>rank<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"class","targets":1},{"name":"rank","targets":2},{"name":"n","targets":3}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<p>Tiến hành vẽ biểu đồ thể hiện số lượng về ghi nhận, họ, chi và loài cho từng nhóm sinh vật</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="thaotaccoban.html#cb42-1" tabindex="-1"></a><span class="fu">ggplot</span>(df_soluong, <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> n, <span class="at">fill =</span> rank)) <span class="sc">+</span></span>
+<span id="cb42-2"><a href="thaotaccoban.html#cb42-2" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>()) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="thaotaccoban.html#cb42-3" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> n, <span class="at">label =</span> n ), </span>
+<span id="cb42-4"><a href="thaotaccoban.html#cb42-4" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>),</span>
+<span id="cb42-5"><a href="thaotaccoban.html#cb42-5" tabindex="-1"></a>           <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb42-6"><a href="thaotaccoban.html#cb42-6" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb42-7"><a href="thaotaccoban.html#cb42-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb42-8"><a href="thaotaccoban.html#cb42-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Số lượng ghi nhận, Họ, Chi và Loài tại Sơn Trà&quot;</span>,</span>
+<span id="cb42-9"><a href="thaotaccoban.html#cb42-9" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Năm 2019&quot;</span>,</span>
+<span id="cb42-10"><a href="thaotaccoban.html#cb42-10" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Nhóm&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Số lượng&quot;</span>,</span>
+<span id="cb42-11"><a href="thaotaccoban.html#cb42-11" tabindex="-1"></a>       <span class="at">caption  =</span> <span class="st">&quot;Nguồn dữ liệu : Trần Văn Bằng &amp; nnk., 2019&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="biểu-đồ-treemap-thể-hiện-số-lượng-ghi-nhận-theo-họ." class="section level3 hasAnchor" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> Biểu đồ treemap thể hiện số lượng ghi nhận theo họ.<a href="thaotaccoban.html#biểu-đồ-treemap-thể-hiện-số-lượng-ghi-nhận-theo-họ." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Chúng ta có thể sử dụng lệnh <code>geom_treemap()</code> từ gói <code>treemapify</code> kết hợp với gói <code>ggplot2</code> để vẽ biểu đồ treemap.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="thaotaccoban.html#cb43-1" tabindex="-1"></a><span class="co"># Gọi gói lệnh</span></span>
+<span id="cb43-2"><a href="thaotaccoban.html#cb43-2" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
+<span id="cb43-3"><a href="thaotaccoban.html#cb43-3" tabindex="-1"></a><span class="co"># Đếm số lượng ghi nhận theo họ</span></span>
+<span id="cb43-4"><a href="thaotaccoban.html#cb43-4" tabindex="-1"></a>spByFam <span class="ot">&lt;-</span> sontra <span class="sc">|&gt;</span> <span class="fu">count</span>(family)</span>
+<span id="cb43-5"><a href="thaotaccoban.html#cb43-5" tabindex="-1"></a><span class="co"># Vẽ biểu đồ</span></span>
+<span id="cb43-6"><a href="thaotaccoban.html#cb43-6" tabindex="-1"></a><span class="fu">ggplot</span>(spByFam, <span class="fu">aes</span>(<span class="at">area =</span> n, <span class="at">fill =</span> n, <span class="at">label =</span> <span class="fu">paste</span>(family, n, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>))) <span class="sc">+</span></span>
+<span id="cb43-7"><a href="thaotaccoban.html#cb43-7" tabindex="-1"></a>  <span class="fu">geom_treemap</span>(<span class="at">start =</span> <span class="st">&quot;bottomleft&quot;</span>) <span class="sc">+</span></span>
+<span id="cb43-8"><a href="thaotaccoban.html#cb43-8" tabindex="-1"></a>  <span class="fu">geom_treemap_text</span>(<span class="at">place =</span> <span class="st">&quot;centre&quot;</span>) <span class="sc">+</span></span>
+<span id="cb43-9"><a href="thaotaccoban.html#cb43-9" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">&quot;Greens&quot;</span>, <span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb43-10"><a href="thaotaccoban.html#cb43-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;Số ghi nhận&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><code>ggplot2</code> là gói lệnh rất mạnh cho việc hình ảnh hoá dữ liệu với nhiều kiểu biểu đồ khác nhau. thông tin và hướng dẫn sử dụng có thể xem tại <a href="https://ggplot2.tidyverse.org/" class="uri">https://ggplot2.tidyverse.org/</a>. Từ cấu trúc gói lệnh này, nhiều tác giả khác nhau đã phát triển thêm nhiều gói lệnh phục vụ cho những kiểu biểu đồ chuyên biệt, có thể xem thêm tại đây: <a href="https://exts.ggplot2.tidyverse.org/gallery/" class="uri">https://exts.ggplot2.tidyverse.org/gallery/</a></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="iucn.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
