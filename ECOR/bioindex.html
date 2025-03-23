@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Phần 8 Tính chỉ số đa dạng sinh học và loài quan trọng trong ô định vị | Phân tích dữ liệu sinh thái học cơ bản với R</title>
   <meta name="description" content="Tài liệu này giới thiệu một số phân tích dữ liệu sinh thái học cơ bản với phần mềm R." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Phần 8 Tính chỉ số đa dạng sinh học và loài quan trọng trong ô định vị | Phân tích dữ liệu sinh thái học cơ bản với R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Nguyễn Lê Xuân Bách" />
 
 
-<meta name="date" content="2024-09-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -75,7 +75,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -172,17 +172,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="iucn.html"><a href="iucn.html"><i class="fa fa-check"></i><b>2</b> Tra cứu cấp độ quý hiếm của loài theo IUCN</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="iucn.html"><a href="iucn.html#xin-cấp-và-khai-báo-mã-cá-nhân-từ-iucn"><i class="fa fa-check"></i><b>2.1</b> Xin cấp và khai báo mã cá nhân từ IUCN</a></li>
-<li class="chapter" data-level="2.2" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-rredlist"><i class="fa fa-check"></i><b>2.2</b> Sử dụng gói <code>rredlist</code></a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài"><i class="fa fa-check"></i><b>2.2.1</b> Tra cứu cho 1 loài</a></li>
-<li class="chapter" data-level="2.2.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài"><i class="fa fa-check"></i><b>2.2.2</b> Tra cứu cho nhiều loài</a></li>
-<li class="chapter" data-level="2.2.3" data-path="iucn.html"><a href="iucn.html#xem-quốc-gia-có-sự-phân-bố-của-loài"><i class="fa fa-check"></i><b>2.2.3</b> Xem quốc gia có sự phân bố của loài:</a></li>
-</ul></li>
+<li class="chapter" data-level="2.1" data-path="iucn.html"><a href="iucn.html#xin-cấp-mã-token-cá-nhân-từ-iucn"><i class="fa fa-check"></i><b>2.1</b> Xin cấp mã TOKEN cá nhân từ IUCN</a></li>
+<li class="chapter" data-level="2.2" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-iucnredlist"><i class="fa fa-check"></i><b>2.2</b> Sử dụng gói <code>iucnredlist</code></a></li>
 <li class="chapter" data-level="2.3" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-taxize"><i class="fa fa-check"></i><b>2.3</b> Sử dụng gói <code>taxize</code></a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài-1"><i class="fa fa-check"></i><b>2.3.1</b> Tra cứu cho 1 loài</a></li>
-<li class="chapter" data-level="2.3.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài-1"><i class="fa fa-check"></i><b>2.3.2</b> 2.2.2 Tra cứu cho nhiều loài</a></li>
+<li class="chapter" data-level="2.3.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài"><i class="fa fa-check"></i><b>2.3.1</b> Tra cứu cho 1 loài</a></li>
+<li class="chapter" data-level="2.3.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài"><i class="fa fa-check"></i><b>2.3.2</b> 2.2.2 Tra cứu cho nhiều loài</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="iucn.html"><a href="iucn.html#tính-chỉ-số-red-list-index"><i class="fa fa-check"></i><b>2.4</b> Tính chỉ số Red List Index</a></li>
 </ul></li>
@@ -194,10 +189,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="danhphap.html"><a href="danhphap.html#nhóm-thực-vật"><i class="fa fa-check"></i><b>3.2.1</b> Nhóm Thực vật</a></li>
 <li class="chapter" data-level="3.2.2" data-path="danhphap.html"><a href="danhphap.html#ví-dụ-với-gói-lệnh-rwcvp"><i class="fa fa-check"></i><b>3.2.2</b> Ví dụ với gói lệnh <code>rWCVP</code></a></li>
 <li class="chapter" data-level="3.2.3" data-path="danhphap.html"><a href="danhphap.html#danh-pháp-động-vật"><i class="fa fa-check"></i><b>3.2.3</b> Danh pháp động vật</a></li>
-<li class="chapter" data-level="3.2.4" data-path="danhphap.html"><a href="danhphap.html#xem-thông-tin-về-loài"><i class="fa fa-check"></i><b>3.2.4</b> Xem thông tin về loài</a></li>
-<li class="chapter" data-level="3.2.5" data-path="danhphap.html"><a href="danhphap.html#tìm-các-cấp-phân-loại-từ-tên-loài"><i class="fa fa-check"></i><b>3.2.5</b> Tìm các cấp phân loại từ tên loài</a></li>
-<li class="chapter" data-level="3.2.6" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-các-tên-đồng-danh-của-một-loài-với-bộ-dữ-liệu-eol"><i class="fa fa-check"></i><b>3.2.6</b> Xem danh sách các tên đồng danh của một loài với bộ dữ liệu EOL</a></li>
-<li class="chapter" data-level="3.2.7" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-tất-cả-các-taxa-con-của-một-taxon"><i class="fa fa-check"></i><b>3.2.7</b> Xem danh sách tất cả các taxa con của một taxon</a></li>
+<li class="chapter" data-level="3.2.4" data-path="danhphap.html"><a href="danhphap.html#tìm-các-cấp-phân-loại-từ-tên-loài"><i class="fa fa-check"></i><b>3.2.4</b> Tìm các cấp phân loại từ tên loài</a></li>
+<li class="chapter" data-level="3.2.5" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-các-tên-đồng-danh-của-một-loài-với-bộ-dữ-liệu-eol"><i class="fa fa-check"></i><b>3.2.5</b> Xem danh sách các tên đồng danh của một loài với bộ dữ liệu EOL</a></li>
+<li class="chapter" data-level="3.2.6" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-tất-cả-các-taxa-con-của-một-taxon"><i class="fa fa-check"></i><b>3.2.6</b> Xem danh sách tất cả các taxa con của một taxon</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="bandocoban.html"><a href="bandocoban.html"><i class="fa fa-check"></i><b>4</b> Thao tác cơ bản với tập tin bản đồ</a>
@@ -259,12 +253,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tạo-dữ-liệu-giả-lập" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">8.1</span> Tạo dữ liệu giả lập<a href="bioindex.html#tạo-dữ-liệu-giả-lập" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Tạo bảng dữ liệu giả lập kết quả khảo sát ô định vị với các cột dữ liệu gồm: TreeID, dbh_cm và species</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="bioindex.html#cb179-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">134</span>)</span>
-<span id="cb179-2"><a href="bioindex.html#cb179-2" tabindex="-1"></a>plotdata <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">TreeID =</span> <span class="fu">paste0</span>(<span class="st">&quot;Tree&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>),</span>
-<span id="cb179-3"><a href="bioindex.html#cb179-3" tabindex="-1"></a>                       <span class="at">dbh_cm =</span> <span class="fu">floor</span>(<span class="fu">runif</span>(<span class="dv">500</span>, <span class="at">min=</span><span class="dv">1</span>, <span class="at">max=</span><span class="dv">100</span>)),</span>
-<span id="cb179-4"><a href="bioindex.html#cb179-4" tabindex="-1"></a>                       <span class="at">species =</span> <span class="fu">paste0</span>(<span class="st">&quot;sp&quot;</span>,<span class="fu">floor</span>(<span class="fu">runif</span>(<span class="dv">500</span>, <span class="at">min=</span><span class="dv">1</span>, <span class="at">max=</span><span class="dv">30</span>))))</span>
-<span id="cb179-5"><a href="bioindex.html#cb179-5" tabindex="-1"></a></span>
-<span id="cb179-6"><a href="bioindex.html#cb179-6" tabindex="-1"></a>plotdata</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="bioindex.html#cb160-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">134</span>)</span>
+<span id="cb160-2"><a href="bioindex.html#cb160-2" tabindex="-1"></a>plotdata <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">TreeID =</span> <span class="fu">paste0</span>(<span class="st">&quot;Tree&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>),</span>
+<span id="cb160-3"><a href="bioindex.html#cb160-3" tabindex="-1"></a>                       <span class="at">dbh_cm =</span> <span class="fu">floor</span>(<span class="fu">runif</span>(<span class="dv">500</span>, <span class="at">min=</span><span class="dv">1</span>, <span class="at">max=</span><span class="dv">100</span>)),</span>
+<span id="cb160-4"><a href="bioindex.html#cb160-4" tabindex="-1"></a>                       <span class="at">species =</span> <span class="fu">paste0</span>(<span class="st">&quot;sp&quot;</span>,<span class="fu">floor</span>(<span class="fu">runif</span>(<span class="dv">500</span>, <span class="at">min=</span><span class="dv">1</span>, <span class="at">max=</span><span class="dv">30</span>))))</span>
+<span id="cb160-5"><a href="bioindex.html#cb160-5" tabindex="-1"></a></span>
+<span id="cb160-6"><a href="bioindex.html#cb160-6" tabindex="-1"></a>plotdata</span></code></pre></div>
 <pre><code>## # A tibble: 500 × 3
 ##    TreeID dbh_cm species
 ##    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  
@@ -283,44 +277,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="phân-tích" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> Phân tích<a href="bioindex.html#phân-tích" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Đếm số lượng cá thể và tổng tiết diện ngang cho từng loài</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="bioindex.html#cb181-1" tabindex="-1"></a>spdata <span class="ot">&lt;-</span> plotdata <span class="sc">|&gt;</span> </span>
-<span id="cb181-2"><a href="bioindex.html#cb181-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">G =</span> ((dbh_cm<span class="sc">/</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>pi) <span class="sc">|&gt;</span> <span class="co"># unit: m2) |&gt; </span></span>
-<span id="cb181-3"><a href="bioindex.html#cb181-3" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
-<span id="cb181-4"><a href="bioindex.html#cb181-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">individu=</span><span class="fu">n</span>(),<span class="at">BA=</span><span class="fu">sum</span>(G))</span></code></pre></div>
-<div class="datatables html-widget html-fill-item" id="htmlwidget-050cd0f1e1f68dbdf3c1" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-050cd0f1e1f68dbdf3c1">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29"],["sp1","sp10","sp11","sp12","sp13","sp14","sp15","sp16","sp17","sp18","sp19","sp2","sp20","sp21","sp22","sp23","sp24","sp25","sp26","sp27","sp28","sp29","sp3","sp4","sp5","sp6","sp7","sp8","sp9"],[20,24,17,30,23,8,16,16,16,18,21,11,17,18,18,19,13,23,19,13,17,11,16,17,21,10,13,16,19],[2.9,7.3,4.4,6.3,5,1.3,4.8,3.4,3.9,5.9,6.9,3.4,4.2,3.8,4.6,6,3.6,6.1,5.3,3.8,4.4,2.8,4.7,3.7,3,2.6,4.4,5.3,3.2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>species<\/th>\n      <th>individu<\/th>\n      <th>BA<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"species","targets":1},{"name":"individu","targets":2},{"name":"BA","targets":3}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="bioindex.html#cb162-1" tabindex="-1"></a>spdata <span class="ot">&lt;-</span> plotdata <span class="sc">|&gt;</span> </span>
+<span id="cb162-2"><a href="bioindex.html#cb162-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">G =</span> ((dbh_cm<span class="sc">/</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>pi) <span class="sc">|&gt;</span> <span class="co"># unit: m2) |&gt; </span></span>
+<span id="cb162-3"><a href="bioindex.html#cb162-3" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb162-4"><a href="bioindex.html#cb162-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">individu=</span><span class="fu">n</span>(),<span class="at">BA=</span><span class="fu">sum</span>(G))</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-4bed3d14b8ed03bfbc61" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-4bed3d14b8ed03bfbc61">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29"],["sp1","sp10","sp11","sp12","sp13","sp14","sp15","sp16","sp17","sp18","sp19","sp2","sp20","sp21","sp22","sp23","sp24","sp25","sp26","sp27","sp28","sp29","sp3","sp4","sp5","sp6","sp7","sp8","sp9"],[20,24,17,30,23,8,16,16,16,18,21,11,17,18,18,19,13,23,19,13,17,11,16,17,21,10,13,16,19],[2.9,7.3,4.4,6.3,5,1.3,4.8,3.4,3.9,5.9,6.9,3.4,4.2,3.8,4.6,6,3.6,6.1,5.3,3.8,4.4,2.8,4.7,3.7,3,2.6,4.4,5.3,3.2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>species<\/th>\n      <th>individu<\/th>\n      <th>BA<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"species","targets":1},{"name":"individu","targets":2},{"name":"BA","targets":3}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="chỉ-số-đa-dạng-sinh-học" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Chỉ số đa dạng sinh học<a href="bioindex.html#chỉ-số-đa-dạng-sinh-học" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Tính toán các chỉ số Shannon, Simpson, Evenness với gói lệnh <code>vegan</code></p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="bioindex.html#cb182-1" tabindex="-1"></a><span class="fu">library</span>(vegan)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="bioindex.html#cb163-1" tabindex="-1"></a><span class="fu">library</span>(vegan)</span></code></pre></div>
 <p>Tính tổng số loài</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="bioindex.html#cb183-1" tabindex="-1"></a>(S <span class="ot">&lt;-</span> <span class="fu">specnumber</span>(spdata<span class="sc">$</span>individu))</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="bioindex.html#cb164-1" tabindex="-1"></a>(S <span class="ot">&lt;-</span> <span class="fu">specnumber</span>(spdata<span class="sc">$</span>individu))</span></code></pre></div>
 <pre><code>## [1] 29</code></pre>
 <p>Tính chỉ số Shannon</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="bioindex.html#cb185-1" tabindex="-1"></a>(H <span class="ot">&lt;-</span> <span class="fu">diversity</span>(spdata<span class="sc">$</span>individu, <span class="at">index=</span><span class="st">&quot;shannon&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="bioindex.html#cb166-1" tabindex="-1"></a>(H <span class="ot">&lt;-</span> <span class="fu">diversity</span>(spdata<span class="sc">$</span>individu, <span class="at">index=</span><span class="st">&quot;shannon&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] 3.332301</code></pre>
 <p>Tính chỉ số Gini–Simpson</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="bioindex.html#cb187-1" tabindex="-1"></a>(D <span class="ot">&lt;-</span> <span class="fu">diversity</span>(spdata<span class="sc">$</span>individu, <span class="at">index=</span><span class="st">&quot;simpson&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="bioindex.html#cb168-1" tabindex="-1"></a>(D <span class="ot">&lt;-</span> <span class="fu">diversity</span>(spdata<span class="sc">$</span>individu, <span class="at">index=</span><span class="st">&quot;simpson&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] 0.96312</code></pre>
 <p>Tính chỉ số cân bằng Evenness</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="bioindex.html#cb189-1" tabindex="-1"></a>(E <span class="ot">&lt;-</span> H<span class="sc">/</span><span class="fu">log</span>(S))</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="bioindex.html#cb170-1" tabindex="-1"></a>(E <span class="ot">&lt;-</span> H<span class="sc">/</span><span class="fu">log</span>(S))</span></code></pre></div>
 <pre><code>## [1] 0.9896076</code></pre>
 <p>Tính chỉ số Margalef với lệnh <code>margalef()</code> từ gói <code>abdiv</code></p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="bioindex.html#cb191-1" tabindex="-1"></a><span class="fu">library</span>(abdiv)  </span>
-<span id="cb191-2"><a href="bioindex.html#cb191-2" tabindex="-1"></a><span class="fu">margalef</span>(spdata<span class="sc">$</span>individu)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="bioindex.html#cb172-1" tabindex="-1"></a><span class="fu">library</span>(abdiv)  </span>
+<span id="cb172-2"><a href="bioindex.html#cb172-2" tabindex="-1"></a><span class="fu">margalef</span>(spdata<span class="sc">$</span>individu)</span></code></pre></div>
 <pre><code>## [1] 4.505513</code></pre>
 <div id="tính-chỉ-số-ivi" class="section level3 hasAnchor" number="8.3.1">
 <h3><span class="header-section-number">8.3.1</span> Tính chỉ số IVI<a href="bioindex.html#tính-chỉ-số-ivi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Vì dữ liệu khảo sát trong 1 ô định vị nên chỉ số IVI được tính dựa trên 2 tham số là độ Ưu thế và Mật độ. Kết quả cho thấy loài sp12 và s10 giữ vị trí quan trọng trong ô định vị nghiên cứu</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="bioindex.html#cb193-1" tabindex="-1"></a>IVI <span class="ot">&lt;-</span> spdata <span class="sc">|&gt;</span> </span>
-<span id="cb193-2"><a href="bioindex.html#cb193-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">MD =</span> individu<span class="sc">/</span><span class="fu">sum</span>(individu)<span class="sc">*</span><span class="dv">100</span>,</span>
-<span id="cb193-3"><a href="bioindex.html#cb193-3" tabindex="-1"></a>         <span class="at">UT =</span> BA<span class="sc">/</span><span class="fu">sum</span>(BA)<span class="sc">*</span><span class="dv">100</span>,</span>
-<span id="cb193-4"><a href="bioindex.html#cb193-4" tabindex="-1"></a>         <span class="at">IVI =</span> UT <span class="sc">+</span> MD,</span>
-<span id="cb193-5"><a href="bioindex.html#cb193-5" tabindex="-1"></a>         <span class="at">rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>IVI)) <span class="sc">|&gt;</span> </span>
-<span id="cb193-6"><a href="bioindex.html#cb193-6" tabindex="-1"></a>  <span class="fu">arrange</span>(rank)</span></code></pre></div>
-<div class="datatables html-widget html-fill-item" id="htmlwidget-17d4a32bdf69f21648aa" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-17d4a32bdf69f21648aa">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29"],["sp12","sp10","sp19","sp25","sp23","sp13","sp18","sp26","sp8","sp22","sp15","sp3","sp11","sp28","sp20","sp5","sp21","sp4","sp9","sp1","sp17","sp7","sp16","sp27","sp24","sp2","sp29","sp6","sp14"],[30,24,21,23,19,23,18,19,16,18,16,16,17,17,17,21,18,17,19,20,16,13,16,13,13,11,11,10,8],[6.3,7.3,6.9,6.1,6,5,5.9,5.3,5.3,4.6,4.8,4.7,4.4,4.4,4.2,3,3.8,3.7,3.2,2.9,3.9,4.4,3.4,3.8,3.6,3.4,2.8,2.6,1.3],[6,4.8,4.2,4.6,3.8,4.6,3.6,3.8,3.2,3.6,3.2,3.2,3.4,3.4,3.4,4.2,3.6,3.4,3.8,4,3.2,2.6,3.2,2.6,2.6,2.2,2.2,2,1.6],[5,5.8,5.5,4.8,4.7,3.9,4.7,4.2,4.1,3.6,3.8,3.7,3.5,3.5,3.3,2.4,3,2.9,2.5,2.3,3,3.4,2.7,3,2.9,2.7,2.2,2,1.1],[11,10.6,9.699999999999999,9.4,8.5,8.5,8.300000000000001,8,7.3,7.2,7,6.9,6.9,6.9,6.7,6.6,6.6,6.3,6.3,6.3,6.2,6,5.9,5.6,5.5,4.9,4.4,4,2.7],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>species<\/th>\n      <th>individu<\/th>\n      <th>BA<\/th>\n      <th>MD<\/th>\n      <th>UT<\/th>\n      <th>IVI<\/th>\n      <th>rank<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"species","targets":1},{"name":"individu","targets":2},{"name":"BA","targets":3},{"name":"MD","targets":4},{"name":"UT","targets":5},{"name":"IVI","targets":6},{"name":"rank","targets":7}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="bioindex.html#cb174-1" tabindex="-1"></a>IVI <span class="ot">&lt;-</span> spdata <span class="sc">|&gt;</span> </span>
+<span id="cb174-2"><a href="bioindex.html#cb174-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">MD =</span> individu<span class="sc">/</span><span class="fu">sum</span>(individu)<span class="sc">*</span><span class="dv">100</span>,</span>
+<span id="cb174-3"><a href="bioindex.html#cb174-3" tabindex="-1"></a>         <span class="at">UT =</span> BA<span class="sc">/</span><span class="fu">sum</span>(BA)<span class="sc">*</span><span class="dv">100</span>,</span>
+<span id="cb174-4"><a href="bioindex.html#cb174-4" tabindex="-1"></a>         <span class="at">IVI =</span> UT <span class="sc">+</span> MD,</span>
+<span id="cb174-5"><a href="bioindex.html#cb174-5" tabindex="-1"></a>         <span class="at">rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>IVI)) <span class="sc">|&gt;</span> </span>
+<span id="cb174-6"><a href="bioindex.html#cb174-6" tabindex="-1"></a>  <span class="fu">arrange</span>(rank)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-92475ad58c08253a52b2" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-92475ad58c08253a52b2">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29"],["sp12","sp10","sp19","sp25","sp23","sp13","sp18","sp26","sp8","sp22","sp15","sp3","sp11","sp28","sp20","sp5","sp21","sp4","sp9","sp1","sp17","sp7","sp16","sp27","sp24","sp2","sp29","sp6","sp14"],[30,24,21,23,19,23,18,19,16,18,16,16,17,17,17,21,18,17,19,20,16,13,16,13,13,11,11,10,8],[6.3,7.3,6.9,6.1,6,5,5.9,5.3,5.3,4.6,4.8,4.7,4.4,4.4,4.2,3,3.8,3.7,3.2,2.9,3.9,4.4,3.4,3.8,3.6,3.4,2.8,2.6,1.3],[6,4.8,4.2,4.6,3.8,4.6,3.6,3.8,3.2,3.6,3.2,3.2,3.4,3.4,3.4,4.2,3.6,3.4,3.8,4,3.2,2.6,3.2,2.6,2.6,2.2,2.2,2,1.6],[5,5.8,5.5,4.8,4.7,3.9,4.7,4.2,4.1,3.6,3.8,3.7,3.5,3.5,3.3,2.4,3,2.9,2.5,2.3,3,3.4,2.7,3,2.9,2.7,2.2,2,1.1],[11,10.6,9.699999999999999,9.4,8.5,8.5,8.300000000000001,8,7.3,7.2,7,6.9,6.9,6.9,6.7,6.6,6.6,6.3,6.3,6.3,6.2,6,5.9,5.6,5.5,4.9,4.4,4,2.7],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>species<\/th>\n      <th>individu<\/th>\n      <th>BA<\/th>\n      <th>MD<\/th>\n      <th>UT<\/th>\n      <th>IVI<\/th>\n      <th>rank<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"species","targets":1},{"name":"individu","targets":2},{"name":"BA","targets":3},{"name":"MD","targets":4},{"name":"UT","targets":5},{"name":"IVI","targets":6},{"name":"rank","targets":7}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>
@@ -345,42 +339,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

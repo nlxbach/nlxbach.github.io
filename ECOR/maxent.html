@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Phần 7 Dự đoán vùng phân bố loài | Phân tích dữ liệu sinh thái học cơ bản với R</title>
   <meta name="description" content="Tài liệu này giới thiệu một số phân tích dữ liệu sinh thái học cơ bản với phần mềm R." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Phần 7 Dự đoán vùng phân bố loài | Phân tích dữ liệu sinh thái học cơ bản với R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Nguyễn Lê Xuân Bách" />
 
 
-<meta name="date" content="2024-09-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -75,7 +75,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -172,17 +172,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="iucn.html"><a href="iucn.html"><i class="fa fa-check"></i><b>2</b> Tra cứu cấp độ quý hiếm của loài theo IUCN</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="iucn.html"><a href="iucn.html#xin-cấp-và-khai-báo-mã-cá-nhân-từ-iucn"><i class="fa fa-check"></i><b>2.1</b> Xin cấp và khai báo mã cá nhân từ IUCN</a></li>
-<li class="chapter" data-level="2.2" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-rredlist"><i class="fa fa-check"></i><b>2.2</b> Sử dụng gói <code>rredlist</code></a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài"><i class="fa fa-check"></i><b>2.2.1</b> Tra cứu cho 1 loài</a></li>
-<li class="chapter" data-level="2.2.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài"><i class="fa fa-check"></i><b>2.2.2</b> Tra cứu cho nhiều loài</a></li>
-<li class="chapter" data-level="2.2.3" data-path="iucn.html"><a href="iucn.html#xem-quốc-gia-có-sự-phân-bố-của-loài"><i class="fa fa-check"></i><b>2.2.3</b> Xem quốc gia có sự phân bố của loài:</a></li>
-</ul></li>
+<li class="chapter" data-level="2.1" data-path="iucn.html"><a href="iucn.html#xin-cấp-mã-token-cá-nhân-từ-iucn"><i class="fa fa-check"></i><b>2.1</b> Xin cấp mã TOKEN cá nhân từ IUCN</a></li>
+<li class="chapter" data-level="2.2" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-iucnredlist"><i class="fa fa-check"></i><b>2.2</b> Sử dụng gói <code>iucnredlist</code></a></li>
 <li class="chapter" data-level="2.3" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-taxize"><i class="fa fa-check"></i><b>2.3</b> Sử dụng gói <code>taxize</code></a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài-1"><i class="fa fa-check"></i><b>2.3.1</b> Tra cứu cho 1 loài</a></li>
-<li class="chapter" data-level="2.3.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài-1"><i class="fa fa-check"></i><b>2.3.2</b> 2.2.2 Tra cứu cho nhiều loài</a></li>
+<li class="chapter" data-level="2.3.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài"><i class="fa fa-check"></i><b>2.3.1</b> Tra cứu cho 1 loài</a></li>
+<li class="chapter" data-level="2.3.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài"><i class="fa fa-check"></i><b>2.3.2</b> 2.2.2 Tra cứu cho nhiều loài</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="iucn.html"><a href="iucn.html#tính-chỉ-số-red-list-index"><i class="fa fa-check"></i><b>2.4</b> Tính chỉ số Red List Index</a></li>
 </ul></li>
@@ -194,10 +189,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="danhphap.html"><a href="danhphap.html#nhóm-thực-vật"><i class="fa fa-check"></i><b>3.2.1</b> Nhóm Thực vật</a></li>
 <li class="chapter" data-level="3.2.2" data-path="danhphap.html"><a href="danhphap.html#ví-dụ-với-gói-lệnh-rwcvp"><i class="fa fa-check"></i><b>3.2.2</b> Ví dụ với gói lệnh <code>rWCVP</code></a></li>
 <li class="chapter" data-level="3.2.3" data-path="danhphap.html"><a href="danhphap.html#danh-pháp-động-vật"><i class="fa fa-check"></i><b>3.2.3</b> Danh pháp động vật</a></li>
-<li class="chapter" data-level="3.2.4" data-path="danhphap.html"><a href="danhphap.html#xem-thông-tin-về-loài"><i class="fa fa-check"></i><b>3.2.4</b> Xem thông tin về loài</a></li>
-<li class="chapter" data-level="3.2.5" data-path="danhphap.html"><a href="danhphap.html#tìm-các-cấp-phân-loại-từ-tên-loài"><i class="fa fa-check"></i><b>3.2.5</b> Tìm các cấp phân loại từ tên loài</a></li>
-<li class="chapter" data-level="3.2.6" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-các-tên-đồng-danh-của-một-loài-với-bộ-dữ-liệu-eol"><i class="fa fa-check"></i><b>3.2.6</b> Xem danh sách các tên đồng danh của một loài với bộ dữ liệu EOL</a></li>
-<li class="chapter" data-level="3.2.7" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-tất-cả-các-taxa-con-của-một-taxon"><i class="fa fa-check"></i><b>3.2.7</b> Xem danh sách tất cả các taxa con của một taxon</a></li>
+<li class="chapter" data-level="3.2.4" data-path="danhphap.html"><a href="danhphap.html#tìm-các-cấp-phân-loại-từ-tên-loài"><i class="fa fa-check"></i><b>3.2.4</b> Tìm các cấp phân loại từ tên loài</a></li>
+<li class="chapter" data-level="3.2.5" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-các-tên-đồng-danh-của-một-loài-với-bộ-dữ-liệu-eol"><i class="fa fa-check"></i><b>3.2.5</b> Xem danh sách các tên đồng danh của một loài với bộ dữ liệu EOL</a></li>
+<li class="chapter" data-level="3.2.6" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-tất-cả-các-taxa-con-của-một-taxon"><i class="fa fa-check"></i><b>3.2.6</b> Xem danh sách tất cả các taxa con của một taxon</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="bandocoban.html"><a href="bandocoban.html"><i class="fa fa-check"></i><b>4</b> Thao tác cơ bản với tập tin bản đồ</a>
@@ -257,24 +251,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="maxent" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">Phần 7</span> Dự đoán vùng phân bố loài<a href="maxent.html#maxent" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Gọi các gói lệnh</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="maxent.html#cb160-1" tabindex="-1"></a><span class="fu">library</span>(rgbif)</span>
-<span id="cb160-2"><a href="maxent.html#cb160-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb160-3"><a href="maxent.html#cb160-3" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
-<span id="cb160-4"><a href="maxent.html#cb160-4" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
-<span id="cb160-5"><a href="maxent.html#cb160-5" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb160-6"><a href="maxent.html#cb160-6" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="maxent.html#cb141-1" tabindex="-1"></a><span class="fu">library</span>(rgbif)</span>
+<span id="cb141-2"><a href="maxent.html#cb141-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb141-3"><a href="maxent.html#cb141-3" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
+<span id="cb141-4"><a href="maxent.html#cb141-4" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb141-5"><a href="maxent.html#cb141-5" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb141-6"><a href="maxent.html#cb141-6" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span></code></pre></div>
 <div id="lấy-dữ-liệu-ghi-nhận-loài-gõ-đỏ-afzelia-xylocarpa-từ-gbif" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Lấy dữ liệu ghi nhận loài Gõ đỏ (<em>Afzelia xylocarpa</em>) từ GBIF<a href="maxent.html#lấy-dữ-liệu-ghi-nhận-loài-gõ-đỏ-afzelia-xylocarpa-từ-gbif" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="maxent.html#cb161-1" tabindex="-1"></a>mysp <span class="ot">&lt;-</span> <span class="st">&#39;Afzelia xylocarpa&#39;</span></span>
-<span id="cb161-2"><a href="maxent.html#cb161-2" tabindex="-1"></a>gbif_godo <span class="ot">&lt;-</span> <span class="fu">occ_data</span>(<span class="at">scientificName =</span> mysp, <span class="at">hasCoordinate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="maxent.html#cb142-1" tabindex="-1"></a>mysp <span class="ot">&lt;-</span> <span class="st">&#39;Afzelia xylocarpa&#39;</span></span>
+<span id="cb142-2"><a href="maxent.html#cb142-2" tabindex="-1"></a>gbif_godo <span class="ot">&lt;-</span> <span class="fu">occ_data</span>(<span class="at">scientificName =</span> mysp, <span class="at">hasCoordinate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Lọc ra các điểm được ghi nhận tại Việt Nam</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="maxent.html#cb162-1" tabindex="-1"></a>godoVN <span class="ot">&lt;-</span> gbif_godo<span class="sc">$</span>data <span class="sc">|&gt;</span> </span>
-<span id="cb162-2"><a href="maxent.html#cb162-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(recordedBy, recordNumber, country,decimalLatitude, decimalLongitude) <span class="sc">|&gt;</span> </span>
-<span id="cb162-3"><a href="maxent.html#cb162-3" tabindex="-1"></a>  <span class="fu">filter</span>(decimalLongitude <span class="sc">&gt;</span> <span class="dv">0</span>, decimalLatitude <span class="sc">&gt;</span><span class="dv">0</span>, country <span class="sc">==</span> <span class="st">&quot;Viet Nam&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="maxent.html#cb143-1" tabindex="-1"></a>godoVN <span class="ot">&lt;-</span> gbif_godo<span class="sc">$</span>data <span class="sc">|&gt;</span> </span>
+<span id="cb143-2"><a href="maxent.html#cb143-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(recordedBy, recordNumber, country,decimalLatitude, decimalLongitude) <span class="sc">|&gt;</span> </span>
+<span id="cb143-3"><a href="maxent.html#cb143-3" tabindex="-1"></a>  <span class="fu">filter</span>(decimalLongitude <span class="sc">&gt;</span> <span class="dv">0</span>, decimalLatitude <span class="sc">&gt;</span><span class="dv">0</span>, country <span class="sc">==</span> <span class="st">&quot;Viet Nam&quot;</span>)</span></code></pre></div>
 </div>
 <div id="xem-sơ-đồ-phân-bố-các-ghi-nhận" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Xem sơ đồ phân bố các ghi nhận<a href="maxent.html#xem-sơ-đồ-phân-bố-các-ghi-nhận" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="maxent.html#cb163-1" tabindex="-1"></a>vietnam <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;DATA/Vietnamdiaphantinh.geojson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="maxent.html#cb144-1" tabindex="-1"></a>vietnam <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;DATA/Vietnamdiaphantinh.geojson&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `Vietnamdiaphantinh&#39; from data source 
 ##   `/Users/bachnguyen/Library/CloudStorage/OneDrive-Personal/WORKING/ECOR/DATA/Vietnamdiaphantinh.geojson&#39; 
 ##   using driver `GeoJSON&#39;
@@ -283,23 +277,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Dimension:     XY
 ## Bounding box:  xmin: 102.1421 ymin: 6.953306 xmax: 116.9473 ymax: 23.3939
 ## Geodetic CRS:  WGS 84</code></pre>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="maxent.html#cb165-1" tabindex="-1"></a>godoVN_sf <span class="ot">&lt;-</span> godoVN <span class="sc">|&gt;</span> </span>
-<span id="cb165-2"><a href="maxent.html#cb165-2" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;decimalLongitude&quot;</span>, <span class="st">&quot;decimalLatitude&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb165-3"><a href="maxent.html#cb165-3" tabindex="-1"></a></span>
-<span id="cb165-4"><a href="maxent.html#cb165-4" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb165-5"><a href="maxent.html#cb165-5" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> vietnam, <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
-<span id="cb165-6"><a href="maxent.html#cb165-6" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> godoVN_sf, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb165-7"><a href="maxent.html#cb165-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-124-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="maxent.html#cb146-1" tabindex="-1"></a>godoVN_sf <span class="ot">&lt;-</span> godoVN <span class="sc">|&gt;</span> </span>
+<span id="cb146-2"><a href="maxent.html#cb146-2" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;decimalLongitude&quot;</span>, <span class="st">&quot;decimalLatitude&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb146-3"><a href="maxent.html#cb146-3" tabindex="-1"></a></span>
+<span id="cb146-4"><a href="maxent.html#cb146-4" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb146-5"><a href="maxent.html#cb146-5" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> vietnam, <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
+<span id="cb146-6"><a href="maxent.html#cb146-6" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> godoVN_sf, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb146-7"><a href="maxent.html#cb146-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-116-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="chạy-mô-phỏng-maxent" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Chạy mô phỏng Maxent<a href="maxent.html#chạy-mô-phỏng-maxent" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sử dụng dữ liệu môi trường gồm 19 biến khí hậu và 1 biến cao độ được cung cấp từ trang web <a href="https://www.worldclim.org/" class="uri">https://www.worldclim.org/</a>. Bộ dữ liệu này đã được cắt theo ranh Việt Nam phần đất liền. Chúng ta sẽ gọi các biến khí hậu này vào R với lệnh <code>stack</code> từ gói <code>raster</code>.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="maxent.html#cb166-1" tabindex="-1"></a><span class="co"># load toàn bộ biến khí hậu</span></span>
-<span id="cb166-2"><a href="maxent.html#cb166-2" tabindex="-1"></a>wcpath <span class="ot">=</span> <span class="st">&quot;DATA/VNBioWC/&quot;</span></span>
-<span id="cb166-3"><a href="maxent.html#cb166-3" tabindex="-1"></a>VNvariablelist <span class="ot">=</span> <span class="fu">paste0</span>(wcpath,<span class="fu">list.files</span>(wcpath))</span>
-<span id="cb166-4"><a href="maxent.html#cb166-4" tabindex="-1"></a><span class="co">#xem danh sách các biến</span></span>
-<span id="cb166-5"><a href="maxent.html#cb166-5" tabindex="-1"></a>VNvariablelist</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="maxent.html#cb147-1" tabindex="-1"></a><span class="co"># load toàn bộ biến khí hậu</span></span>
+<span id="cb147-2"><a href="maxent.html#cb147-2" tabindex="-1"></a>wcpath <span class="ot">=</span> <span class="st">&quot;DATA/VNBioWC/&quot;</span></span>
+<span id="cb147-3"><a href="maxent.html#cb147-3" tabindex="-1"></a>VNvariablelist <span class="ot">=</span> <span class="fu">paste0</span>(wcpath,<span class="fu">list.files</span>(wcpath))</span>
+<span id="cb147-4"><a href="maxent.html#cb147-4" tabindex="-1"></a><span class="co">#xem danh sách các biến</span></span>
+<span id="cb147-5"><a href="maxent.html#cb147-5" tabindex="-1"></a>VNvariablelist</span></code></pre></div>
 <pre><code>##  [1] &quot;DATA/VNBioWC/01.tif&quot; &quot;DATA/VNBioWC/02.tif&quot; &quot;DATA/VNBioWC/03.tif&quot;
 ##  [4] &quot;DATA/VNBioWC/04.tif&quot; &quot;DATA/VNBioWC/05.tif&quot; &quot;DATA/VNBioWC/06.tif&quot;
 ##  [7] &quot;DATA/VNBioWC/07.tif&quot; &quot;DATA/VNBioWC/08.tif&quot; &quot;DATA/VNBioWC/09.tif&quot;
@@ -307,74 +301,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [13] &quot;DATA/VNBioWC/13.tif&quot; &quot;DATA/VNBioWC/14.tif&quot; &quot;DATA/VNBioWC/15.tif&quot;
 ## [16] &quot;DATA/VNBioWC/16.tif&quot; &quot;DATA/VNBioWC/17.tif&quot; &quot;DATA/VNBioWC/18.tif&quot;
 ## [19] &quot;DATA/VNBioWC/19.tif&quot; &quot;DATA/VNBioWC/20.tif&quot;</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="maxent.html#cb168-1" tabindex="-1"></a><span class="co"># đọc các biến vào R</span></span>
-<span id="cb168-2"><a href="maxent.html#cb168-2" tabindex="-1"></a>currentEnv <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">stack</span>(VNvariablelist) </span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="maxent.html#cb149-1" tabindex="-1"></a><span class="co"># đọc các biến vào R</span></span>
+<span id="cb149-2"><a href="maxent.html#cb149-2" tabindex="-1"></a>currentEnv <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">stack</span>(VNvariablelist) </span></code></pre></div>
 <p>Ví dụ hiển thị biến Bio01</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="maxent.html#cb169-1" tabindex="-1"></a><span class="fu">plot</span>(currentEnv[[<span class="dv">1</span>]])</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-126-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="maxent.html#cb150-1" tabindex="-1"></a><span class="fu">plot</span>(currentEnv[[<span class="dv">1</span>]])</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-118-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Gọi gói lệnh <code>dismo</code> để chạy mô phỏng MaxEnt</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="maxent.html#cb170-1" tabindex="-1"></a><span class="fu">library</span>(rJava)</span>
-<span id="cb170-2"><a href="maxent.html#cb170-2" tabindex="-1"></a><span class="fu">library</span>(dismo)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="maxent.html#cb151-1" tabindex="-1"></a><span class="fu">library</span>(rJava)</span>
+<span id="cb151-2"><a href="maxent.html#cb151-2" tabindex="-1"></a><span class="fu">library</span>(dismo)</span></code></pre></div>
 <p>Tạo các điểm ngẫu nhiên</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="maxent.html#cb171-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">134</span>)</span>
-<span id="cb171-2"><a href="maxent.html#cb171-2" tabindex="-1"></a>bg1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(currentEnv[[<span class="dv">1</span>]], <span class="at">n=</span><span class="dv">1000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="maxent.html#cb152-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">134</span>)</span>
+<span id="cb152-2"><a href="maxent.html#cb152-2" tabindex="-1"></a>bg1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(currentEnv[[<span class="dv">1</span>]], <span class="at">n=</span><span class="dv">1000</span>)</span></code></pre></div>
 <p>Khai báo thư mục lưu trữ các tập tin sẽ được tạo ra khi chạy mô phỏng.</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="maxent.html#cb172-1" tabindex="-1"></a>outpath <span class="ot">&lt;-</span> <span class="st">&quot;DATA/OUT/Maxent/&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="maxent.html#cb153-1" tabindex="-1"></a>outpath <span class="ot">&lt;-</span> <span class="st">&quot;DATA/OUT/Maxent/&quot;</span></span></code></pre></div>
 <p>Dữ liệu ghi nhận cần được sang định dạng <code>spatial</code></p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="maxent.html#cb173-1" tabindex="-1"></a>godoVN_spatial <span class="ot">&lt;-</span> godoVN_sf <span class="sc">|&gt;</span> <span class="fu">as</span>(<span class="st">&quot;Spatial&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="maxent.html#cb154-1" tabindex="-1"></a>godoVN_spatial <span class="ot">&lt;-</span> godoVN_sf <span class="sc">|&gt;</span> <span class="fu">as</span>(<span class="st">&quot;Spatial&quot;</span>)</span></code></pre></div>
 <p>Chạy mô phỏng với lệnh <code>maxent()</code> trong gói <code>dismo</code></p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="maxent.html#cb174-1" tabindex="-1"></a><span class="co">#B2 chay model</span></span>
-<span id="cb174-2"><a href="maxent.html#cb174-2" tabindex="-1"></a>  modelBasic <span class="ot">&lt;-</span> <span class="fu">maxent</span>(</span>
-<span id="cb174-3"><a href="maxent.html#cb174-3" tabindex="-1"></a>    <span class="at">x=</span>currentEnv, <span class="co"># climate variable</span></span>
-<span id="cb174-4"><a href="maxent.html#cb174-4" tabindex="-1"></a>    <span class="at">p=</span>godoVN_spatial, <span class="co"># species point</span></span>
-<span id="cb174-5"><a href="maxent.html#cb174-5" tabindex="-1"></a>    <span class="at">a=</span>bg1, <span class="co">#point background</span></span>
-<span id="cb174-6"><a href="maxent.html#cb174-6" tabindex="-1"></a>    <span class="at">path=</span>outpath, <span class="co"># folder to output result</span></span>
-<span id="cb174-7"><a href="maxent.html#cb174-7" tabindex="-1"></a>    <span class="at">removeDuplicates=</span><span class="cn">TRUE</span>, <span class="co"># remove duplicate points</span></span>
-<span id="cb174-8"><a href="maxent.html#cb174-8" tabindex="-1"></a>    <span class="co"># Additional argument that can be passed to MaxEnt</span></span>
-<span id="cb174-9"><a href="maxent.html#cb174-9" tabindex="-1"></a>    <span class="at">args=</span><span class="fu">c</span>(</span>
-<span id="cb174-10"><a href="maxent.html#cb174-10" tabindex="-1"></a>      <span class="st">&#39;linear=true&#39;</span>,</span>
-<span id="cb174-11"><a href="maxent.html#cb174-11" tabindex="-1"></a>      <span class="st">&#39;quadratic=true&#39;</span>,</span>
-<span id="cb174-12"><a href="maxent.html#cb174-12" tabindex="-1"></a>      <span class="st">&#39;product=true&#39;</span>,</span>
-<span id="cb174-13"><a href="maxent.html#cb174-13" tabindex="-1"></a>      <span class="st">&#39;threshold=true&#39;</span>,</span>
-<span id="cb174-14"><a href="maxent.html#cb174-14" tabindex="-1"></a>      <span class="st">&#39;hinge=false&#39;</span>,</span>
-<span id="cb174-15"><a href="maxent.html#cb174-15" tabindex="-1"></a>      <span class="st">&#39;responsecurves=true&#39;</span>,</span>
-<span id="cb174-16"><a href="maxent.html#cb174-16" tabindex="-1"></a>      <span class="st">&#39;jackknife=true&#39;</span>,</span>
-<span id="cb174-17"><a href="maxent.html#cb174-17" tabindex="-1"></a>      <span class="st">&#39;askoverwrite=false&#39;</span>,</span>
-<span id="cb174-18"><a href="maxent.html#cb174-18" tabindex="-1"></a>      <span class="st">&#39;removeduplicates=true&#39;</span>,</span>
-<span id="cb174-19"><a href="maxent.html#cb174-19" tabindex="-1"></a>      <span class="st">&#39;writeplotdata=true&#39;</span></span>
-<span id="cb174-20"><a href="maxent.html#cb174-20" tabindex="-1"></a>    )</span>
-<span id="cb174-21"><a href="maxent.html#cb174-21" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="maxent.html#cb155-1" tabindex="-1"></a><span class="co">#B2 chay model</span></span>
+<span id="cb155-2"><a href="maxent.html#cb155-2" tabindex="-1"></a>  modelBasic <span class="ot">&lt;-</span> <span class="fu">maxent</span>(</span>
+<span id="cb155-3"><a href="maxent.html#cb155-3" tabindex="-1"></a>    <span class="at">x=</span>currentEnv, <span class="co"># climate variable</span></span>
+<span id="cb155-4"><a href="maxent.html#cb155-4" tabindex="-1"></a>    <span class="at">p=</span>godoVN_spatial, <span class="co"># species point</span></span>
+<span id="cb155-5"><a href="maxent.html#cb155-5" tabindex="-1"></a>    <span class="at">a=</span>bg1, <span class="co">#point background</span></span>
+<span id="cb155-6"><a href="maxent.html#cb155-6" tabindex="-1"></a>    <span class="at">path=</span>outpath, <span class="co"># folder to output result</span></span>
+<span id="cb155-7"><a href="maxent.html#cb155-7" tabindex="-1"></a>    <span class="at">removeDuplicates=</span><span class="cn">TRUE</span>, <span class="co"># remove duplicate points</span></span>
+<span id="cb155-8"><a href="maxent.html#cb155-8" tabindex="-1"></a>    <span class="co"># Additional argument that can be passed to MaxEnt</span></span>
+<span id="cb155-9"><a href="maxent.html#cb155-9" tabindex="-1"></a>    <span class="at">args=</span><span class="fu">c</span>(</span>
+<span id="cb155-10"><a href="maxent.html#cb155-10" tabindex="-1"></a>      <span class="st">&#39;linear=true&#39;</span>,</span>
+<span id="cb155-11"><a href="maxent.html#cb155-11" tabindex="-1"></a>      <span class="st">&#39;quadratic=true&#39;</span>,</span>
+<span id="cb155-12"><a href="maxent.html#cb155-12" tabindex="-1"></a>      <span class="st">&#39;product=true&#39;</span>,</span>
+<span id="cb155-13"><a href="maxent.html#cb155-13" tabindex="-1"></a>      <span class="st">&#39;threshold=true&#39;</span>,</span>
+<span id="cb155-14"><a href="maxent.html#cb155-14" tabindex="-1"></a>      <span class="st">&#39;hinge=false&#39;</span>,</span>
+<span id="cb155-15"><a href="maxent.html#cb155-15" tabindex="-1"></a>      <span class="st">&#39;responsecurves=true&#39;</span>,</span>
+<span id="cb155-16"><a href="maxent.html#cb155-16" tabindex="-1"></a>      <span class="st">&#39;jackknife=true&#39;</span>,</span>
+<span id="cb155-17"><a href="maxent.html#cb155-17" tabindex="-1"></a>      <span class="st">&#39;askoverwrite=false&#39;</span>,</span>
+<span id="cb155-18"><a href="maxent.html#cb155-18" tabindex="-1"></a>      <span class="st">&#39;removeduplicates=true&#39;</span>,</span>
+<span id="cb155-19"><a href="maxent.html#cb155-19" tabindex="-1"></a>      <span class="st">&#39;writeplotdata=true&#39;</span></span>
+<span id="cb155-20"><a href="maxent.html#cb155-20" tabindex="-1"></a>    )</span>
+<span id="cb155-21"><a href="maxent.html#cb155-21" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Đánh giá mô hình</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="maxent.html#cb175-1" tabindex="-1"></a><span class="do">#### evaluate</span></span>
-<span id="cb175-2"><a href="maxent.html#cb175-2" tabindex="-1"></a>e1 <span class="ot">&lt;-</span> <span class="fu">evaluate</span>(modelBasic, <span class="at">p=</span>godoVN_spatial, <span class="at">a=</span>bg1, <span class="at">x=</span>currentEnv)</span>
-<span id="cb175-3"><a href="maxent.html#cb175-3" tabindex="-1"></a><span class="fu">plot</span>(e1, <span class="st">&#39;ROC&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-132-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="maxent.html#cb156-1" tabindex="-1"></a><span class="do">#### evaluate</span></span>
+<span id="cb156-2"><a href="maxent.html#cb156-2" tabindex="-1"></a>e1 <span class="ot">&lt;-</span> <span class="fu">evaluate</span>(modelBasic, <span class="at">p=</span>godoVN_spatial, <span class="at">a=</span>bg1, <span class="at">x=</span>currentEnv)</span>
+<span id="cb156-3"><a href="maxent.html#cb156-3" tabindex="-1"></a><span class="fu">plot</span>(e1, <span class="st">&#39;ROC&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-124-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Sau khi có mô hình, chúng ta sử dụng lệnh <code>predict</code> để tạo lớp bản đồ raster thể hiện vùng phân bố dự đoán cho loài.</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="maxent.html#cb176-1" tabindex="-1"></a>fname<span class="ot">=</span><span class="st">&quot;predict_map.tif&quot;</span></span>
-<span id="cb176-2"><a href="maxent.html#cb176-2" tabindex="-1"></a>mapPredict <span class="ot">&lt;-</span> <span class="fu">predict</span>(</span>
-<span id="cb176-3"><a href="maxent.html#cb176-3" tabindex="-1"></a>  <span class="at">object=</span>modelBasic,</span>
-<span id="cb176-4"><a href="maxent.html#cb176-4" tabindex="-1"></a>  <span class="at">x=</span>currentEnv,</span>
-<span id="cb176-5"><a href="maxent.html#cb176-5" tabindex="-1"></a>  <span class="at">filename=</span><span class="fu">paste0</span>(outpath,fname),</span>
-<span id="cb176-6"><a href="maxent.html#cb176-6" tabindex="-1"></a>  <span class="at">na.rm=</span><span class="cn">TRUE</span>,</span>
-<span id="cb176-7"><a href="maxent.html#cb176-7" tabindex="-1"></a>  <span class="at">format=</span><span class="st">&#39;GTiff&#39;</span>,</span>
-<span id="cb176-8"><a href="maxent.html#cb176-8" tabindex="-1"></a>  <span class="at">overwrite=</span><span class="cn">TRUE</span>,</span>
-<span id="cb176-9"><a href="maxent.html#cb176-9" tabindex="-1"></a>  <span class="at">progress=</span><span class="st">&#39;text&#39;</span></span>
-<span id="cb176-10"><a href="maxent.html#cb176-10" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="maxent.html#cb157-1" tabindex="-1"></a>fname<span class="ot">=</span><span class="st">&quot;predict_map.tif&quot;</span></span>
+<span id="cb157-2"><a href="maxent.html#cb157-2" tabindex="-1"></a>mapPredict <span class="ot">&lt;-</span> <span class="fu">predict</span>(</span>
+<span id="cb157-3"><a href="maxent.html#cb157-3" tabindex="-1"></a>  <span class="at">object=</span>modelBasic,</span>
+<span id="cb157-4"><a href="maxent.html#cb157-4" tabindex="-1"></a>  <span class="at">x=</span>currentEnv,</span>
+<span id="cb157-5"><a href="maxent.html#cb157-5" tabindex="-1"></a>  <span class="at">filename=</span><span class="fu">paste0</span>(outpath,fname),</span>
+<span id="cb157-6"><a href="maxent.html#cb157-6" tabindex="-1"></a>  <span class="at">na.rm=</span><span class="cn">TRUE</span>,</span>
+<span id="cb157-7"><a href="maxent.html#cb157-7" tabindex="-1"></a>  <span class="at">format=</span><span class="st">&#39;GTiff&#39;</span>,</span>
+<span id="cb157-8"><a href="maxent.html#cb157-8" tabindex="-1"></a>  <span class="at">overwrite=</span><span class="cn">TRUE</span>,</span>
+<span id="cb157-9"><a href="maxent.html#cb157-9" tabindex="-1"></a>  <span class="at">progress=</span><span class="st">&#39;text&#39;</span></span>
+<span id="cb157-10"><a href="maxent.html#cb157-10" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##   |                                                                              |                                                                      |   0%  |                                                                              |==================                                                    |  25%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================================| 100%
 ## </code></pre>
 <p>Vẽ sơ đồ với <code>ggplot()</code>
 Vùng phân bố tiềm năng của loài với giá trị dự đoán MaxEnt chạy từ 0 đến 1. Khu vực có giá trị càng gần 1 là những khu vực có điều kiện khí hậu, địa hình phù hợp cho sự phân bố của loài. Và ngược lại khu vực có giá trị càng gần 0 là những khu vực khó khăn.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="maxent.html#cb178-1" tabindex="-1"></a>mapPredict_SR <span class="ot">&lt;-</span> <span class="fu">rast</span>(mapPredict)</span>
-<span id="cb178-2"><a href="maxent.html#cb178-2" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb178-3"><a href="maxent.html#cb178-3" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> vietnam, <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
-<span id="cb178-4"><a href="maxent.html#cb178-4" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data=</span>mapPredict_SR) <span class="sc">+</span></span>
-<span id="cb178-5"><a href="maxent.html#cb178-5" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">&quot;MaxEnt value&quot;</span>, <span class="at">option =</span> <span class="st">&quot;viridis&quot;</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">na.value =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb178-6"><a href="maxent.html#cb178-6" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> godoVN_sf, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb178-7"><a href="maxent.html#cb178-7" tabindex="-1"></a>    <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
-<span id="cb178-8"><a href="maxent.html#cb178-8" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Longitude&quot;</span>,</span>
-<span id="cb178-9"><a href="maxent.html#cb178-9" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Latitude&quot;</span>,</span>
-<span id="cb178-10"><a href="maxent.html#cb178-10" tabindex="-1"></a>         <span class="at">title =</span> <span class="fu">names</span>(raster))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-134-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="maxent.html#cb159-1" tabindex="-1"></a>mapPredict_SR <span class="ot">&lt;-</span> <span class="fu">rast</span>(mapPredict)</span>
+<span id="cb159-2"><a href="maxent.html#cb159-2" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb159-3"><a href="maxent.html#cb159-3" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> vietnam, <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
+<span id="cb159-4"><a href="maxent.html#cb159-4" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data=</span>mapPredict_SR) <span class="sc">+</span></span>
+<span id="cb159-5"><a href="maxent.html#cb159-5" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">&quot;MaxEnt value&quot;</span>, <span class="at">option =</span> <span class="st">&quot;viridis&quot;</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">na.value =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb159-6"><a href="maxent.html#cb159-6" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> godoVN_sf, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb159-7"><a href="maxent.html#cb159-7" tabindex="-1"></a>    <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb159-8"><a href="maxent.html#cb159-8" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Longitude&quot;</span>,</span>
+<span id="cb159-9"><a href="maxent.html#cb159-9" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Latitude&quot;</span>,</span>
+<span id="cb159-10"><a href="maxent.html#cb159-10" tabindex="-1"></a>         <span class="at">title =</span> <span class="fu">names</span>(raster))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-126-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
@@ -398,42 +392,42 @@ Vùng phân bố tiềm năng của loài với giá trị dự đoán MaxEnt ch
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

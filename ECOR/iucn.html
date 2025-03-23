@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Phần 2 Tra cứu cấp độ quý hiếm của loài theo IUCN | Phân tích dữ liệu sinh thái học cơ bản với R</title>
   <meta name="description" content="Tài liệu này giới thiệu một số phân tích dữ liệu sinh thái học cơ bản với phần mềm R." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Phần 2 Tra cứu cấp độ quý hiếm của loài theo IUCN | Phân tích dữ liệu sinh thái học cơ bản với R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Nguyễn Lê Xuân Bách" />
 
 
-<meta name="date" content="2024-09-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -75,7 +75,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -172,17 +172,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="iucn.html"><a href="iucn.html"><i class="fa fa-check"></i><b>2</b> Tra cứu cấp độ quý hiếm của loài theo IUCN</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="iucn.html"><a href="iucn.html#xin-cấp-và-khai-báo-mã-cá-nhân-từ-iucn"><i class="fa fa-check"></i><b>2.1</b> Xin cấp và khai báo mã cá nhân từ IUCN</a></li>
-<li class="chapter" data-level="2.2" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-rredlist"><i class="fa fa-check"></i><b>2.2</b> Sử dụng gói <code>rredlist</code></a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài"><i class="fa fa-check"></i><b>2.2.1</b> Tra cứu cho 1 loài</a></li>
-<li class="chapter" data-level="2.2.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài"><i class="fa fa-check"></i><b>2.2.2</b> Tra cứu cho nhiều loài</a></li>
-<li class="chapter" data-level="2.2.3" data-path="iucn.html"><a href="iucn.html#xem-quốc-gia-có-sự-phân-bố-của-loài"><i class="fa fa-check"></i><b>2.2.3</b> Xem quốc gia có sự phân bố của loài:</a></li>
-</ul></li>
+<li class="chapter" data-level="2.1" data-path="iucn.html"><a href="iucn.html#xin-cấp-mã-token-cá-nhân-từ-iucn"><i class="fa fa-check"></i><b>2.1</b> Xin cấp mã TOKEN cá nhân từ IUCN</a></li>
+<li class="chapter" data-level="2.2" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-iucnredlist"><i class="fa fa-check"></i><b>2.2</b> Sử dụng gói <code>iucnredlist</code></a></li>
 <li class="chapter" data-level="2.3" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-taxize"><i class="fa fa-check"></i><b>2.3</b> Sử dụng gói <code>taxize</code></a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài-1"><i class="fa fa-check"></i><b>2.3.1</b> Tra cứu cho 1 loài</a></li>
-<li class="chapter" data-level="2.3.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài-1"><i class="fa fa-check"></i><b>2.3.2</b> 2.2.2 Tra cứu cho nhiều loài</a></li>
+<li class="chapter" data-level="2.3.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài"><i class="fa fa-check"></i><b>2.3.1</b> Tra cứu cho 1 loài</a></li>
+<li class="chapter" data-level="2.3.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài"><i class="fa fa-check"></i><b>2.3.2</b> 2.2.2 Tra cứu cho nhiều loài</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="iucn.html"><a href="iucn.html#tính-chỉ-số-red-list-index"><i class="fa fa-check"></i><b>2.4</b> Tính chỉ số Red List Index</a></li>
 </ul></li>
@@ -194,10 +189,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="danhphap.html"><a href="danhphap.html#nhóm-thực-vật"><i class="fa fa-check"></i><b>3.2.1</b> Nhóm Thực vật</a></li>
 <li class="chapter" data-level="3.2.2" data-path="danhphap.html"><a href="danhphap.html#ví-dụ-với-gói-lệnh-rwcvp"><i class="fa fa-check"></i><b>3.2.2</b> Ví dụ với gói lệnh <code>rWCVP</code></a></li>
 <li class="chapter" data-level="3.2.3" data-path="danhphap.html"><a href="danhphap.html#danh-pháp-động-vật"><i class="fa fa-check"></i><b>3.2.3</b> Danh pháp động vật</a></li>
-<li class="chapter" data-level="3.2.4" data-path="danhphap.html"><a href="danhphap.html#xem-thông-tin-về-loài"><i class="fa fa-check"></i><b>3.2.4</b> Xem thông tin về loài</a></li>
-<li class="chapter" data-level="3.2.5" data-path="danhphap.html"><a href="danhphap.html#tìm-các-cấp-phân-loại-từ-tên-loài"><i class="fa fa-check"></i><b>3.2.5</b> Tìm các cấp phân loại từ tên loài</a></li>
-<li class="chapter" data-level="3.2.6" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-các-tên-đồng-danh-của-một-loài-với-bộ-dữ-liệu-eol"><i class="fa fa-check"></i><b>3.2.6</b> Xem danh sách các tên đồng danh của một loài với bộ dữ liệu EOL</a></li>
-<li class="chapter" data-level="3.2.7" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-tất-cả-các-taxa-con-của-một-taxon"><i class="fa fa-check"></i><b>3.2.7</b> Xem danh sách tất cả các taxa con của một taxon</a></li>
+<li class="chapter" data-level="3.2.4" data-path="danhphap.html"><a href="danhphap.html#tìm-các-cấp-phân-loại-từ-tên-loài"><i class="fa fa-check"></i><b>3.2.4</b> Tìm các cấp phân loại từ tên loài</a></li>
+<li class="chapter" data-level="3.2.5" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-các-tên-đồng-danh-của-một-loài-với-bộ-dữ-liệu-eol"><i class="fa fa-check"></i><b>3.2.5</b> Xem danh sách các tên đồng danh của một loài với bộ dữ liệu EOL</a></li>
+<li class="chapter" data-level="3.2.6" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-tất-cả-các-taxa-con-của-một-taxon"><i class="fa fa-check"></i><b>3.2.6</b> Xem danh sách tất cả các taxa con của một taxon</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="bandocoban.html"><a href="bandocoban.html"><i class="fa fa-check"></i><b>4</b> Thao tác cơ bản với tập tin bản đồ</a>
@@ -256,135 +250,123 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="iucn" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Phần 2</span> Tra cứu cấp độ quý hiếm của loài theo IUCN<a href="iucn.html#iucn" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="xin-cấp-và-khai-báo-mã-cá-nhân-từ-iucn" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Xin cấp và khai báo mã cá nhân từ IUCN<a href="iucn.html#xin-cấp-và-khai-báo-mã-cá-nhân-từ-iucn" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Để có thể tra cứu tự động trên dữ liệu IUCN, ta cần mã token được cấp tại địa chỉ <a href="https://apiv3.iucnredlist.org/api/v3/token" class="uri">https://apiv3.iucnredlist.org/api/v3/token</a>. Mã này được cấp riêng cho từng cá nhân. Tuy nhiên vào thời điểm biên soạn tài liệu này, hệ thống cấp mã API của IUCN đang bị lỗi và tạm ngưng hoạt động. Chúng ta có thể sử dụng mã token tạm là “9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee”</p>
-<p>Khai báo trong R với hai cách như sau:</p>
-<p><em>Cách 1</em>: chèn mã vào option trước khi chạy các lệnh tra cứu.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="iucn.html#cb44-1" tabindex="-1"></a><span class="fu">options</span>(<span class="at">iucn_redlist_key=</span><span class="st">&quot;9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee&quot;</span>)</span></code></pre></div>
-<p><em>Cách 2</em>: chèn dòng lệnh với cấu trúc <code>IUCN_REDLIST_KEY="IUCN_TOKEN"</code> vào tập tin có tên <code>.Renviron</code>. Sử dụng dòng lệnh <code>usethis::edit_r_environ()</code> trong R để mở tập tin này lên.</p>
-<p>Có nhiều gói lệnh hỗ trợ tra cứu tình trạng nguy cấp của loài. Tài liệu này trình bày cách sử dụng với 2 gói lệnh <code>rredlist</code> và <code>taxsize</code>.</p>
+<div id="xin-cấp-mã-token-cá-nhân-từ-iucn" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Xin cấp mã TOKEN cá nhân từ IUCN<a href="iucn.html#xin-cấp-mã-token-cá-nhân-từ-iucn" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Để có thể tra cứu tự động trên dữ liệu IUCN, ta cần đăng ký tài khoản và lấy mã token được cấp tại địa chỉ <a href="https://api.iucnredlist.org/" class="uri">https://api.iucnredlist.org/</a>. Mã này được cấp riêng cho từng cá nhân.</p>
+<p>Có nhiều gói lệnh hỗ trợ tra cứu tình trạng nguy cấp của loài. Tài liệu này trình bày cách sử dụng với 2 gói lệnh <code>iucnredlist</code> và <code>taxsize</code>.</p>
 </div>
-<div id="sử-dụng-gói-rredlist" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Sử dụng gói <code>rredlist</code><a href="iucn.html#sử-dụng-gói-rredlist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="iucn.html#cb45-1" tabindex="-1"></a><span class="fu">library</span>(rredlist)</span></code></pre></div>
-<p>Tra cứu với lệnh <code>rl_search()</code>. Kết quả trả về là một list gồm 2 phần tử : * name: chứa tên loài tra cứu * result: bảng gồm 30 trường thông tin liên quan đến loài</p>
-<div id="tra-cứu-cho-1-loài" class="section level3 hasAnchor" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Tra cứu cho 1 loài<a href="iucn.html#tra-cứu-cho-1-loài" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="iucn.html#cb46-1" tabindex="-1"></a>iucn_res <span class="ot">&lt;-</span> <span class="fu">rl_search</span>(<span class="st">&quot;Afzelia xylocarpa&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="iucn.html#cb47-1" tabindex="-1"></a><span class="co"># Xem tên các trường thông tin</span></span>
-<span id="cb47-2"><a href="iucn.html#cb47-2" tabindex="-1"></a><span class="fu">colnames</span>(iucn_res<span class="sc">$</span>result)</span></code></pre></div>
-<pre><code>##  [1] &quot;taxonid&quot;            &quot;scientific_name&quot;    &quot;kingdom&quot;           
-##  [4] &quot;phylum&quot;             &quot;class&quot;              &quot;order&quot;             
-##  [7] &quot;family&quot;             &quot;genus&quot;              &quot;main_common_name&quot;  
-## [10] &quot;authority&quot;          &quot;published_year&quot;     &quot;assessment_date&quot;   
-## [13] &quot;category&quot;           &quot;criteria&quot;           &quot;population_trend&quot;  
-## [16] &quot;marine_system&quot;      &quot;freshwater_system&quot;  &quot;terrestrial_system&quot;
-## [19] &quot;assessor&quot;           &quot;reviewer&quot;           &quot;aoo_km2&quot;           
-## [22] &quot;eoo_km2&quot;            &quot;elevation_upper&quot;    &quot;elevation_lower&quot;   
-## [25] &quot;depth_upper&quot;        &quot;depth_lower&quot;        &quot;errata_flag&quot;       
-## [28] &quot;errata_reason&quot;      &quot;amended_flag&quot;       &quot;amended_reason&quot;</code></pre>
-<p>Trường <code>category</code> trình bày thông tin về tình trạng nguy cấp của loài.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="iucn.html#cb49-1" tabindex="-1"></a>iucn_res<span class="sc">$</span>result<span class="sc">$</span>category</span></code></pre></div>
-<pre><code>## [1] &quot;EN&quot;</code></pre>
-<p>Xem thêm một số thông tin khác</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="iucn.html#cb51-1" tabindex="-1"></a>iucn_res<span class="sc">$</span>result <span class="sc">|&gt;</span></span>
-<span id="cb51-2"><a href="iucn.html#cb51-2" tabindex="-1"></a>  <span class="fu">select</span>(scientific_name, category, criteria, published_year)</span></code></pre></div>
-<pre><code>##     scientific_name category criteria published_year
-## 1 Afzelia xylocarpa       EN     A1cd           1998</code></pre>
-</div>
-<div id="tra-cứu-cho-nhiều-loài" class="section level3 hasAnchor" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Tra cứu cho nhiều loài<a href="iucn.html#tra-cứu-cho-nhiều-loài" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Hàm <code>rl_search()</code> chỉ áp dụng để tra cứu một loài, để tra cứu nhiều loài cần đặt lệnh tra cứu trong vòng lặp. Ví dụ:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="iucn.html#cb53-1" tabindex="-1"></a>mysp <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Afzelia xylocarpa&quot;</span>,<span class="st">&quot;Xylopia pierrei&quot;</span>,<span class="st">&quot;Dipterocarpus dyeri&quot;</span>)</span>
-<span id="cb53-2"><a href="iucn.html#cb53-2" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">lapply</span>(mysp, rl_search)</span></code></pre></div>
-<p>Xem nhanh kết quả</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="iucn.html#cb54-1" tabindex="-1"></a><span class="fu">sapply</span>(res, <span class="cf">function</span>(x) <span class="fu">paste</span>(x<span class="sc">$</span>name,<span class="st">&quot;-&quot;</span>, x<span class="sc">$</span>result<span class="sc">$</span>category))</span></code></pre></div>
-<pre><code>## [1] &quot;Afzelia xylocarpa - EN&quot;   &quot;Xylopia pierrei - NT&quot;    
-## [3] &quot;Dipterocarpus dyeri - EN&quot;</code></pre>
-</div>
-<div id="xem-quốc-gia-có-sự-phân-bố-của-loài" class="section level3 hasAnchor" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Xem quốc gia có sự phân bố của loài:<a href="iucn.html#xem-quốc-gia-có-sự-phân-bố-của-loài" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Ngoài việc tra cứu tình trạng nguy cấp, gói lệnh này còn hỗ trợ tra cứu danh sách các quốc gia có sự phân bố của loài thông qua lệnh <code>rl_occ_country()</code>.</p>
-<p>Ví dụ: Tra cứu các quốc gia có sự phân bố loài Gõ đỏ (<em>Afzelia xylocarpa</em>)</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="iucn.html#cb56-1" tabindex="-1"></a><span class="fu">rl_occ_country</span>(<span class="st">&#39;Afzelia xylocarpa&#39;</span>)</span></code></pre></div>
-<pre><code>## $name
-## [1] &quot;Afzelia xylocarpa&quot;
-## 
-## $count
-## [1] 5
-## 
-## $result
-##   code                          country presence origin distribution_code
-## 1   KH                         Cambodia   Extant Native            Native
-## 2   LA Lao People&#39;s Democratic Republic   Extant Native            Native
-## 3   MM                          Myanmar   Extant Native            Native
-## 4   TH                         Thailand   Extant Native            Native
-## 5   VN                         Viet Nam   Extant Native            Native</code></pre>
-</div>
+<div id="sử-dụng-gói-iucnredlist" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Sử dụng gói <code>iucnredlist</code><a href="iucn.html#sử-dụng-gói-iucnredlist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="iucn.html#cb44-1" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb44-2"><a href="iucn.html#cb44-2" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;IUCN-UK/iucnredlist&quot;)</span></span>
+<span id="cb44-3"><a href="iucn.html#cb44-3" tabindex="-1"></a><span class="fu">library</span>(iucnredlist)</span></code></pre></div>
+<p>Đầu tiên cần khai báo mã Token</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="iucn.html#cb45-1" tabindex="-1"></a>api <span class="ot">&lt;-</span> <span class="fu">init_api</span>(<span class="st">&quot;your_red_list_api_key&quot;</span>)</span></code></pre></div>
+<p>Để tra cứu tình trạng của loài, chúng ta cần biết mã <code>assessment_id</code> từ danh pháp loài. Sử dụng lệnh <code>assessments_by_name()</code> để tìm mã. Sau đó dùng lệnh <code>assessment_data()</code> để lấy thông tin</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="iucn.html#cb46-1" tabindex="-1"></a>iucn_res <span class="ot">&lt;-</span> <span class="fu">assessments_by_name</span>(api, <span class="at">genus =</span> <span class="st">&quot;Afzelia&quot;</span>, <span class="at">species =</span> <span class="st">&quot;xylocarpa&quot;</span>)</span>
+<span id="cb46-2"><a href="iucn.html#cb46-2" tabindex="-1"></a><span class="fu">t</span>(iucn_res)</span></code></pre></div>
+<pre><code>##                              [,1]                                               
+## year_published               &quot;1998&quot;                                             
+## latest                       &quot;TRUE&quot;                                             
+## possibly_extinct             &quot;FALSE&quot;                                            
+## possibly_extinct_in_the_wild &quot;FALSE&quot;                                            
+## sis_taxon_id                 &quot;32811&quot;                                            
+## url                          &quot;https://www.iucnredlist.org/species/32811/9731140&quot;
+## assessment_id                &quot;9731140&quot;                                          
+## scopes_description_en        &quot;Global&quot;                                           
+## scopes_code                  &quot;1&quot;</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="iucn.html#cb48-1" tabindex="-1"></a>assessment_raw <span class="ot">&lt;-</span> <span class="fu">assessment_data</span>(api, <span class="dv">9731140</span>)</span>
+<span id="cb48-2"><a href="iucn.html#cb48-2" tabindex="-1"></a>assessment <span class="ot">&lt;-</span> <span class="fu">parse_assessment_data</span>(assessment_raw)</span>
+<span id="cb48-3"><a href="iucn.html#cb48-3" tabindex="-1"></a>assessment<span class="sc">$</span>red_list_category</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 3
+##   version description code 
+##   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;
+## 1 2.3     Endangered  EN</code></pre>
+<p>Xem quốc gia có sự phân bố của loài:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="iucn.html#cb50-1" tabindex="-1"></a>assessment<span class="sc">$</span>locations</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 7
+##   is_endemic formerlyBred origin presence seasonality description          code 
+##   &lt;lgl&gt;      &lt;lgl&gt;        &lt;chr&gt;  &lt;chr&gt;    &lt;lgl&gt;       &lt;chr&gt;                &lt;chr&gt;
+## 1 FALSE      NA           Native Extant   NA          Cambodia             KH   
+## 2 FALSE      NA           Native Extant   NA          Myanmar              MM   
+## 3 FALSE      NA           Native Extant   NA          Thailand             TH   
+## 4 FALSE      NA           Native Extant   NA          Viet Nam             VN   
+## 5 FALSE      NA           Native Extant   NA          Lao People&#39;s Democr… LA</code></pre>
 </div>
 <div id="sử-dụng-gói-taxize" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Sử dụng gói <code>taxize</code><a href="iucn.html#sử-dụng-gói-taxize" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Gọi gói lệnh và sử dụng lệnh <code>iucn_summary()</code> để tra cứu thông tin trực tiếp trên trang web của IUCN.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="iucn.html#cb58-1" tabindex="-1"></a><span class="fu">library</span>(taxize)</span></code></pre></div>
-<div id="tra-cứu-cho-1-loài-1" class="section level3 hasAnchor" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Tra cứu cho 1 loài<a href="iucn.html#tra-cứu-cho-1-loài-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="iucn.html#cb52-1" tabindex="-1"></a><span class="fu">library</span>(taxize)</span></code></pre></div>
+<p>Chèn mã token vào option trước khi chạy các lệnh tra cứu.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="iucn.html#cb53-1" tabindex="-1"></a><span class="fu">options</span>(<span class="at">iucn_redlist_key=</span><span class="st">&quot;IUCN_TOKEN&quot;</span>)</span></code></pre></div>
+<div id="tra-cứu-cho-1-loài" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Tra cứu cho 1 loài<a href="iucn.html#tra-cứu-cho-1-loài" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><em>Ví dụ</em>: Tra cứu cho loài <em>Afzelia xylocarpa</em>:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="iucn.html#cb59-1" tabindex="-1"></a>iucn_res <span class="ot">&lt;-</span> <span class="fu">iucn_summary</span>(<span class="st">&quot;Afzelia xylocarpa&quot;</span>)</span></code></pre></div>
-<pre><code>## ══  1 queries  ═══════════════
-## ✔  Found:  Afzelia xylocarpa
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="iucn.html#cb54-1" tabindex="-1"></a>iucn_res <span class="ot">&lt;-</span> <span class="fu">iucn_summary</span>(<span class="st">&quot;Afzelia xylocarpa&quot;</span>)</span></code></pre></div>
+<pre><code>## ══  1 queries  ═══════════════</code></pre>
+<pre><code>## ✔  Found:  Afzelia xylocarpa
 ## ══  Results  ═════════════════
 ## 
 ## • Total: 1 
 ## • Found: 1 
 ## • Not Found: 0</code></pre>
-<p>Kết quả trả về là định dạng <code>list</code>, trong đó cho mỗi loài là một phần tử. Mỗi phần tử lại là một <code>list</code> khác chứa 4 thông tin sau (nếu có): Tình trạng nguy cấp, lịch sử xếp hạng, vùng phân bố và xu hướng về việc thay đổi kích thước quần thể.</p>
+<p>Kết quả trả về là định dạng <code>list</code>, trong đó cho mỗi loài là một phần tử. Mỗi phần tử lại là một <code>list</code> chứa thông tin liên quan đến loài</p>
 <p>Vì chúng ta chỉ tra cho 1 loài nên ta truy vấn trực tiếp vào phần tử đầu tiên của kết quả.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="iucn.html#cb61-1" tabindex="-1"></a><span class="fu">names</span>(iucn_res[[<span class="dv">1</span>]])</span></code></pre></div>
-<pre><code>## [1] &quot;status&quot;  &quot;history&quot; &quot;distr&quot;   &quot;trend&quot;</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="iucn.html#cb63-1" tabindex="-1"></a><span class="co"># Tình trạng nguy cấp</span></span>
-<span id="cb63-2"><a href="iucn.html#cb63-2" tabindex="-1"></a>iucn_res[[<span class="dv">1</span>]]<span class="sc">$</span>status</span></code></pre></div>
-<pre><code>## [1] &quot;EN&quot;</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="iucn.html#cb65-1" tabindex="-1"></a><span class="co"># Lịch sử xếp hạng</span></span>
-<span id="cb65-2"><a href="iucn.html#cb65-2" tabindex="-1"></a>iucn_res[[<span class="dv">1</span>]]<span class="sc">$</span>history</span></code></pre></div>
-<pre><code>##   year assess_year code   category
-## 1 1998        1998   EN Endangered</code></pre>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="iucn.html#cb67-1" tabindex="-1"></a><span class="co"># Quốc gia phân bố của loài</span></span>
-<span id="cb67-2"><a href="iucn.html#cb67-2" tabindex="-1"></a>iucn_res[[<span class="dv">1</span>]]<span class="sc">$</span>distr</span></code></pre></div>
-<pre><code>## [1] &quot;Cambodia&quot;                         &quot;Lao People&#39;s Democratic Republic&quot;
-## [3] &quot;Myanmar&quot;                          &quot;Thailand&quot;                        
-## [5] &quot;Viet Nam&quot;</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="iucn.html#cb69-1" tabindex="-1"></a><span class="co"># Xu hướng về sự phân bố của loài</span></span>
-<span id="cb69-2"><a href="iucn.html#cb69-2" tabindex="-1"></a>iucn_res[[<span class="dv">1</span>]]<span class="sc">$</span>trend</span></code></pre></div>
-<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="iucn.html#cb57-1" tabindex="-1"></a><span class="fu">names</span>(iucn_res[[<span class="dv">1</span>]])</span></code></pre></div>
+<pre><code>##  [1] &quot;assessment_date&quot;              &quot;year_published&quot;              
+##  [3] &quot;latest&quot;                       &quot;possibly_extinct&quot;            
+##  [5] &quot;possibly_extinct_in_the_wild&quot; &quot;sis_taxon_id&quot;                
+##  [7] &quot;criteria&quot;                     &quot;url&quot;                         
+##  [9] &quot;citation&quot;                     &quot;assessment_id&quot;               
+## [11] &quot;assessment_points&quot;            &quot;assessment_ranges&quot;           
+## [13] &quot;taxon&quot;                        &quot;population_trend&quot;            
+## [15] &quot;red_list_category&quot;            &quot;supplementary_info&quot;          
+## [17] &quot;documentation&quot;                &quot;biogeographical_realms&quot;      
+## [19] &quot;conservation_actions&quot;         &quot;faos&quot;                        
+## [21] &quot;habitats&quot;                     &quot;locations&quot;                   
+## [23] &quot;researches&quot;                   &quot;use_and_trade&quot;               
+## [25] &quot;threats&quot;                      &quot;credits&quot;                     
+## [27] &quot;errata&quot;                       &quot;references&quot;                  
+## [29] &quot;growth_forms&quot;                 &quot;lmes&quot;                        
+## [31] &quot;scopes&quot;                       &quot;stresses&quot;                    
+## [33] &quot;systems&quot;</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="iucn.html#cb59-1" tabindex="-1"></a><span class="co"># Tình trạng nguy cấp</span></span>
+<span id="cb59-2"><a href="iucn.html#cb59-2" tabindex="-1"></a>iucn_res[[<span class="dv">1</span>]]<span class="sc">$</span>red_list_category <span class="sc">|&gt;</span> <span class="fu">as.data.frame</span>()</span></code></pre></div>
+<pre><code>##   version         en code
+## 1     2.3 Endangered   EN</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="iucn.html#cb61-1" tabindex="-1"></a><span class="co"># Quốc gia phân bố của loài</span></span>
+<span id="cb61-2"><a href="iucn.html#cb61-2" tabindex="-1"></a>iucn_res[[<span class="dv">1</span>]]<span class="sc">$</span>locations</span></code></pre></div>
+<pre><code>##   is_endemic formerlyBred origin presence seasonality
+## 1      FALSE           NA Native   Extant          NA
+## 2      FALSE           NA Native   Extant          NA
+## 3      FALSE           NA Native   Extant          NA
+## 4      FALSE           NA Native   Extant          NA
+## 5      FALSE           NA Native   Extant          NA
+##                                 en code
+## 1                         Cambodia   KH
+## 2                          Myanmar   MM
+## 3                         Thailand   TH
+## 4                         Viet Nam   VN
+## 5 Lao People&#39;s Democratic Republic   LA</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="iucn.html#cb63-1" tabindex="-1"></a><span class="co"># Xu hướng về sự phân bố của loài</span></span>
+<span id="cb63-2"><a href="iucn.html#cb63-2" tabindex="-1"></a>iucn_res[[<span class="dv">1</span>]]<span class="sc">$</span>population_trend</span></code></pre></div>
+<pre><code>## NULL</code></pre>
 </div>
-<div id="tra-cứu-cho-nhiều-loài-1" class="section level3 hasAnchor" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> 2.2.2 Tra cứu cho nhiều loài<a href="iucn.html#tra-cứu-cho-nhiều-loài-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="tra-cứu-cho-nhiều-loài" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> 2.2.2 Tra cứu cho nhiều loài<a href="iucn.html#tra-cứu-cho-nhiều-loài" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Hàm <code>iucn_summary()</code> có thể áp dụng tra cứu cho nhiều loài cùng lúc:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="iucn.html#cb71-1" tabindex="-1"></a>iucn_res <span class="ot">&lt;-</span> <span class="fu">iucn_summary</span>(<span class="fu">c</span>(<span class="st">&quot;Afzelia xylocarpa&quot;</span>,<span class="st">&quot;Xylopia pierrei&quot;</span>,<span class="st">&quot;Dipterocarpus dyeri&quot;</span>))</span></code></pre></div>
-<pre><code>## ══  1 queries  ═══════════════
-## ✔  Found:  Afzelia xylocarpa
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="iucn.html#cb65-1" tabindex="-1"></a>iucn_res <span class="ot">&lt;-</span> <span class="fu">iucn_summary</span>(<span class="fu">c</span>(<span class="st">&quot;Afzelia xylocarpa&quot;</span>,<span class="st">&quot;Xylopia pierrei&quot;</span>,<span class="st">&quot;Dipterocarpus dyeri&quot;</span>))</span></code></pre></div>
+<pre><code>## ══  3 queries  ═══════════════</code></pre>
+<pre><code>## ✔  Found:  Afzelia xylocarpa</code></pre>
+<pre><code>## ✔  Found:  Xylopia pierrei</code></pre>
+<pre><code>## ✔  Found:  Dipterocarpus dyeri
 ## ══  Results  ═════════════════
 ## 
-## • Total: 1 
-## • Found: 1 
-## • Not Found: 0
-## ══  1 queries  ═══════════════
-## ✔  Found:  Xylopia pierrei
-## ══  Results  ═════════════════
-## 
-## • Total: 1 
-## • Found: 1 
-## • Not Found: 0
-## ══  1 queries  ═══════════════
-## ✔  Found:  Dipterocarpus dyeri
-## ══  Results  ═════════════════
-## 
-## • Total: 1 
-## • Found: 1 
+## • Total: 3 
+## • Found: 3 
 ## • Not Found: 0</code></pre>
 <p>Ta có thể xem nhanh trạng thái của cả 3 loài trên bằng lệnh <code>iucn_status()</code></p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="iucn.html#cb73-1" tabindex="-1"></a><span class="fu">iucn_status</span>(iucn_res)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="iucn.html#cb70-1" tabindex="-1"></a><span class="fu">iucn_status</span>(iucn_res)</span></code></pre></div>
 <pre><code>##   Afzelia xylocarpa     Xylopia pierrei Dipterocarpus dyeri 
 ##                &quot;EN&quot;                &quot;NT&quot;                &quot;EN&quot;</code></pre>
 </div>
@@ -399,11 +381,11 @@ RLI_t = 1-\frac{\sum_{s}W_{c(t,s)}}{W_{EX} * N}
 <p>Chỉ số RLI có giá trị từ 0 đến 1, với giá trị 1 cho biết không có nguy cơ tuyệt chủng hiện tại đối với bất kỳ loài nào được đưa vào và giá trị 0 có nghĩa là tất cả các loài được đưa vào đều đã tuyệt chủng.</p>
 <p>Trong R, có thể sử dụng lệnh <code>rli()</code> từ gói lệnh <code>red</code> để tính chỉ số Red List Index từ danh lục của khu vực nghiên cứu.</p>
 <p>Ví dụ: Trong danh sách loài nghiên cứu, có 3 loài cấp CR, 2 loài cấp EN, 2 loài cấp VU, 1 loài cấp NT, 3 loài cấp LC và 1 loài cấp DD. Chỉ số RLI tính được là 0,58.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="iucn.html#cb75-1" tabindex="-1"></a><span class="fu">library</span>(red)</span>
-<span id="cb75-2"><a href="iucn.html#cb75-2" tabindex="-1"></a>danhsach <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;CR&quot;</span>,<span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">&quot;EN&quot;</span>,<span class="dv">2</span>), <span class="fu">rep</span>(<span class="st">&quot;VU&quot;</span>,<span class="dv">2</span>), <span class="fu">rep</span>(<span class="st">&quot;NT&quot;</span>,<span class="dv">1</span>), <span class="fu">rep</span>(<span class="st">&quot;LC&quot;</span>,<span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">&quot;DD&quot;</span>,<span class="dv">1</span>))</span>
-<span id="cb75-3"><a href="iucn.html#cb75-3" tabindex="-1"></a>danhsach</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="iucn.html#cb72-1" tabindex="-1"></a><span class="fu">library</span>(red)</span>
+<span id="cb72-2"><a href="iucn.html#cb72-2" tabindex="-1"></a>danhsach <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;CR&quot;</span>,<span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">&quot;EN&quot;</span>,<span class="dv">2</span>), <span class="fu">rep</span>(<span class="st">&quot;VU&quot;</span>,<span class="dv">2</span>), <span class="fu">rep</span>(<span class="st">&quot;NT&quot;</span>,<span class="dv">1</span>), <span class="fu">rep</span>(<span class="st">&quot;LC&quot;</span>,<span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">&quot;DD&quot;</span>,<span class="dv">1</span>))</span>
+<span id="cb72-3"><a href="iucn.html#cb72-3" tabindex="-1"></a>danhsach</span></code></pre></div>
 <pre><code>##  [1] &quot;CR&quot; &quot;CR&quot; &quot;CR&quot; &quot;EN&quot; &quot;EN&quot; &quot;VU&quot; &quot;VU&quot; &quot;NT&quot; &quot;LC&quot; &quot;LC&quot; &quot;LC&quot; &quot;DD&quot;</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="iucn.html#cb77-1" tabindex="-1"></a><span class="fu">rli</span>(danhsach)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="iucn.html#cb74-1" tabindex="-1"></a><span class="fu">rli</span>(danhsach)</span></code></pre></div>
 <pre><code>## [1] 0.5818182</code></pre>
 
 </div>
@@ -428,42 +410,42 @@ RLI_t = 1-\frac{\sum_{s}W_{c(t,s)}}{W_{EX} * N}
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

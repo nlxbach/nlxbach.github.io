@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Phân tích dữ liệu sinh thái học cơ bản với R</title>
   <meta name="description" content="Tài liệu này giới thiệu một số phân tích dữ liệu sinh thái học cơ bản với phần mềm R." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Phân tích dữ liệu sinh thái học cơ bản với R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Nguyễn Lê Xuân Bách" />
 
 
-<meta name="date" content="2024-09-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -75,7 +75,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -172,17 +172,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="iucn.html"><a href="iucn.html"><i class="fa fa-check"></i><b>2</b> Tra cứu cấp độ quý hiếm của loài theo IUCN</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="iucn.html"><a href="iucn.html#xin-cấp-và-khai-báo-mã-cá-nhân-từ-iucn"><i class="fa fa-check"></i><b>2.1</b> Xin cấp và khai báo mã cá nhân từ IUCN</a></li>
-<li class="chapter" data-level="2.2" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-rredlist"><i class="fa fa-check"></i><b>2.2</b> Sử dụng gói <code>rredlist</code></a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài"><i class="fa fa-check"></i><b>2.2.1</b> Tra cứu cho 1 loài</a></li>
-<li class="chapter" data-level="2.2.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài"><i class="fa fa-check"></i><b>2.2.2</b> Tra cứu cho nhiều loài</a></li>
-<li class="chapter" data-level="2.2.3" data-path="iucn.html"><a href="iucn.html#xem-quốc-gia-có-sự-phân-bố-của-loài"><i class="fa fa-check"></i><b>2.2.3</b> Xem quốc gia có sự phân bố của loài:</a></li>
-</ul></li>
+<li class="chapter" data-level="2.1" data-path="iucn.html"><a href="iucn.html#xin-cấp-mã-token-cá-nhân-từ-iucn"><i class="fa fa-check"></i><b>2.1</b> Xin cấp mã TOKEN cá nhân từ IUCN</a></li>
+<li class="chapter" data-level="2.2" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-iucnredlist"><i class="fa fa-check"></i><b>2.2</b> Sử dụng gói <code>iucnredlist</code></a></li>
 <li class="chapter" data-level="2.3" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-taxize"><i class="fa fa-check"></i><b>2.3</b> Sử dụng gói <code>taxize</code></a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài-1"><i class="fa fa-check"></i><b>2.3.1</b> Tra cứu cho 1 loài</a></li>
-<li class="chapter" data-level="2.3.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài-1"><i class="fa fa-check"></i><b>2.3.2</b> 2.2.2 Tra cứu cho nhiều loài</a></li>
+<li class="chapter" data-level="2.3.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài"><i class="fa fa-check"></i><b>2.3.1</b> Tra cứu cho 1 loài</a></li>
+<li class="chapter" data-level="2.3.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài"><i class="fa fa-check"></i><b>2.3.2</b> 2.2.2 Tra cứu cho nhiều loài</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="iucn.html"><a href="iucn.html#tính-chỉ-số-red-list-index"><i class="fa fa-check"></i><b>2.4</b> Tính chỉ số Red List Index</a></li>
 </ul></li>
@@ -194,10 +189,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="danhphap.html"><a href="danhphap.html#nhóm-thực-vật"><i class="fa fa-check"></i><b>3.2.1</b> Nhóm Thực vật</a></li>
 <li class="chapter" data-level="3.2.2" data-path="danhphap.html"><a href="danhphap.html#ví-dụ-với-gói-lệnh-rwcvp"><i class="fa fa-check"></i><b>3.2.2</b> Ví dụ với gói lệnh <code>rWCVP</code></a></li>
 <li class="chapter" data-level="3.2.3" data-path="danhphap.html"><a href="danhphap.html#danh-pháp-động-vật"><i class="fa fa-check"></i><b>3.2.3</b> Danh pháp động vật</a></li>
-<li class="chapter" data-level="3.2.4" data-path="danhphap.html"><a href="danhphap.html#xem-thông-tin-về-loài"><i class="fa fa-check"></i><b>3.2.4</b> Xem thông tin về loài</a></li>
-<li class="chapter" data-level="3.2.5" data-path="danhphap.html"><a href="danhphap.html#tìm-các-cấp-phân-loại-từ-tên-loài"><i class="fa fa-check"></i><b>3.2.5</b> Tìm các cấp phân loại từ tên loài</a></li>
-<li class="chapter" data-level="3.2.6" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-các-tên-đồng-danh-của-một-loài-với-bộ-dữ-liệu-eol"><i class="fa fa-check"></i><b>3.2.6</b> Xem danh sách các tên đồng danh của một loài với bộ dữ liệu EOL</a></li>
-<li class="chapter" data-level="3.2.7" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-tất-cả-các-taxa-con-của-một-taxon"><i class="fa fa-check"></i><b>3.2.7</b> Xem danh sách tất cả các taxa con của một taxon</a></li>
+<li class="chapter" data-level="3.2.4" data-path="danhphap.html"><a href="danhphap.html#tìm-các-cấp-phân-loại-từ-tên-loài"><i class="fa fa-check"></i><b>3.2.4</b> Tìm các cấp phân loại từ tên loài</a></li>
+<li class="chapter" data-level="3.2.5" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-các-tên-đồng-danh-của-một-loài-với-bộ-dữ-liệu-eol"><i class="fa fa-check"></i><b>3.2.5</b> Xem danh sách các tên đồng danh của một loài với bộ dữ liệu EOL</a></li>
+<li class="chapter" data-level="3.2.6" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-tất-cả-các-taxa-con-của-một-taxon"><i class="fa fa-check"></i><b>3.2.6</b> Xem danh sách tất cả các taxa con của một taxon</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="bandocoban.html"><a href="bandocoban.html"><i class="fa fa-check"></i><b>4</b> Thao tác cơ bản với tập tin bản đồ</a>
@@ -257,7 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Phân tích dữ liệu sinh thái học cơ bản với R</h1>
 <p class="author"><em>Nguyễn Lê Xuân Bách</em></p>
-<p class="date"><em>2024-09-02</em></p>
+<p class="date"><em>2025-03-24</em></p>
 </div>
 <div id="giới-thiệu" class="section level1 unnumbered hasAnchor">
 <h1>Giới thiệu<a href="index.html#giới-thiệu" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -303,42 +297,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

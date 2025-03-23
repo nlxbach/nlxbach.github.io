@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Phần 5 Tạo sơ đồ độ giàu loài ở khu vực khảo sát | Phân tích dữ liệu sinh thái học cơ bản với R</title>
   <meta name="description" content="Tài liệu này giới thiệu một số phân tích dữ liệu sinh thái học cơ bản với phần mềm R." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Phần 5 Tạo sơ đồ độ giàu loài ở khu vực khảo sát | Phân tích dữ liệu sinh thái học cơ bản với R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Nguyễn Lê Xuân Bách" />
 
 
-<meta name="date" content="2024-09-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -75,7 +75,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -172,17 +172,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="iucn.html"><a href="iucn.html"><i class="fa fa-check"></i><b>2</b> Tra cứu cấp độ quý hiếm của loài theo IUCN</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="iucn.html"><a href="iucn.html#xin-cấp-và-khai-báo-mã-cá-nhân-từ-iucn"><i class="fa fa-check"></i><b>2.1</b> Xin cấp và khai báo mã cá nhân từ IUCN</a></li>
-<li class="chapter" data-level="2.2" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-rredlist"><i class="fa fa-check"></i><b>2.2</b> Sử dụng gói <code>rredlist</code></a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài"><i class="fa fa-check"></i><b>2.2.1</b> Tra cứu cho 1 loài</a></li>
-<li class="chapter" data-level="2.2.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài"><i class="fa fa-check"></i><b>2.2.2</b> Tra cứu cho nhiều loài</a></li>
-<li class="chapter" data-level="2.2.3" data-path="iucn.html"><a href="iucn.html#xem-quốc-gia-có-sự-phân-bố-của-loài"><i class="fa fa-check"></i><b>2.2.3</b> Xem quốc gia có sự phân bố của loài:</a></li>
-</ul></li>
+<li class="chapter" data-level="2.1" data-path="iucn.html"><a href="iucn.html#xin-cấp-mã-token-cá-nhân-từ-iucn"><i class="fa fa-check"></i><b>2.1</b> Xin cấp mã TOKEN cá nhân từ IUCN</a></li>
+<li class="chapter" data-level="2.2" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-iucnredlist"><i class="fa fa-check"></i><b>2.2</b> Sử dụng gói <code>iucnredlist</code></a></li>
 <li class="chapter" data-level="2.3" data-path="iucn.html"><a href="iucn.html#sử-dụng-gói-taxize"><i class="fa fa-check"></i><b>2.3</b> Sử dụng gói <code>taxize</code></a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài-1"><i class="fa fa-check"></i><b>2.3.1</b> Tra cứu cho 1 loài</a></li>
-<li class="chapter" data-level="2.3.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài-1"><i class="fa fa-check"></i><b>2.3.2</b> 2.2.2 Tra cứu cho nhiều loài</a></li>
+<li class="chapter" data-level="2.3.1" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-1-loài"><i class="fa fa-check"></i><b>2.3.1</b> Tra cứu cho 1 loài</a></li>
+<li class="chapter" data-level="2.3.2" data-path="iucn.html"><a href="iucn.html#tra-cứu-cho-nhiều-loài"><i class="fa fa-check"></i><b>2.3.2</b> 2.2.2 Tra cứu cho nhiều loài</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="iucn.html"><a href="iucn.html#tính-chỉ-số-red-list-index"><i class="fa fa-check"></i><b>2.4</b> Tính chỉ số Red List Index</a></li>
 </ul></li>
@@ -194,10 +189,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="danhphap.html"><a href="danhphap.html#nhóm-thực-vật"><i class="fa fa-check"></i><b>3.2.1</b> Nhóm Thực vật</a></li>
 <li class="chapter" data-level="3.2.2" data-path="danhphap.html"><a href="danhphap.html#ví-dụ-với-gói-lệnh-rwcvp"><i class="fa fa-check"></i><b>3.2.2</b> Ví dụ với gói lệnh <code>rWCVP</code></a></li>
 <li class="chapter" data-level="3.2.3" data-path="danhphap.html"><a href="danhphap.html#danh-pháp-động-vật"><i class="fa fa-check"></i><b>3.2.3</b> Danh pháp động vật</a></li>
-<li class="chapter" data-level="3.2.4" data-path="danhphap.html"><a href="danhphap.html#xem-thông-tin-về-loài"><i class="fa fa-check"></i><b>3.2.4</b> Xem thông tin về loài</a></li>
-<li class="chapter" data-level="3.2.5" data-path="danhphap.html"><a href="danhphap.html#tìm-các-cấp-phân-loại-từ-tên-loài"><i class="fa fa-check"></i><b>3.2.5</b> Tìm các cấp phân loại từ tên loài</a></li>
-<li class="chapter" data-level="3.2.6" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-các-tên-đồng-danh-của-một-loài-với-bộ-dữ-liệu-eol"><i class="fa fa-check"></i><b>3.2.6</b> Xem danh sách các tên đồng danh của một loài với bộ dữ liệu EOL</a></li>
-<li class="chapter" data-level="3.2.7" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-tất-cả-các-taxa-con-của-một-taxon"><i class="fa fa-check"></i><b>3.2.7</b> Xem danh sách tất cả các taxa con của một taxon</a></li>
+<li class="chapter" data-level="3.2.4" data-path="danhphap.html"><a href="danhphap.html#tìm-các-cấp-phân-loại-từ-tên-loài"><i class="fa fa-check"></i><b>3.2.4</b> Tìm các cấp phân loại từ tên loài</a></li>
+<li class="chapter" data-level="3.2.5" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-các-tên-đồng-danh-của-một-loài-với-bộ-dữ-liệu-eol"><i class="fa fa-check"></i><b>3.2.5</b> Xem danh sách các tên đồng danh của một loài với bộ dữ liệu EOL</a></li>
+<li class="chapter" data-level="3.2.6" data-path="danhphap.html"><a href="danhphap.html#xem-danh-sách-tất-cả-các-taxa-con-của-một-taxon"><i class="fa fa-check"></i><b>3.2.6</b> Xem danh sách tất cả các taxa con của một taxon</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="bandocoban.html"><a href="bandocoban.html"><i class="fa fa-check"></i><b>4</b> Thao tác cơ bản với tập tin bản đồ</a>
@@ -258,11 +252,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Phần 5</span> Tạo sơ đồ độ giàu loài ở khu vực khảo sát<a href="dogiauloai.html#dogiauloai" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="tạo-sơ-đồ-vị-trí-ghi-nhận-từ-dữ-liệu-sơn-trà" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Tạo sơ đồ vị trí ghi nhận từ dữ liệu Sơn Trà<a href="dogiauloai.html#tạo-sơ-đồ-vị-trí-ghi-nhận-từ-dữ-liệu-sơn-trà" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="dogiauloai.html#cb136-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb136-2"><a href="dogiauloai.html#cb136-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb136-3"><a href="dogiauloai.html#cb136-3" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="dogiauloai.html#cb117-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb117-2"><a href="dogiauloai.html#cb117-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb117-3"><a href="dogiauloai.html#cb117-3" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span></code></pre></div>
 <p>Chuẩn bị lớp ranh giới khu vực Sơn Trà. Dùng lệnh <code>st_crop</code> để cắt khu vực Sơn Trà từ dữ liệu Việt Nam.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="dogiauloai.html#cb137-1" tabindex="-1"></a>vietnam <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;DATA/Vietnamdiaphantinh.geojson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="dogiauloai.html#cb118-1" tabindex="-1"></a>vietnam <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;DATA/Vietnamdiaphantinh.geojson&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `Vietnamdiaphantinh&#39; from data source 
 ##   `/Users/bachnguyen/Library/CloudStorage/OneDrive-Personal/WORKING/ECOR/DATA/Vietnamdiaphantinh.geojson&#39; 
 ##   using driver `GeoJSON&#39;
@@ -271,75 +265,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Dimension:     XY
 ## Bounding box:  xmin: 102.1421 ymin: 6.953306 xmax: 116.9473 ymax: 23.3939
 ## Geodetic CRS:  WGS 84</code></pre>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="dogiauloai.html#cb139-1" tabindex="-1"></a>sontra_poly <span class="ot">&lt;-</span> <span class="fu">st_crop</span>(vietnam, <span class="at">xmin =</span> <span class="fl">108.2</span>, <span class="at">xmax =</span> <span class="fl">108.35</span>, <span class="at">ymin =</span> <span class="fl">16.09</span>, <span class="at">ymax =</span> <span class="fl">16.17</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="dogiauloai.html#cb120-1" tabindex="-1"></a>sontra_poly <span class="ot">&lt;-</span> <span class="fu">st_crop</span>(vietnam, <span class="at">xmin =</span> <span class="fl">108.2</span>, <span class="at">xmax =</span> <span class="fl">108.35</span>, <span class="at">ymin =</span> <span class="fl">16.09</span>, <span class="at">ymax =</span> <span class="fl">16.17</span>)</span></code></pre></div>
 <p>Đọc bộ dữ liệu ghi nhận loài tại Sơn Trà đã giới thiệu ở phần <a href="thaotaccoban.html#sontra">1.1</a>. Sau đó dùng lệnh <code>st_as_sf</code> để chuyển sang dạng tập tin bản đồ dựa vào 2 cột “decimalLongitude” và “decimalLatitude”. Vì đây là dữ liệu dạng WGS84 lonlat nên chúng ta chọn mã <code>crs=4326</code>.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="dogiauloai.html#cb140-1" tabindex="-1"></a>sontra <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DATA/occurrence_SonTra_Peninsula.csv&quot;</span>)</span>
-<span id="cb140-2"><a href="dogiauloai.html#cb140-2" tabindex="-1"></a><span class="co">#chuyen sang dạng tập tin bản đồ</span></span>
-<span id="cb140-3"><a href="dogiauloai.html#cb140-3" tabindex="-1"></a>sontra_sf <span class="ot">&lt;-</span> sontra <span class="sc">|&gt;</span> <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;decimalLongitude&quot;</span>, <span class="st">&quot;decimalLatitude&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="dogiauloai.html#cb121-1" tabindex="-1"></a>sontra <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DATA/occurrence_SonTra_Peninsula.csv&quot;</span>)</span>
+<span id="cb121-2"><a href="dogiauloai.html#cb121-2" tabindex="-1"></a><span class="co">#chuyen sang dạng tập tin bản đồ</span></span>
+<span id="cb121-3"><a href="dogiauloai.html#cb121-3" tabindex="-1"></a>sontra_sf <span class="ot">&lt;-</span> sontra <span class="sc">|&gt;</span> <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;decimalLongitude&quot;</span>, <span class="st">&quot;decimalLatitude&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
 <p>Vẽ sơ đồ thể hiện vị trí ghi nhận</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="dogiauloai.html#cb141-1" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb141-2"><a href="dogiauloai.html#cb141-2" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sontra_poly, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;pink&quot;</span>) <span class="sc">+</span></span>
-<span id="cb141-3"><a href="dogiauloai.html#cb141-3" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sontra_sf, <span class="fu">aes</span>(<span class="at">color =</span> class), <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb141-4"><a href="dogiauloai.html#cb141-4" tabindex="-1"></a>  <span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">&quot;tr&quot;</span>, <span class="at">height=</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;cm&quot;</span>), <span class="at">width=</span><span class="fu">unit</span>(<span class="fl">0.75</span>, <span class="st">&quot;cm&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb141-5"><a href="dogiauloai.html#cb141-5" tabindex="-1"></a>  <span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">&quot;br&quot;</span>, <span class="at">width_hint =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb141-6"><a href="dogiauloai.html#cb141-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">linetype =</span> <span class="st">&#39;solid&#39;</span>)) <span class="sc">+</span></span>
-<span id="cb141-7"><a href="dogiauloai.html#cb141-7" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb141-8"><a href="dogiauloai.html#cb141-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Sơ đồ vị trí ghi nhận&quot;</span>,</span>
-<span id="cb141-9"><a href="dogiauloai.html#cb141-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Longitude&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Latitude&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-104-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="dogiauloai.html#cb122-1" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb122-2"><a href="dogiauloai.html#cb122-2" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sontra_poly, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;pink&quot;</span>) <span class="sc">+</span></span>
+<span id="cb122-3"><a href="dogiauloai.html#cb122-3" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sontra_sf, <span class="fu">aes</span>(<span class="at">color =</span> class), <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb122-4"><a href="dogiauloai.html#cb122-4" tabindex="-1"></a>  <span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">&quot;tr&quot;</span>, <span class="at">height=</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;cm&quot;</span>), <span class="at">width=</span><span class="fu">unit</span>(<span class="fl">0.75</span>, <span class="st">&quot;cm&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb122-5"><a href="dogiauloai.html#cb122-5" tabindex="-1"></a>  <span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">&quot;br&quot;</span>, <span class="at">width_hint =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb122-6"><a href="dogiauloai.html#cb122-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">linetype =</span> <span class="st">&#39;solid&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb122-7"><a href="dogiauloai.html#cb122-7" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb122-8"><a href="dogiauloai.html#cb122-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Sơ đồ vị trí ghi nhận&quot;</span>,</span>
+<span id="cb122-9"><a href="dogiauloai.html#cb122-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Longitude&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Latitude&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-96-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="tạo-sơ-đồ-độ-giàu-loài" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Tạo sơ đồ độ giàu loài<a href="dogiauloai.html#tạo-sơ-đồ-độ-giàu-loài" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Để tạo sơ đồ độ giàu loài, chúng ta sẽ tạo các lưới với kích thước nào đó. Sau đó sẽ đếm số lượng loài xuất hiện trong mỗi ô. Dùng số lượng này để thể hiện lên sơ đồ</p>
 <div id="tạo-lưới-có-kích-thước-1km-với-lệnh-st_make_grid." class="section level3 hasAnchor" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> Tạo lưới có kích thước 1km với lệnh <code>st_make_grid</code>.<a href="dogiauloai.html#tạo-lưới-có-kích-thước-1km-với-lệnh-st_make_grid." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="dogiauloai.html#cb142-1" tabindex="-1"></a>CRGrid <span class="ot">&lt;-</span> sontra_poly <span class="sc">|&gt;</span></span>
-<span id="cb142-2"><a href="dogiauloai.html#cb142-2" tabindex="-1"></a>  <span class="fu">st_make_grid</span>(<span class="at">cellsize =</span> <span class="fl">0.008</span>) <span class="sc">|&gt;</span></span>
-<span id="cb142-3"><a href="dogiauloai.html#cb142-3" tabindex="-1"></a>  <span class="fu">st_intersection</span>(sontra_poly) <span class="sc">|&gt;</span></span>
-<span id="cb142-4"><a href="dogiauloai.html#cb142-4" tabindex="-1"></a>  <span class="fu">st_cast</span>(<span class="st">&quot;MULTIPOLYGON&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb142-5"><a href="dogiauloai.html#cb142-5" tabindex="-1"></a>  <span class="fu">st_sf</span>() <span class="sc">|&gt;</span></span>
-<span id="cb142-6"><a href="dogiauloai.html#cb142-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cellid =</span> <span class="fu">row_number</span>())</span>
-<span id="cb142-7"><a href="dogiauloai.html#cb142-7" tabindex="-1"></a></span>
-<span id="cb142-8"><a href="dogiauloai.html#cb142-8" tabindex="-1"></a></span>
-<span id="cb142-9"><a href="dogiauloai.html#cb142-9" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb142-10"><a href="dogiauloai.html#cb142-10" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sontra_poly, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;pink&quot;</span>) <span class="sc">+</span></span>
-<span id="cb142-11"><a href="dogiauloai.html#cb142-11" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CRGrid, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
-<span id="cb142-12"><a href="dogiauloai.html#cb142-12" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-105-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="dogiauloai.html#cb123-1" tabindex="-1"></a>CRGrid <span class="ot">&lt;-</span> sontra_poly <span class="sc">|&gt;</span></span>
+<span id="cb123-2"><a href="dogiauloai.html#cb123-2" tabindex="-1"></a>  <span class="fu">st_make_grid</span>(<span class="at">cellsize =</span> <span class="fl">0.008</span>) <span class="sc">|&gt;</span></span>
+<span id="cb123-3"><a href="dogiauloai.html#cb123-3" tabindex="-1"></a>  <span class="fu">st_intersection</span>(sontra_poly) <span class="sc">|&gt;</span></span>
+<span id="cb123-4"><a href="dogiauloai.html#cb123-4" tabindex="-1"></a>  <span class="fu">st_cast</span>(<span class="st">&quot;MULTIPOLYGON&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb123-5"><a href="dogiauloai.html#cb123-5" tabindex="-1"></a>  <span class="fu">st_sf</span>() <span class="sc">|&gt;</span></span>
+<span id="cb123-6"><a href="dogiauloai.html#cb123-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cellid =</span> <span class="fu">row_number</span>())</span>
+<span id="cb123-7"><a href="dogiauloai.html#cb123-7" tabindex="-1"></a></span>
+<span id="cb123-8"><a href="dogiauloai.html#cb123-8" tabindex="-1"></a></span>
+<span id="cb123-9"><a href="dogiauloai.html#cb123-9" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb123-10"><a href="dogiauloai.html#cb123-10" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sontra_poly, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;pink&quot;</span>) <span class="sc">+</span></span>
+<span id="cb123-11"><a href="dogiauloai.html#cb123-11" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CRGrid, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb123-12"><a href="dogiauloai.html#cb123-12" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-97-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="đếm-số-lượng-loài-ghi-nhận-trong-từng-ô-lưới." class="section level3 hasAnchor" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> Đếm số lượng loài ghi nhận trong từng ô lưới.<a href="dogiauloai.html#đếm-số-lượng-loài-ghi-nhận-trong-từng-ô-lưới." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="dogiauloai.html#cb143-1" tabindex="-1"></a><span class="co"># cell richness</span></span>
-<span id="cb143-2"><a href="dogiauloai.html#cb143-2" tabindex="-1"></a>richness_grid <span class="ot">&lt;-</span> CRGrid <span class="sc">|&gt;</span></span>
-<span id="cb143-3"><a href="dogiauloai.html#cb143-3" tabindex="-1"></a>  <span class="fu">st_join</span>(sontra_sf) <span class="sc">|&gt;</span></span>
-<span id="cb143-4"><a href="dogiauloai.html#cb143-4" tabindex="-1"></a>  <span class="fu">distinct_at</span>(<span class="fu">c</span>(<span class="st">&quot;cellid&quot;</span>, <span class="st">&quot;scientificName&quot;</span>), <span class="at">.keep_all =</span> T) <span class="sc">|&gt;</span> </span>
-<span id="cb143-5"><a href="dogiauloai.html#cb143-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">overlap =</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(occurrenceID), <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb143-6"><a href="dogiauloai.html#cb143-6" tabindex="-1"></a>  <span class="fu">group_by</span>(cellid) <span class="sc">|&gt;</span></span>
-<span id="cb143-7"><a href="dogiauloai.html#cb143-7" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_species =</span> <span class="fu">sum</span>(overlap))</span></code></pre></div>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="dogiauloai.html#cb144-1" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb144-2"><a href="dogiauloai.html#cb144-2" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sontra_poly, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;pink&quot;</span>) <span class="sc">+</span></span>
-<span id="cb144-3"><a href="dogiauloai.html#cb144-3" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CRGrid, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
-<span id="cb144-4"><a href="dogiauloai.html#cb144-4" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="at">data =</span> richness_grid, <span class="fu">aes</span>(<span class="at">label =</span> num_species), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb144-5"><a href="dogiauloai.html#cb144-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-107-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="dogiauloai.html#cb124-1" tabindex="-1"></a><span class="co"># cell richness</span></span>
+<span id="cb124-2"><a href="dogiauloai.html#cb124-2" tabindex="-1"></a>richness_grid <span class="ot">&lt;-</span> CRGrid <span class="sc">|&gt;</span></span>
+<span id="cb124-3"><a href="dogiauloai.html#cb124-3" tabindex="-1"></a>  <span class="fu">st_join</span>(sontra_sf) <span class="sc">|&gt;</span></span>
+<span id="cb124-4"><a href="dogiauloai.html#cb124-4" tabindex="-1"></a>  <span class="fu">distinct_at</span>(<span class="fu">c</span>(<span class="st">&quot;cellid&quot;</span>, <span class="st">&quot;scientificName&quot;</span>), <span class="at">.keep_all =</span> T) <span class="sc">|&gt;</span> </span>
+<span id="cb124-5"><a href="dogiauloai.html#cb124-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">overlap =</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(occurrenceID), <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb124-6"><a href="dogiauloai.html#cb124-6" tabindex="-1"></a>  <span class="fu">group_by</span>(cellid) <span class="sc">|&gt;</span></span>
+<span id="cb124-7"><a href="dogiauloai.html#cb124-7" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_species =</span> <span class="fu">sum</span>(overlap))</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="dogiauloai.html#cb125-1" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb125-2"><a href="dogiauloai.html#cb125-2" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sontra_poly, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;pink&quot;</span>) <span class="sc">+</span></span>
+<span id="cb125-3"><a href="dogiauloai.html#cb125-3" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CRGrid, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb125-4"><a href="dogiauloai.html#cb125-4" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="at">data =</span> richness_grid, <span class="fu">aes</span>(<span class="at">label =</span> num_species), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb125-5"><a href="dogiauloai.html#cb125-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-99-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="trình-bày-sơ-đồ-hoàn-chỉnh" class="section level3 hasAnchor" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Trình bày sơ đồ hoàn chỉnh<a href="dogiauloai.html#trình-bày-sơ-đồ-hoàn-chỉnh" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="dogiauloai.html#cb145-1" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb145-2"><a href="dogiauloai.html#cb145-2" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sontra_poly, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;pink&quot;</span>) <span class="sc">+</span></span>
-<span id="cb145-3"><a href="dogiauloai.html#cb145-3" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CRGrid, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>)<span class="sc">+</span></span>
-<span id="cb145-4"><a href="dogiauloai.html#cb145-4" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> richness_grid, <span class="fu">aes</span>(<span class="at">fill =</span> num_species), <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb145-5"><a href="dogiauloai.html#cb145-5" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">&quot;Altitude&quot;</span>, <span class="at">option =</span> <span class="st">&quot;plasma&quot;</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">na.value =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb145-6"><a href="dogiauloai.html#cb145-6" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="at">data =</span> richness_grid, <span class="fu">aes</span>(<span class="at">label =</span> num_species), <span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
-<span id="cb145-7"><a href="dogiauloai.html#cb145-7" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sontra_sf, <span class="fu">aes</span>(<span class="at">color =</span> class), <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb145-8"><a href="dogiauloai.html#cb145-8" tabindex="-1"></a>  <span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">&quot;tr&quot;</span>, <span class="at">height=</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;cm&quot;</span>), <span class="at">width=</span><span class="fu">unit</span>(<span class="fl">0.75</span>, <span class="st">&quot;cm&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb145-9"><a href="dogiauloai.html#cb145-9" tabindex="-1"></a>  <span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">&quot;br&quot;</span>, <span class="at">width_hint =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb145-10"><a href="dogiauloai.html#cb145-10" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">linetype =</span> <span class="st">&#39;solid&#39;</span>)) <span class="sc">+</span></span>
-<span id="cb145-11"><a href="dogiauloai.html#cb145-11" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb145-12"><a href="dogiauloai.html#cb145-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Sơ đồ độ giàu loài tại Bán đảo Sơn Trà&quot;</span>,</span>
-<span id="cb145-13"><a href="dogiauloai.html#cb145-13" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data: Trần Văn Bằng et. al. &quot;</span>,</span>
-<span id="cb145-14"><a href="dogiauloai.html#cb145-14" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Longitude&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Latitude&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-108-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="dogiauloai.html#cb126-1" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb126-2"><a href="dogiauloai.html#cb126-2" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sontra_poly, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;pink&quot;</span>) <span class="sc">+</span></span>
+<span id="cb126-3"><a href="dogiauloai.html#cb126-3" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CRGrid, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>)<span class="sc">+</span></span>
+<span id="cb126-4"><a href="dogiauloai.html#cb126-4" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> richness_grid, <span class="fu">aes</span>(<span class="at">fill =</span> num_species), <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb126-5"><a href="dogiauloai.html#cb126-5" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">&quot;Altitude&quot;</span>, <span class="at">option =</span> <span class="st">&quot;plasma&quot;</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">na.value =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb126-6"><a href="dogiauloai.html#cb126-6" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="at">data =</span> richness_grid, <span class="fu">aes</span>(<span class="at">label =</span> num_species), <span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb126-7"><a href="dogiauloai.html#cb126-7" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sontra_sf, <span class="fu">aes</span>(<span class="at">color =</span> class), <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb126-8"><a href="dogiauloai.html#cb126-8" tabindex="-1"></a>  <span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">&quot;tr&quot;</span>, <span class="at">height=</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;cm&quot;</span>), <span class="at">width=</span><span class="fu">unit</span>(<span class="fl">0.75</span>, <span class="st">&quot;cm&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb126-9"><a href="dogiauloai.html#cb126-9" tabindex="-1"></a>  <span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">&quot;br&quot;</span>, <span class="at">width_hint =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb126-10"><a href="dogiauloai.html#cb126-10" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">linetype =</span> <span class="st">&#39;solid&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb126-11"><a href="dogiauloai.html#cb126-11" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb126-12"><a href="dogiauloai.html#cb126-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Sơ đồ độ giàu loài tại Bán đảo Sơn Trà&quot;</span>,</span>
+<span id="cb126-13"><a href="dogiauloai.html#cb126-13" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data: Trần Văn Bằng et. al. &quot;</span>,</span>
+<span id="cb126-14"><a href="dogiauloai.html#cb126-14" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Longitude&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Latitude&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-100-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
@@ -364,42 +358,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
